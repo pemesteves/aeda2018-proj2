@@ -26,3 +26,9 @@
 *.exe
 *.out
 *.app
+/.metadata/
+
+
+*.xml
+*.cproject
+*.project
