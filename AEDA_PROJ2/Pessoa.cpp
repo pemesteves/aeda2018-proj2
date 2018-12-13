@@ -24,19 +24,19 @@ unsigned long Pessoa::getNoContribuinte() const {
 	return noContribuinte;
 }
 
-void Pessoa::setNome(string nome){
+void Pessoa::setNome(string nome) {
 	this->nome = nome;
 }
 
-void Pessoa::setMorada(string morada){
+void Pessoa::setMorada(string morada) {
 	this->morada = morada;
 }
 
-void Pessoa::setNoContribuinte(unsigned long no){
+void Pessoa::setNoContribuinte(unsigned long no) {
 	noContribuinte = no;
 }
 
-std::ostream& operator<<(std::ostream &output, const Pessoa &p){
+std::ostream& operator<<(std::ostream &output, const Pessoa &p) {
 	output << p.nome << endl;
 	output << p.noContribuinte << endl;
 	output << p.morada << endl;
@@ -44,73 +44,73 @@ std::ostream& operator<<(std::ostream &output, const Pessoa &p){
 }
 
 //Funcionario
-Funcionario::Funcionario(string nome, string morada, unsigned long cont, double sal): Pessoa(nome, morada, cont){
+Funcionario::Funcionario(string nome, string morada, unsigned long cont, double sal) : Pessoa(nome, morada, cont) {
 	this->salario = sal;
 	this->cargo = "Funcionario";
 	this->farmaciaTrabalho = NULL;
 }
 
-double Funcionario::getSalario() const{
+double Funcionario::getSalario() const {
 	return salario;
 }
 
-string Funcionario::getCargo() const{
+string Funcionario::getCargo() const {
 	return cargo;
 }
 
-void Funcionario::changeSalario(double salario){
+void Funcionario::changeSalario(double salario) {
 	this->salario = salario;
 }
 
-void Funcionario::setFarmacia(Farmacia* f){
+void Funcionario::setFarmacia(Farmacia* f) {
 	string cargo1 = toupperstring(cargo);
- 	if (cargo1 == "GERENTE"){
- 		if(farmaciaTrabalho!=NULL)
- 			farmaciaTrabalho->setGerente(NULL);
+	if (cargo1 == "GERENTE") {
+		if (farmaciaTrabalho != NULL)
+			farmaciaTrabalho->setGerente(NULL);
 		f->setGerente(this);
 	}
-	else if (cargo1 == "DIRETOR TECNICO" || cargo1 == "DIRETOR TÉCNICO"){
-		if(farmaciaTrabalho!=NULL)
+	else if (cargo1 == "DIRETOR TECNICO" || cargo1 == "DIRETOR TÉCNICO") {
+		if (farmaciaTrabalho != NULL)
 			farmaciaTrabalho->setDiretorTecnico(NULL);
 		f->setDiretorTecnico(this);
 	}
 	this->farmaciaTrabalho = f;
 }
 
-void Funcionario::setCargo(string cargo){
+void Funcionario::setCargo(string cargo) {
 	string cargo1 = toupperstring(cargo);
-	if (cargo1 == "GERENTE"){
-		if(farmaciaTrabalho != NULL){
-			if(farmaciaTrabalho->getGerente() != NULL){
-				if (farmaciaTrabalho->getGerente()->getNoContribuinte()==this->noContribuinte){
+	if (cargo1 == "GERENTE") {
+		if (farmaciaTrabalho != NULL) {
+			if (farmaciaTrabalho->getGerente() != NULL) {
+				if (farmaciaTrabalho->getGerente()->getNoContribuinte() == this->noContribuinte) {
 					this->cargo = cargo1;
 					return;
 				}
 			}
-			else{
-					farmaciaTrabalho->setGerente(this);
-					return;
+			else {
+				farmaciaTrabalho->setGerente(this);
+				return;
 			}
 		}
 	}
-	else if (cargo1 == "DIRETOR TECNICO" || cargo1 == "DIRETOR TÉCNICO"){
-			if(farmaciaTrabalho != NULL){
-				if(farmaciaTrabalho->getDiretorTecnico() != NULL){
-					if (farmaciaTrabalho->getDiretorTecnico()->getNoContribuinte()==this->noContribuinte){
-						this->cargo = cargo1;
-							return;
-					}
-				}
-				else{
-					farmaciaTrabalho->setDiretorTecnico(this);
+	else if (cargo1 == "DIRETOR TECNICO" || cargo1 == "DIRETOR TÉCNICO") {
+		if (farmaciaTrabalho != NULL) {
+			if (farmaciaTrabalho->getDiretorTecnico() != NULL) {
+				if (farmaciaTrabalho->getDiretorTecnico()->getNoContribuinte() == this->noContribuinte) {
+					this->cargo = cargo1;
 					return;
 				}
 			}
+			else {
+				farmaciaTrabalho->setDiretorTecnico(this);
+				return;
+			}
+		}
 	}
 	this->cargo = cargo1;
 }
 
-void Funcionario::showInfo() const{
+void Funcionario::showInfo() const {
 	cout << "Funcionario" << endl;
 	cout << "Nome: " << nome << endl;
 	cout << "Morada: " << morada << endl;
@@ -120,8 +120,8 @@ void Funcionario::showInfo() const{
 		cout << cargo << " na farmacia " << farmaciaTrabalho->getNome() << endl;
 }
 
-bool Funcionario::operator< (const Funcionario &f1) const{
-	if(nome < f1.getNome())
+bool Funcionario::operator< (const Funcionario &f1) const {
+	if (nome < f1.getNome())
 		return true;
 	if (nome == f1.getNome() && salario > f1.getSalario())
 		return true;
@@ -130,12 +130,12 @@ bool Funcionario::operator< (const Funcionario &f1) const{
 	return false;
 }
 
-std::ostream& operator<<(std::ostream &output, const Funcionario &f){
+std::ostream& operator<<(std::ostream &output, const Funcionario &f) {
 	output << f.nome << endl;
 	output << f.noContribuinte << endl;
 	output << f.morada << endl;
-	output << f.cargo  << "-" << f.salario << endl;
-	if (f.farmaciaTrabalho == NULL )
+	output << f.cargo << "-" << f.salario << endl;
+	if (f.farmaciaTrabalho == NULL)
 		output << "NULL";
 	else
 		output << f.farmaciaTrabalho->getNome();
@@ -143,8 +143,21 @@ std::ostream& operator<<(std::ostream &output, const Funcionario &f){
 }
 
 //Cliente
-Cliente::Cliente(string nome, string morada, unsigned long contribuinte): Pessoa(nome, morada, contribuinte) {
+Cliente::Cliente(string nome, string morada, unsigned long contribuinte, string distrito) : Pessoa(nome, morada, contribuinte) {
 	historialCompras.clear();
+	this->distrito = distrito;
+}
+
+std::string Cliente::getDistrito() const() {
+	return this->distrito;
+}
+
+bool Cliente::changeDistrito(std::string novoDistrito) const {
+	if (isDistrito(novoDistrito)) {
+		this->distrito = novoDistrito;
+		return true;
+	}
+	return false;
 }
 
 vector<Venda*> Cliente::getHistorialCompras() const {
@@ -166,18 +179,17 @@ void Cliente::showInfo() const {
 	cout << "Contribuinte: " << noContribuinte << endl;
 }
 
-bool Cliente::operator< (const Cliente &c1) const{
-	if (nome < c1.getNome())
+bool Cliente::operator< (const Cliente &c1) const {
+	if (distrito < c1.getDistrito())
 		return true;
-	if (nome == c1.getNome() && historialCompras.size() > c1.getHistorialCompras().size())
+	if (distrito == c1.getDistrito() && nome == c1.getNome())
 		return true;
-	if (nome == c1.getNome() && historialCompras.size() == c1.getHistorialCompras().size() && noContribuinte < c1.getNoContribuinte())
-		return true;
+
 	return false;
 }
 
-bool Funcionario::menorQue(const Funcionario &f1, enum tipoSort tipo, bool crescente) const{
-	switch(tipo){
+bool Funcionario::menorQue(const Funcionario &f1, enum tipoSort tipo, bool crescente) const {
+	switch (tipo) {
 	case NOME:
 		if (crescente)
 			return nome < f1.getNome();
@@ -202,8 +214,8 @@ bool Funcionario::menorQue(const Funcionario &f1, enum tipoSort tipo, bool cresc
 	}
 }
 
-bool Cliente::menorQue(const Cliente &c1, enum tipoSort tipo, bool crescente) const{
-	switch(tipo){
+bool Cliente::menorQue(const Cliente &c1, enum tipoSort tipo, bool crescente) const {
+	switch (tipo) {
 	case NOME:
 		if (crescente)
 			return nome < c1.getNome();
@@ -228,12 +240,12 @@ bool Cliente::menorQue(const Cliente &c1, enum tipoSort tipo, bool crescente) co
 	}
 }
 
-std::ostream& operator<<(std::ostream &output, const Cliente &c){
+std::ostream& operator<<(std::ostream &output, const Cliente &c) {
 	output << c.nome << endl;
 	output << c.noContribuinte << endl;
 	output << c.morada << endl;
 	output << c.historialCompras.size() << endl;
-	for (size_t i = 0; i < c.historialCompras.size(); i++){
+	for (size_t i = 0; i < c.historialCompras.size(); i++) {
 		output << c.historialCompras[i]->getCodigo() << endl;
 	}
 	return output;

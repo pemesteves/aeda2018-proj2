@@ -27,7 +27,7 @@ enum tipoSort {NOME, CONTRIBUINTE, NUM_PROD, NUM_VENDA, SALARIO, DATA, HORA, DEF
  */
 enum dadosProd {QUANTIDADE, IVA, COMPARTICIPACAO, PRECO_PAGO};
 
-/*
+/**
  * Metodo que retorna uma string com todas as letras maiusculas, usado para comparacoes de strings case-insensitive
  * @param str String cujas letras se vai converter para uppercase
  * @return string com todas as letras maiusculas
@@ -38,6 +38,47 @@ inline std::string toupperstring(std::string str){
 		s.at(i)=toupper(s.at(i));
 	}
 	return s;
+}
+
+/**
+ * Funcao que verifica se um dado distrito e valido
+ * @param distrito Nome do distrito que sera verificado
+ * @return Retorna true se o distrito existir. Caso contrario, retorna false. Tambem retorna por referencia o nome do distrito formatado devidamente
+ */
+bool isDistrito(std::string &distrito) {
+	for (unsigned i = 0; i < distrito.length(); i++) {
+		if (i == 0)
+			distrito[i] = toupper(distrito[i]);
+		else if (distrito[i - 1] == ' ')
+			distrito[i] = toupper(distrito[i]);
+		else
+			distrito[i] = tolower(distrito[i]);
+	}
+
+	switch (distrito) {
+	case "Aveiro":
+	case "Beja":
+	case "Braga":
+	case "Braganca":
+	case "Castelo Branco":
+	case "Coimbra":
+	case "Evora":
+	case "Faro":
+	case "Guarda":
+	case "Leiria":
+	case "Lisboa":
+	case "Portalegre":
+	case "Porto":
+	case "Santarem":
+	case "Setubal":
+	case "Viana Do Castelo":
+	case "Vila Real":
+	case "Viseu":
+		return true;
+		break;
+	default:
+		return false;
+	}
 }
 
 template <typename T>

@@ -10,9 +10,9 @@
 #include <string>
 #include <iostream>
 
-/**
- * Classe Produto
- */
+ /**
+  * Classe Produto
+  */
 class Produto {
 protected:
 	unsigned long codigo; //Codigo do Produto
@@ -32,6 +32,7 @@ public:
 	 * @param descricao Descricao do Produto
 	 */
 	Produto(unsigned long cod, std::string nome, float preco, std::string descricao);
+
 	/**
 	 * Construtor da classe Produto
 	 * @param cod Codigo do Produto
@@ -43,72 +44,86 @@ public:
 	 * @param semRec Booleano que indica se o produto pode ser vendido sem receita
 	 */
 	Produto(unsigned long cod, std::string nome, float preco, std::string desc, bool passivelReceita, float desconto, bool semRec);
+
 	/**
 	 * Metodo para alterar a taxa de desconto de um produto com receita
 	 * @param taxaDesconto Taxa de desconto a alterar
 	 */
 	void setTaxaDesconto(float taxaDesconto);
+
 	/**
 	 * Metodo utilizado para saber se o medicamento pode ser vendido sem receita
 	 * @return True se puder ser vendido sem receita. Caso contrario, retorna false
 	 */
 	bool getVendaSemReceita() const;
+
 	/**
 	 * Metodo para alterar a venda sem receita
 	 * @param vendaSemReceita Deve ser true se o medicamento passar a poder ser vendido sem receita
 	 */
 	void setVendaSemReceita(bool vendaSemReceita);
+
 	/**
 	 * Metodo para obter o codigo do Produto
 	 * @return Código do Produto
 	 */
 	unsigned long getCodigo() const;
+
 	/**
 	 * Metodo para obter o nome do Produto
 	 * @return Nome do Produto
 	 */
 	std::string getNome() const;
+
 	/**
 	 * Metodo para obter o preco do Produto
 	 * @return Preco do Produto
 	 */
 	float getPreco() const;
+
 	/**
 	 * Metodo para obter a descricao do Produto
 	 * @return Descricao do Produto
 	 */
 	std::string getDescricao() const;
+
 	/**
 	 * Metodo que permite alterar o preco de um Produto
 	 * @param preco Preco a alterar
 	 */
 	void changePreco(float preco);
+
 	/**
 	 * Operador menor: Compara dois produtos com regras pre-definidas
 	 * @param p1 Produto que ira ser comparado
 	 * @return Retorna true se o produto for menor que p1. Caso contrario, retorna false
 	 */
 	bool operator< (const Produto &p1) const;
+
 	/**
 	 * Metodo para saber se o produto e do tipo PassivelReceita
 	 * @return true se for PassivelReceita, se nao retorna false
 	 */
 	bool getPassivelReceita() const;
+
 	/**
 	 * Operador de igualdade: Compara dois produtos com regras pre-definidas
 	 * @param p1 Produto que ira ser comparado
 	 * @return Retorna true se o produto for igual a p1. Caso contrario, retorna false
 	 */
 	bool operator== (const Produto &p1) const;
+
 	/**
 	 * Metodo para obter a taxa de desconto com receita
 	 * @return Taxa de Desconto
 	 */
 	float getTaxaDesconto() const;
-	/*
+
+	/**
 	 * Metodo que imprime no ecra os dados do produto
 	 */
 	void showInfo() const;
+
 	/**
 	 * Overload do operador para exportar o Produto
 	 * @param output Variavel para onde se quer exportar(ecra, ficheiro, ...)
@@ -129,6 +144,7 @@ public:
 	 * @param nomeProd Nome do Produto
 	 */
 	ProdutoInexistente(std::string nomeProd) { nome = nomeProd; }
+
 	/**
 	 * Metodo para obter o nome do produto inexistente
 	 * @return Nome do Produto
