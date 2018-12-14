@@ -14,14 +14,14 @@ using namespace std;
 
 CadeiaFarmacias cadeia;
 
-void menuCriarCadeia(){
+void menuCriarCadeia() {
 	cout << "CADEIA DE FARMACIAS" << endl << endl;
 	cout << "1. Criar nova cadeia. " << endl;
 	cout << "2. Importar cadeia. " << endl;
 	cout << "3. Sair. " << endl;
 }
 
-void menuGerirCadeia(){
+void menuGerirCadeia() {
 	cout << endl << endl;
 	cout << "GERIR CADEIA DE FARMACIAS" << endl;
 	cout << "1. Adicionar Farmacia." << endl;
@@ -29,21 +29,20 @@ void menuGerirCadeia(){
 	cout << "3. Remover Farmacia." << endl;
 	cout << "4. Ver farmacias." << endl;
 	cout << "5. Adicionar Cliente." << endl;
-	cout << "6. Ordenar clientes." << endl;
-	cout << "7. Remover Cliente." << endl;
-	cout << "8. Ver clientes." << endl;
-	cout << "9. Adicionar Funcionario." << endl;
-	cout << "10. Ordenar funcionarios." << endl;
-	cout << "11. Remover Funcionario." << endl;
-	cout << "12. Ver funcionarios." << endl;
-	cout << "13. Ver dados da cadeia." << endl;
-	cout << "14. Gerir Farmacia." << endl;
-	cout << "15. Gerir Funcionario." << endl;
-	cout << "16. Gerir Cliente." << endl;
-	cout << "17. Sair." << endl;
+	cout << "6. Remover Cliente." << endl;
+	cout << "7. Ver clientes." << endl;
+	cout << "8. Adicionar Funcionario." << endl;
+	cout << "9. Ordenar funcionarios." << endl;
+	cout << "10. Remover Funcionario." << endl;
+	cout << "11. Ver funcionarios." << endl;
+	cout << "12. Ver dados da cadeia." << endl;
+	cout << "13. Gerir Farmacia." << endl;
+	cout << "14. Gerir Funcionario." << endl;
+	cout << "15. Gerir Cliente." << endl;
+	cout << "16. Sair." << endl;
 }
 
-void menuFarmacia(){
+void menuFarmacia() {
 	cout << endl << endl;
 	cout << "GERIR FARMACIA" << endl;
 	cout << "1. Ver dados da Farmacia." << endl;
@@ -59,7 +58,7 @@ void menuFarmacia(){
 	cout << "11. Voltar atras." << endl;
 }
 
-void menuFuncionario(){
+void menuFuncionario() {
 	cout << endl << endl;
 	cout << "GERIR FUNCIONARIO" << endl;
 	cout << "1. Ver dados do Funcionario." << endl;
@@ -79,26 +78,26 @@ void menuCliente() {
 	cout << "4. Voltar atras." << endl;
 }
 
-int main(){
+int main() {
 	unsigned int option;
 
 	menuCriarCadeia();
-	do{
+	do {
 		cin >> option;
-		if(cin.fail()){
+		if (cin.fail()) {
 			cin.clear();
 			cin.ignore(10000, '\n');
 			cout << "Opcao Invalida. Tente outra vez: ";
 		}
-	}while(cin.fail());
+	} while (cin.fail());
 	string nome;
 
-	switch(option){
+	switch (option) {
 	case 1:
 		cout << "Nome: ";
 		cin.clear();
 		cin.ignore(10000, '\n');
-		getline(cin,nome);
+		getline(cin, nome);
 		cadeia.setNome(nome);
 		break;
 	case 2:
@@ -132,20 +131,20 @@ int main(){
 		cout << "Opcao Invalida" << endl;
 	}
 
-	do{
-		menu_cadeia:
+	do {
+	menu_cadeia:
 
 		menuGerirCadeia();
-		do{
+		do {
 			cin >> option;
-			if(cin.fail()){
+			if (cin.fail()) {
 				cin.clear();
 				cin.ignore(10000, '\n');
 				cout << "Opcao Invalida. Tente outra vez: ";
 			}
-		}while(cin.fail());
-		switch(option){
-		case 1:{
+		} while (cin.fail());
+		switch (option) {
+		case 1: {
 			cout << "Nome da Farmacia: ";
 			cin.clear();
 			cin.ignore(10000, '\n');
@@ -157,25 +156,25 @@ int main(){
 			cadeia.addFarmacia(f);
 			break;
 		}
-		case 2:{
+		case 2: {
 			cout << "Como pretende ordenar as farmacias? " << endl;
 			cout << "	1-Por nome;" << endl;
 			cout << "	2-Por numero de produtos;" << endl;
 			cout << "	3-Por numero de vendas;" << endl;
-			do{
+			do {
 				cin >> option;
-				if(cin.fail()){
+				if (cin.fail()) {
 					cin.clear();
 					cin.ignore(10000, '\n');
 					cout << "Opcao Invalida. Tente outra vez: ";
 				}
-			}while(cin.fail());
+			} while (cin.fail());
 			char crescente;
 			if (option >= 1 && option <= 3) {
 				cout << "Pretende fazer esta ordenacao por ordem crescente(c) ou decrescente(d)? ";
 				do {
 					cin >> crescente;
-					if(cin.fail()){
+					if (cin.fail()) {
 						cin.clear();
 						cin.ignore(10000, '\n');
 						cout << "Opcao Invalida. Tente outra vez: ";
@@ -183,24 +182,24 @@ int main(){
 				} while ((tolower(crescente) != 'c' && tolower(crescente) != 'd') || cin.fail());
 			}
 
-			switch(option){
+			switch (option) {
 			case 1:
-				if(crescente == 'c')
-					cadeia.sortFarmacias(NOME,true);
+				if (crescente == 'c')
+					cadeia.sortFarmacias(NOME, true);
 				else
-					cadeia.sortFarmacias(NOME,false);
+					cadeia.sortFarmacias(NOME, false);
 				break;
 			case 2:
-				if(crescente == 'c')
-					cadeia.sortFarmacias(NUM_PROD,true);
+				if (crescente == 'c')
+					cadeia.sortFarmacias(NUM_PROD, true);
 				else
-					cadeia.sortFarmacias(NUM_PROD,false);
+					cadeia.sortFarmacias(NUM_PROD, false);
 				break;
 			case 3:
-				if(crescente == 'c')
-					cadeia.sortFarmacias(NUM_VENDA,true);
+				if (crescente == 'c')
+					cadeia.sortFarmacias(NUM_VENDA, true);
 				else
-					cadeia.sortFarmacias(NUM_VENDA,false);
+					cadeia.sortFarmacias(NUM_VENDA, false);
 				break;
 			default:
 				cadeia.sortFarmacias(DEFAULT, true);
@@ -209,28 +208,29 @@ int main(){
 
 			break;
 		}
-		case 3:{
+		case 3: {
 			cout << "Nome da Farmacia a eliminar: ";
 			cin.clear();
 			cin.ignore(10000, '\n');
 			getline(cin, nome);
-			try{
+			try {
 				Farmacia *f;
 				f = cadeia.removeFarmacia(nome);
 				cout << "Farmacia " << f->getNome() << " eliminada" << endl;
-			}catch(FarmaciaInexistente &e){
+			}
+			catch (FarmaciaInexistente &e) {
 				cout << "Farmacia " << e.getNome() << " inexistente" << endl;
 			}
 			break;
 		}
-		case 4:{
+		case 4: {
 			vector<Farmacia *> v = cadeia.getFarmacias();
-			for(unsigned int i =0; i<v.size(); i++){
+			for (unsigned int i = 0; i < v.size(); i++) {
 				v.at(i)->imprimeDados();
 			}
 			break;
 		}
-		case 5:{
+		case 5: {
 			cout << "Nome do Cliente: ";
 			cin.clear();
 			cin.ignore(10000, '\n');
@@ -240,92 +240,47 @@ int main(){
 			getline(cin, morada);
 			cout << "Contribuinte do Cliente: ";
 			unsigned long contribuinte;
-			do{
+			do {
 				cin >> contribuinte;
-				if(cin.fail()){
+				if (cin.fail()) {
 					cin.clear();
 					cin.ignore(10000, '\n');
 					cout << "Contribuinte Invalido. Tente outra vez: ";
 				}
-			}while(cin.fail());
-			Cliente *c = new Cliente(nome, morada, contribuinte);
+			} while (cin.fail());
+			string distrito;
+			cin.clear();
+			cin.ignore(10000, '\n');
+			getline(cin, distrito);
+
+			Cliente *c = new Cliente(nome, morada, contribuinte, distrito);
 			cadeia.addCliente(c);
 			break;
 		}
-		case 6:{
-			cout << "Como pretende ordenar os clientes? " << endl;
-			cout << "	1-Por nome;" << endl;
-			cout << "	2-Por numero de contribuinte;" << endl;
-			cout << "	3-Por numero de compras;" << endl;
-			do{
-				cin >> option;
-				if(cin.fail()){
-					cin.clear();
-					cin.ignore(10000, '\n');
-					cout << "Opcao Invalida. Tente outra vez: ";
-				}
-			}while(cin.fail());
-			char crescente;
-			if (option >= 1 && option <= 3) {
-				cout << "Pretende fazer esta ordenacao por ordem crescente(c) ou decrescente(d)? ";
-				do {
-					cin >> crescente;
-					if(cin.fail()){
-						cin.clear();
-						cin.ignore(10000, '\n');
-						cout << "Opcao Invalida. Tente outra vez: ";
-					}
-				} while ((tolower(crescente) != 'c' && tolower(crescente) != 'd') || cin.fail());
-			}
-
-			switch(option){
-			case 1:
-				if(crescente == 'c')
-					cadeia.sortClientes(NOME,true);
-				else
-					cadeia.sortClientes(NOME,false);
-				break;
-			case 2:
-				if(crescente == 'c')
-					cadeia.sortClientes(CONTRIBUINTE,true);
-				else
-					cadeia.sortClientes(CONTRIBUINTE,false);
-				break;
-			case 3:
-				if(crescente == 'c')
-					cadeia.sortClientes(NUM_VENDA,true);
-				else
-					cadeia.sortClientes(NUM_VENDA,false);
-				break;
-			default:
-				cadeia.sortClientes(DEFAULT, true);
-				break;
-			}
-			break;
-		}
-		case 7:{
+		case 6: {
 			cout << "Nome do Cliente a eliminar: ";
 			cin.clear();
 			cin.ignore(10000, '\n');
 			getline(cin, nome);
-			try{
+			try {
 				Cliente *c;
 				c = cadeia.removeCliente(nome);
 				cout << "Cliente " << c->getNome() << " eliminado" << endl;
-			}catch(ClienteInexistente &e){
+			}
+			catch (ClienteInexistente &e) {
 				cout << "Cliente " << e.getNome() << " inexistente" << endl;
 			}
 			break;
 		}
-		case 8:{
+		case 7: {
 			vector<Cliente *>clientes1 = cadeia.getClientes();
-			for(unsigned int i = 0; i < clientes1.size(); i++){
+			for (unsigned int i = 0; i < clientes1.size(); i++) {
 				(clientes1.at(i))->showInfo();
 				cout << endl;
 			}
 			break;
 		}
-		case 9:{
+		case 8: {
 			cout << "Nome do Funcionario: ";
 			cin.clear();
 			cin.ignore(10000, '\n');
@@ -335,37 +290,37 @@ int main(){
 			getline(cin, morada);
 			cout << "Numero de contribuinte do Funcionario: ";
 			unsigned long contribuinte;
-			do{
+			do {
 				cin >> contribuinte;
-				if(cin.fail()){
+				if (cin.fail()) {
 					cin.clear();
 					cin.ignore(10000, '\n');
 					cout << "Contribuinte Invalido. Tente outra vez: ";
 				}
-			}while(cin.fail());
+			} while (cin.fail());
 			Funcionario *f = new Funcionario(nome, morada, contribuinte);
 			cadeia.addFuncionario(f);
 			break;
 		}
-		case 10:{
+		case 9: {
 			cout << "Como pretende ordenar os funcionarios? " << endl;
 			cout << "	1-Por nome;" << endl;
 			cout << "	2-Por contribuinte;" << endl;
 			cout << "	3-Por salario;" << endl;
-			do{
+			do {
 				cin >> option;
-				if(cin.fail()){
+				if (cin.fail()) {
 					cin.clear();
 					cin.ignore(10000, '\n');
 					cout << "Opcao Invalida. Tente outra vez: ";
 				}
-			}while(cin.fail());
+			} while (cin.fail());
 			char crescente;
 			if (option >= 1 && option <= 3) {
 				cout << "Pretende fazer esta ordenacao por ordem crescente(c) ou decrescente(d)? ";
 				do {
 					cin >> crescente;
-					if(cin.fail()){
+					if (cin.fail()) {
 						cin.clear();
 						cin.ignore(10000, '\n');
 						cout << "Opcao Invalida. Tente outra vez: ";
@@ -373,24 +328,24 @@ int main(){
 				} while ((tolower(crescente) != 'c' && tolower(crescente) != 'd') || cin.fail());
 			}
 
-			switch(option){
+			switch (option) {
 			case 1:
-				if(crescente == 'c')
-					cadeia.sortFuncionarios(NOME,true);
+				if (crescente == 'c')
+					cadeia.sortFuncionarios(NOME, true);
 				else
-					cadeia.sortFuncionarios(NOME,false);
+					cadeia.sortFuncionarios(NOME, false);
 				break;
 			case 2:
-				if(crescente == 'c')
-					cadeia.sortFuncionarios(CONTRIBUINTE,true);
+				if (crescente == 'c')
+					cadeia.sortFuncionarios(CONTRIBUINTE, true);
 				else
-					cadeia.sortFuncionarios(CONTRIBUINTE,false);
+					cadeia.sortFuncionarios(CONTRIBUINTE, false);
 				break;
 			case 3:
-				if(crescente == 'c')
-					cadeia.sortFuncionarios(SALARIO,true);
+				if (crescente == 'c')
+					cadeia.sortFuncionarios(SALARIO, true);
 				else
-					cadeia.sortFuncionarios(SALARIO,false);
+					cadeia.sortFuncionarios(SALARIO, false);
 				break;
 			default:
 				cadeia.sortFuncionarios(DEFAULT, true);
@@ -399,63 +354,64 @@ int main(){
 
 			break;
 		}
-		case 11:{
+		case 10: {
 			cout << "Nome do Funcionario a eliminar: ";
 			cin.clear();
 			cin.ignore(10000, '\n');
 			getline(cin, nome);
-			try{
+			try {
 				Funcionario *f;
 				f = cadeia.removeFuncionario(nome);
 				cout << "Funcionario " << f->getNome() << " eliminado" << endl;
-			}catch(FuncionarioInexistente &e){
+			}
+			catch (FuncionarioInexistente &e) {
 				cout << "Funcionario " << e.getNome() << " inexistente" << endl;
 			}
 			break;
 		}
-		case 12:{
+		case 11: {
 			vector<Funcionario *> v = cadeia.getFuncionarios();
-			for(size_t i = 0; i < cadeia.getFuncionarios().size(); i++){
+			for (size_t i = 0; i < cadeia.getFuncionarios().size(); i++) {
 				v.at(i)->showInfo();
 				cout << endl;
 			}
 			break;
 		}
-		case 13:{
+		case 12: {
 			cout << "Cadeia de Farmacias " << cadeia.getNome() << endl;
 			cout << "	Numero de Farmacias: " << cadeia.getNumFarmacias() << endl;
 			cout << "	Numero de Funcionarios: " << cadeia.getNumFuncionarios() << endl;
 			cout << "	Numero de Clientes: " << cadeia.getNumClientes() << endl << endl;
 			break;
 		}
-		case 14:{
+		case 13: {
 			cout << endl << "Nome da Farmacia: ";
 			cin.clear();
 			cin.ignore(10000, '\n');
 			getline(cin, nome);
 			vector<Farmacia *> v = cadeia.getFarmacias();
 			vector<Farmacia *>::iterator frm;
-			for(frm = v.begin(); frm != v.end(); frm++){
-				if((*frm)->getNome() == nome)
+			for (frm = v.begin(); frm != v.end(); frm++) {
+				if ((*frm)->getNome() == nome)
 					break;
 			}
 
-			if(frm == v.end()){
+			if (frm == v.end()) {
 				cout << "Farmacia " << nome << " inexistente" << endl;
 				break;
 			}
 			do {
-				menu_farmacia:
+			menu_farmacia:
 
 				menuFarmacia();
-				do{
+				do {
 					cin >> option;
-					if(cin.fail()){
+					if (cin.fail()) {
 						cin.clear();
 						cin.ignore(10000, '\n');
 						cout << "Opcao Invalida. Tente outra vez: ";
 					}
-				}while(cin.fail());
+				} while (cin.fail());
 				switch (option) {
 				case 1: {
 					(*frm)->imprimeDados();
@@ -472,17 +428,17 @@ int main(){
 					vector<Funcionario*>::iterator f;
 					for (f = cadeia.getFuncionarios().begin(); f != cadeia.getFuncionarios().end(); f++) {
 						if ((*f)->getNoContribuinte() == stoul(num)) {
-							if ((*f)->getFarmacia() != NULL){
-								if((*f)->getFarmacia()->getNome() == frm_nome) {
-								(*frm)->setGerente(*f);
-								string func_nome = (*f)->getNome();
-								cout << "Novo gerente: " << func_nome;
-								cout << endl;
+							if ((*f)->getFarmacia() != NULL) {
+								if ((*f)->getFarmacia()->getNome() == frm_nome) {
+									(*frm)->setGerente(*f);
+									string func_nome = (*f)->getNome();
+									cout << "Novo gerente: " << func_nome;
+									cout << endl;
 								}
 							}
-							else{
+							else {
 								cout << "Funcionario nao trabalha na farmacia " << frm_nome;
-								cout<< endl;
+								cout << endl;
 							}
 							break;
 						}
@@ -503,7 +459,7 @@ int main(){
 					vector<Funcionario*>::iterator f;
 					for (f = func.begin(); f != func.end(); f++) {
 						if ((*f)->getNoContribuinte() == stoul(num)) {
-							if ((*f)->getFarmacia() != NULL){
+							if ((*f)->getFarmacia() != NULL) {
 								if ((*f)->getFarmacia()->getNome() == frm_nome) {
 									(*frm)->setDiretorTecnico(*f);
 									string func_nome = (*f)->getNome();
@@ -546,59 +502,59 @@ int main(){
 						char pass;
 						Produto* p = NULL;
 						cout << "Codigo do produto: ";
-						do{
+						do {
 							cin >> cod;
-							if(cin.fail()){
+							if (cin.fail()) {
 								cin.clear();
 								cin.ignore(10000, '\n');
 								cout << "Codigo Invalido. Tente outra vez: ";
 							}
-						}while(cin.fail());
+						} while (cin.fail());
 						cout << endl << "Preco do produto: ";
-						do{
+						do {
 							cin >> preco;
-							if(cin.fail()){
+							if (cin.fail()) {
 								cin.clear();
 								cin.ignore(10000, '\n');
 								cout << "Preco Invalido. Tente outra vez: ";
 							}
-						}while(cin.fail());
+						} while (cin.fail());
 						cout << endl << "Descricao do produto: ";
 						cin.clear();
 						cin.ignore(10000, '\n');
 						getline(cin, desc);
 						cout << endl << "Produto passivel de receita? (S / N) ";
-						do{
+						do {
 							cin >> pass;
-							if(cin.fail()){
+							if (cin.fail()) {
 								cin.clear();
 								cin.ignore(10000, '\n');
 								cout << "Opcao Invalida. Tente outra vez: ";
 							}
-						}while(cin.fail());
+						} while (cin.fail());
 						if (toupper(pass) == 'S') {
 							float comp;
 							char sR;
 							bool semR;
 							cout << endl << "Comparticipacao (em percentagem): ";
-							do{
+							do {
 								cin >> comp;
-								if(cin.fail()){
+								if (cin.fail()) {
 									cin.clear();
 									cin.ignore(10000, '\n');
 									cout << "Comparticipacao Invalida. Tente outra vez: ";
 								}
-							}while(cin.fail());
+							} while (cin.fail());
 							comp = comp / 100;
 							cout << endl << "Produto pode ser vendido sem receita? (S / N) ";
-							do{
+							do {
 								cin >> sR;
-								if(cin.fail()){
+								if (cin.fail()) {
 									cin.clear();
 									cin.ignore(10000, '\n');
 									cout << "Opcao Invalida. Tente outra vez: ";
 								}
-							}while(cin.fail());
+							} while (cin.fail());
 							semR = (toupper(sR) == 'S');
 							p = new Produto(cod, nome, preco, desc, true, comp, semR);
 							(*frm)->addProdutoVender(p);
@@ -610,14 +566,14 @@ int main(){
 					}
 					int quant;
 					cout << endl << "Quantidade do produto: ";
-					do{
+					do {
 						cin >> quant;
-						if(cin.fail()){
+						if (cin.fail()) {
 							cin.clear();
 							cin.ignore(10000, '\n');
 							cout << "Quantidade Invalida. Tente outra vez: ";
 						}
-					}while(cin.fail());
+					} while (cin.fail());
 					(*frm)->setQuantidade(nome, quant);
 					cout << endl << "Quantidade alterada." << endl;
 					break;
@@ -653,62 +609,62 @@ int main(){
 					unsigned short dia;
 					cout << "Data inferior:" << endl;
 					cout << "Dia: " << endl;
-					do{
+					do {
 						cin >> dia;
-						if(cin.fail()){
+						if (cin.fail()) {
 							cin.clear();
 							cin.ignore(10000, '\n');
 							cout << "Dia Invalido. Tente outra vez: ";
 						}
-					}while(cin.fail() || dia<1 || dia>31);
+					} while (cin.fail() || dia < 1 || dia>31);
 					cout << "Mes: " << endl;
-					do{
+					do {
 						cin >> mes;
-						if(cin.fail()){
+						if (cin.fail()) {
 							cin.clear();
 							cin.ignore(10000, '\n');
 							cout << "Mes Invalido. Tente outra vez: ";
 						}
-					}while(cin.fail() || mes<1 || mes>12);
+					} while (cin.fail() || mes < 1 || mes>12);
 					cout << "Ano: " << endl;
-					do{
+					do {
 						cin >> ano;
-						if(cin.fail()){
+						if (cin.fail()) {
 							cin.clear();
 							cin.ignore(10000, '\n');
 							cout << "Ano Invalido. Tente outra vez: ";
 						}
-					}while(cin.fail());
+					} while (cin.fail());
 					Data d1(dia, mes, ano);
 					cout << "Dia: " << endl;
-					do{
+					do {
 						cin >> dia;
-						if(cin.fail()){
+						if (cin.fail()) {
 							cin.clear();
 							cin.ignore(10000, '\n');
 							cout << "Dia Invalido. Tente outra vez: ";
 						}
-					}while(cin.fail() || dia<1 || dia>31);
+					} while (cin.fail() || dia < 1 || dia>31);
 					cout << "Mes: " << endl;
-					do{
+					do {
 						cin >> mes;
-						if(cin.fail()){
+						if (cin.fail()) {
 							cin.clear();
 							cin.ignore(10000, '\n');
 							cout << "Mes Invalido. Tente outra vez: ";
 						}
-					}while(cin.fail() || mes<1 || mes>12);
+					} while (cin.fail() || mes < 1 || mes>12);
 					cout << "Ano: " << endl;
-					do{
+					do {
 						cin >> ano;
-						if(cin.fail()){
+						if (cin.fail()) {
 							cin.clear();
 							cin.ignore(10000, '\n');
 							cout << "Ano Invalido. Tente outra vez: ";
 						}
-					}while(cin.fail());
+					} while (cin.fail());
 					Data d2(dia, mes, ano);
-					vector<Venda*> v = (*frm)->getVendasTempo(d1,d2);
+					vector<Venda*> v = (*frm)->getVendasTempo(d1, d2);
 					for (unsigned int i = 0; i < v.size(); i++) {
 						cout << "Venda " << v.at(i)->getCodigo() << endl;
 						v.at(i)->imprimeFatura();
@@ -716,74 +672,74 @@ int main(){
 					}
 					break;
 				}
-				case 9:{
+				case 9: {
 					Venda *v1 = new Venda();
 					unsigned long no_con;
 					cout << "VENDA " << v1->getCodigo() << endl;
 					cout << "Numero de contribuinte do cliente: ";
-					do{
+					do {
 						cin >> no_con;
-						if(cin.fail()){
+						if (cin.fail()) {
 							cin.clear();
 							cin.ignore(10000, '\n');
 							cout << "Contribuinte Invalido. Tente outra vez: ";
 						}
-					}while(cin.fail());
+					} while (cin.fail());
 					vector<Cliente *> v = cadeia.getClientes();
 					int existe_cliente = -1;
-					for(unsigned int i =0; i<v.size(); i++){
-						if(v.at(i)->getNoContribuinte() == no_con){
+					for (unsigned int i = 0; i < v.size(); i++) {
+						if (v.at(i)->getNoContribuinte() == no_con) {
 							existe_cliente = i;
 							break;
 						}
 					}
-					if(existe_cliente==-1){
+					if (existe_cliente == -1) {
 						cout << "Cliente nao existe na cadeia" << endl << endl;
 						goto menu_farmacia;
 					}
 					v1->setCliente(v.at(existe_cliente));
 					cout << endl << "Tem receita?(S/N) ";
 					char op;
-					do{
+					do {
 						cin >> op;
-						if(cin.fail()){
+						if (cin.fail()) {
 							cin.clear();
 							cin.ignore(10000, '\n');
 							cout << "Opcao Invalida. Tente outra vez: ";
 						}
-					}while(cin.fail());
+					} while (cin.fail());
 
-					if (toupper(op)=='S'){
+					if (toupper(op) == 'S') {
 						cout << endl << "ADICIONAR RECEITA";
 						cout << endl << "Numero da receita: ";
 						unsigned long numero_r;
-						do{
+						do {
 							cin >> numero_r;
-							if(cin.fail()){
+							if (cin.fail()) {
 								cin.clear();
 								cin.ignore(10000, '\n');
 								cout << "Numero de receita Invalido. Tente outra vez: ";
 							}
-						}while(cin.fail());
+						} while (cin.fail());
 
 						cout << "Numero de contribuinte do utente: ";
 						unsigned long numero_c;
-						do{
+						do {
 							cin >> numero_c;
-							if(cin.fail()){
+							if (cin.fail()) {
 								cin.clear();
 								cin.ignore(10000, '\n');
 								cout << "Contribuinte Invalido. Tente outra vez: ";
 							}
-						}while(cin.fail());
+						} while (cin.fail());
 						existe_cliente = -1;
-						for(unsigned int i =0; i<v.size(); i++){
-							if(v.at(i)->getNoContribuinte() == no_con){
+						for (unsigned int i = 0; i < v.size(); i++) {
+							if (v.at(i)->getNoContribuinte() == no_con) {
 								existe_cliente = i;
 								break;
 							}
 						}
-						if(existe_cliente == -1){
+						if (existe_cliente == -1) {
 							cout << "Cliente nao existe na cadeia" << endl << endl;
 							goto menu_farmacia;
 						}
@@ -797,30 +753,30 @@ int main(){
 						string nome_prod = "";
 						unsigned long quant;
 						cout << "Adicionar medicamentos a receita (para parar escreva SAIR no nome do produto):" << endl;
-						while(true){
+						while (true) {
 							cout << "Nome do Produto: ";
 							cin.sync();
 							getline(cin, nome_prod);
 							nome_prod = toupperstring(nome_prod);
-							if(nome_prod =="SAIR")
+							if (nome_prod == "SAIR")
 								break;
 							p1 = new Produto(0, nome_prod, 0, " ", true, 0, true);
 							cout << endl << "Quantidade: ";
-							do{
+							do {
 								cin >> quant;
-								if(cin.fail()){
+								if (cin.fail()) {
 									cin.clear();
 									cin.ignore(10000, '\n');
 									cout << "Quantidade Invalida. Tente outra vez: ";
 								}
-							}while(cin.fail());
+							} while (cin.fail());
 							r1->addProduto(p1, quant);
 						}
-						cout << endl << "Fim da receita"<< endl;
+						cout << endl << "Fim da receita" << endl;
 						v1->setReceita(r1);
 					}
-					cout << "Adicionar produtos a venda (para parar escreva SAIR no nome do produto): "<< endl;
-					while(true){
+					cout << "Adicionar produtos a venda (para parar escreva SAIR no nome do produto): " << endl;
+					while (true) {
 						string nome_prod;
 						float quant;
 						float iva;
@@ -828,49 +784,49 @@ int main(){
 						cin.sync();
 						getline(cin, nome_prod);
 						nome_prod = toupperstring(nome_prod);
-						if(nome_prod=="SAIR")
+						if (nome_prod == "SAIR")
 							break;
 						bool existe_prod = (*frm)->existeProduto(nome_prod);
-						if (!existe_prod){
+						if (!existe_prod) {
 							cout << endl << "Produto nao existe na farmacia" << endl;
 							continue;
 						}
 						map<Produto, int>::const_iterator prod;
 						map<Produto, int> stock = (*frm)->getProdutosVender();
-						for (prod = stock.begin(); prod != stock.end(); prod++){
+						for (prod = stock.begin(); prod != stock.end(); prod++) {
 							if (prod->first.getNome() == nome_prod)
 								break;
 						}
 						Produto p1 = prod->first;
 						cout << endl << "Quantidade: ";
-						do{
+						do {
 							cin >> quant;
-							if(cin.fail()){
+							if (cin.fail()) {
 								cin.clear();
 								cin.ignore(10000, '\n');
 								cout << "Quantidade Invalida. Tente outra vez: ";
 							}
-						}while(cin.fail());
+						} while (cin.fail());
 						cout << endl << "IVA (em percentagem): ";
-						do{
+						do {
 							cin >> iva;
-							if(cin.fail()){
+							if (cin.fail()) {
 								cin.clear();
 								cin.ignore(10000, '\n');
 								cout << "IVA Invalido. Tente outra vez: ";
 							}
-						}while(cin.fail());
-						iva = iva/100;
-						if(!(v1->addProduto(&p1, quant, iva))){
+						} while (cin.fail());
+						iva = iva / 100;
+						if (!(v1->addProduto(&p1, quant, iva))) {
 							cout << "Nao foi possivel adicionar o produto. Necessita de receita medica" << endl;
 						}
 					}
 					bool venda_sucesso = (*frm)->addVenda(v1);
-					if (venda_sucesso){
+					if (venda_sucesso) {
 						cout << endl << "Venda realizada com sucesso. Fatura: " << endl;
 						(*frm)->imprimeFatura(v1);
 					}
-					else{
+					else {
 						cout << endl << "Nao foi possivel realizar a venda. Nao existe stock suficiente." << endl;
 					}
 					break;
@@ -881,20 +837,20 @@ int main(){
 					cout << "	2-Por data;" << endl;
 					cout << "	3-Por hora;" << endl;
 					cout << "   4-Por valor total." << endl;
-					do{
+					do {
 						cin >> option;
-						if(cin.fail()){
+						if (cin.fail()) {
 							cin.clear();
 							cin.ignore(10000, '\n');
 							cout << "Opcao Invalida. Tente outra vez: ";
 						}
-					}while(cin.fail());
+					} while (cin.fail());
 					char crescente;
 					if (option >= 1 && option <= 3) {
 						cout << "Pretende fazer esta ordenacao por ordem crescente(c) ou decrescente(d)? ";
 						do {
 							cin >> crescente;
-							if(cin.fail()){
+							if (cin.fail()) {
 								cin.clear();
 								cin.ignore(10000, '\n');
 								cout << "Opcao Invalida. Tente outra vez: ";
@@ -902,27 +858,27 @@ int main(){
 						} while ((tolower(crescente) != 'c' && tolower(crescente) != 'd') || cin.fail());
 					}
 
-					switch(option){
+					switch (option) {
 					case 1:
-						if(crescente == 'c')
-							(*frm)->sortVendas(NUM_PROD,true);
+						if (crescente == 'c')
+							(*frm)->sortVendas(NUM_PROD, true);
 						else
-							(*frm)->sortVendas(NUM_PROD,false);
+							(*frm)->sortVendas(NUM_PROD, false);
 						break;
 					case 2:
-						if(crescente == 'c')
-							(*frm)->sortVendas(DATA,true);
+						if (crescente == 'c')
+							(*frm)->sortVendas(DATA, true);
 						else
-							(*frm)->sortVendas(DATA,false);
+							(*frm)->sortVendas(DATA, false);
 						break;
 					case 3:
-						if(crescente == 'c')
-							(*frm)->sortVendas(HORA,true);
+						if (crescente == 'c')
+							(*frm)->sortVendas(HORA, true);
 						else
-							(*frm)->sortVendas(HORA,false);
+							(*frm)->sortVendas(HORA, false);
 						break;
 					default:
-						(*frm)->sortVendas(DEFAULT,true);
+						(*frm)->sortVendas(DEFAULT, true);
 						break;
 					}
 					break;
@@ -934,7 +890,7 @@ int main(){
 			} while (true);
 			break;
 		}
-		case 15: {
+		case 14: {
 			cout << endl << "Nome do Funcionario: ";
 			cin.clear();
 			cin.ignore(10000, '\n');
@@ -954,21 +910,21 @@ int main(){
 			do {
 
 				menuFuncionario();
-				do{
+				do {
 					cin >> option;
-					if(cin.fail()){
+					if (cin.fail()) {
 						cin.clear();
 						cin.ignore(10000, '\n');
 						cout << "Opcao Invalida. Tente outra vez: ";
 					}
-				}while(cin.fail());
+				} while (cin.fail());
 				switch (option) {
-				case 1:{
+				case 1: {
 					(*func)->showInfo();
 					cout << endl;
 					break;
 				}
-				case 2:{
+				case 2: {
 					string nome_farmacia_nova;
 					cout << "Nome da farmacia onde vai trabalhar: ";
 					cin.clear();
@@ -976,20 +932,20 @@ int main(){
 					getline(cin, nome_farmacia_nova);
 					vector<Farmacia*> farmacias = cadeia.getFarmacias();
 					vector<Farmacia*>::iterator frm;
-					for(frm = farmacias.begin(); frm!=farmacias.end(); frm++){
-						if(toupperstring((*frm)->getNome())==toupperstring(nome_farmacia_nova)){
+					for (frm = farmacias.begin(); frm != farmacias.end(); frm++) {
+						if (toupperstring((*frm)->getNome()) == toupperstring(nome_farmacia_nova)) {
 							(*func)->setFarmacia((*frm));
 							string nome_funcionario = (*func)->getNome();
 							cout << nome_funcionario << " trabalha agora na farmacia " << nome_farmacia_nova << endl;
 							break;
 						}
 					}
-					if (frm == farmacias.end()){
+					if (frm == farmacias.end()) {
 						cout << "Farmacia nao encontrada" << endl;
 					}
 					break;
 				}
-				case 3:{
+				case 3: {
 					string novo_cargo;
 					cout << "Novo Cargo: ";
 					cin.clear();
@@ -998,21 +954,21 @@ int main(){
 					(*func)->setCargo(novo_cargo);
 					break;
 				}
-				case 4:{
+				case 4: {
 					double novo_salario;
 					cout << "Novo salario: ";
-					do{
+					do {
 						cin >> novo_salario;
-						if(cin.fail()){
+						if (cin.fail()) {
 							cin.clear();
 							cin.ignore(10000, '\n');
 							cout << "Salario Invalido. Tente outra vez: ";
 						}
-					}while(cin.fail());
+					} while (cin.fail());
 					(*func)->changeSalario(novo_salario);
 					break;
 				}
-				case 5:{
+				case 5: {
 					string nova_morada;
 					cout << "Nova morada: ";
 					cin.clear();
@@ -1031,7 +987,7 @@ int main(){
 
 			break;
 		}
-		case 16: {
+		case 15: {
 			cout << endl << "Nome do Cliente: ";
 			cin.clear();
 			cin.ignore(10000, '\n');
@@ -1050,14 +1006,14 @@ int main(){
 			do {
 
 				menuCliente();
-				do{
+				do {
 					cin >> option;
-					if(cin.fail()){
+					if (cin.fail()) {
 						cin.clear();
 						cin.ignore(10000, '\n');
 						cout << "Opcao Invalida. Tente outra vez: ";
 					}
-				}while(cin.fail());
+				} while (cin.fail());
 				switch (option) {
 				case 1: {
 					(*cl)->showInfo();
@@ -1090,13 +1046,13 @@ int main(){
 			} while (true);
 			break;
 		}
-		case 17:{
+		case 16: {
 			string op;
 			cout << endl << "Deseja guardar as alteracoes? (S / N)";
 			cin.clear();
 			cin.ignore(10000, '\n');
 			getline(cin, op);
-			if (toupperstring(op)=="S"){
+			if (toupperstring(op) == "S") {
 				string nome_fich = cadeia.getNome();
 				nome_fich += ".txt";
 				ofstream exportfile;
@@ -1109,11 +1065,11 @@ int main(){
 			break;
 		}
 		}
-	}while(true);
+	} while (true);
 
 
 
-	sairDoPrograma:
+sairDoPrograma:
 	return 0;
 }
 

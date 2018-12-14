@@ -205,8 +205,8 @@ public:
 	std::vector<Venda*> getHistorialCompras() const;
 
 	/**
-   	 * Metodo para obter o distrito onde o Cliente vive
- 	 * @return Distrito onde atualmente habita o Cliente
+	 * Metodo para obter o distrito onde o Cliente vive
+	 * @return Distrito onde atualmente habita o Cliente
 	 */
 	std::string getDistrito() const();
 
@@ -239,15 +239,6 @@ public:
 	 * @return Retorna true se o cliente for menor que c1. Caso contrario, retorna false
 	 */
 	bool operator< (const Cliente &c1) const;
-
-	/**
-	 * Metodo semelhante ao operador menor, no qual o utilizador escolhe a forma de comparacao
-	 * @param c1 Cliente que ira ser comparado
-	 * @param tipo Enumeracao do tipo tipoSort que permite ao utilizador escolher o modo de comparacao dos dois clientes
-	 * @param crescente Booleano que permite ao utilizador escolher se quer utilizar o seu criterio de modo crescente(true) ou decrescente(false)
-	 * @return Retorna true se o cliente for menor que c1. Caso contrario, retorna false
-	 */
-	bool menorQue(const Cliente &c1, enum tipoSort tipo, bool crescente) const;
 
 	/**
 	 * Overload do operador para exportar o Cliente

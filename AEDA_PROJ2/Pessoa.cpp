@@ -182,7 +182,7 @@ void Cliente::showInfo() const {
 bool Cliente::operator< (const Cliente &c1) const {
 	if (distrito < c1.getDistrito())
 		return true;
-	if (distrito == c1.getDistrito() && nome == c1.getNome())
+	if (distrito == c1.getDistrito() && nome < c1.getNome())
 		return true;
 
 	return false;
@@ -214,36 +214,11 @@ bool Funcionario::menorQue(const Funcionario &f1, enum tipoSort tipo, bool cresc
 	}
 }
 
-bool Cliente::menorQue(const Cliente &c1, enum tipoSort tipo, bool crescente) const {
-	switch (tipo) {
-	case NOME:
-		if (crescente)
-			return nome < c1.getNome();
-		else
-			return nome > c1.getNome();
-		break;
-	case CONTRIBUINTE:
-		if (crescente)
-			return noContribuinte < c1.getNoContribuinte();
-		else
-			return noContribuinte > c1.getNoContribuinte();
-		break;
-	case NUM_VENDA:
-		if (crescente)
-			return historialCompras.size() < c1.getNumCompras();
-		else
-			return historialCompras.size() > c1.getNumCompras();
-		break;
-	default:
-		return (*this) < c1;
-		break;
-	}
-}
-
 std::ostream& operator<<(std::ostream &output, const Cliente &c) {
 	output << c.nome << endl;
 	output << c.noContribuinte << endl;
 	output << c.morada << endl;
+	output << c.distrito << endl;
 	output << c.historialCompras.size() << endl;
 	for (size_t i = 0; i < c.historialCompras.size(); i++) {
 		output << c.historialCompras[i]->getCodigo() << endl;
