@@ -32,3 +32,14 @@
 *.xml
 *.cproject
 *.project
+*.prefs
+*.lock
+*.log
+*.json
+*.zip
+*.properties
+*.cfe
+*.cfs
+*.si
+*.setup
+*.ini
