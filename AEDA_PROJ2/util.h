@@ -94,6 +94,14 @@ public:
 	}
 };
 
+/**
+ * Funcao para comparar dois apontadores para Clientes, usada na bst da classe CadeiaFarmacias
+ * @param c1, c2 Apontadores para Clientes a serem comparados
+ * @return Retorna true se o Cliente c1 for menor que c2. Caso contrário, retorna false
+ */
+bool compareClientes(const Cliente* c1, const Cliente* c2) {
+	return (*c1) < (*c2);
+}
 
 class Receita;
 class Pessoa;

@@ -58,7 +58,13 @@ vector<Farmacia *> CadeiaFarmacias::getFarmacias() const {
 }
 
 vector <Cliente*>  CadeiaFarmacias::getClientes() const {
-	return clientes;
+	vector<Cliente*> v;
+
+	for (set<Cliente*, compareClientes>::iterator it = clientes.begin(); it != clientes.end(); it++) {
+		v.push_back(*it);
+	}
+
+	return v;
 }
 
 vector <Funcionario*> CadeiaFarmacias::getFuncionarios() const {
@@ -94,12 +100,12 @@ void CadeiaFarmacias::sortFarmacias(enum tipoSort tipo, bool crescente) {
 }
 
 void CadeiaFarmacias::addCliente(Cliente* cliente) {
-	clientes.push_back(cliente); //Adicionar um apontador para cliente ao vetor
+	clientes.insert(cliente);
 }
 
 Cliente* CadeiaFarmacias::removeCliente(const std::string &nomeC) {
-	vector<Cliente*>::iterator it = clientes.begin();
-	for (; it != clientes.end(); it++) { //Percorrer o vetor clientes
+	set<Cliente*, compareClientes>::iterator it = clientes.begin();
+	for (; it != clientes.end(); it++) {
 		if ((*it)->getNome() == nomeC) {
 			Cliente* c1;
 			c1 = *it;
@@ -140,9 +146,9 @@ std::ostream& operator<<(std::ostream &output, const CadeiaFarmacias &cF) {
 		output << (*cF.farmacias[i]) << endl;
 	}
 	output << cF.clientes.size() << endl;
-	for (size_t i = 0; i < cF.clientes.size(); i++) {
-		output << (*cF.clientes[i]) << endl;
-	}
+	for (set<Cliente*, compareClientes>::iterator it = cF.clientes.begin(); it != cF.clientes.end(); it++) {//size_t i = 0; i < cF.clientes.size(); i++) {
+		output << *(*it) << endl; // *cF.clientes[i]) << endl;
+	} //TODO Nao sei se funciona: vamos ter que testar isto
 	output << cF.funcionarios.size() << endl;
 	for (size_t i = 0; i < cF.funcionarios.size(); i++) {
 		output << (*cF.funcionarios[i]) << endl;
@@ -150,7 +156,7 @@ std::ostream& operator<<(std::ostream &output, const CadeiaFarmacias &cF) {
 	return output;
 }
 
-void import(ifstream &f, CadeiaFarmacias &cF) {
+void import(ifstream &f, CadeiaFarmacias &cF) { //Falta corrigir o import
 	string line;
 	do {
 		getline(f, line);

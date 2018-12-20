@@ -21,9 +21,9 @@ class CadeiaFarmacias {
 private:
 	std::string nome; //Nome da cadeia de farmacias
 	std::vector<Farmacia*> farmacias; //Vetor de apontadores para objetos do tipo Farmacia
-	std::vector <Cliente*> clientes; //Vetor de apontadores para objetos do tipo Cliente
+	//std::vector <Cliente*> clientes; //Vetor de apontadores para objetos do tipo Cliente
 	//TODO trocar este vetor e pôr set de Clientes
-	//std::set<Cliente*, funcao> clientes
+	std::set<Cliente*, compareClientes> clientes;
 	//TODO alterar todos os metodos de clientes
 
 	std::vector <Funcionario*> funcionarios; //Vetor de apontadores para objetos do tipo Funcionario
@@ -110,8 +110,8 @@ public:
 	void sortFarmacias(enum tipoSort tipo, bool crescente);
 
 	/**
-	 * Metodo que permite adicionar um apontador para Cliente ao respetivo vetor
-	 * @param cliente Apontador para objeto do tipo Cliente que sera adicionado ao vetor clientes
+	 * Metodo que permite adicionar um apontador para Cliente a respetiva estrutura de dados 
+	 * @param cliente Apontador para objeto do tipo Cliente que sera adicionado ao set clientes
 	 */
 	void addCliente(Cliente* cliente);
 
