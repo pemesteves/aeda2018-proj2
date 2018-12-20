@@ -5,6 +5,33 @@
 
 using namespace std;
 
+/**
+ * Funcao que verifica se um dado distrito e valido
+ * @param distrito Nome do distrito que sera verificado
+ * @return Retorna true se o distrito existir. Caso contrario, retorna false. Tambem retorna por referencia o nome do distrito formatado devidamente
+ */
+bool isDistrito(std::string &distrito) {
+	for (unsigned i = 0; i < distrito.length(); i++) {
+		if (i == 0)
+			distrito[i] = toupper(distrito[i]);
+		else if (distrito[i - 1] == ' ')
+			distrito[i] = toupper(distrito[i]);
+		else
+			distrito[i] = tolower(distrito[i]);
+	}
+
+	if (distrito == "Aveiro" || distrito == "Beja" || distrito == "Braganca"
+			|| distrito == "Castelo Branco" || distrito == "Coimbra"
+					|| distrito == "Evora" || distrito == "Faro" || distrito == "Guarda"
+							|| distrito == "Leiria" || distrito == "Portalegre"
+									|| distrito == "Porto" || distrito == "Santarem"
+											|| distrito == "Setubal" || distrito == "Viana do Castelo"
+													|| distrito == "Vila Real" || distrito == "Viseu")
+		return true;
+	return false;
+}
+
+
 //Pessoa
 Pessoa::Pessoa(string nome, string morada, unsigned long cont) {
 	this->nome = nome;
@@ -148,13 +175,13 @@ Cliente::Cliente(string nome, string morada, unsigned long contribuinte, string 
 	this->distrito = distrito;
 }
 
-std::string Cliente::getDistrito() const() {
+string Cliente::getDistrito() const {
 	return this->distrito;
 }
 
-bool Cliente::changeDistrito(std::string novoDistrito) const {
+bool Cliente::changeDistrito(string novoDistrito) {
 	if (isDistrito(novoDistrito)) {
-		this->distrito = novoDistrito;
+		distrito = novoDistrito;
 		return true;
 	}
 	return false;

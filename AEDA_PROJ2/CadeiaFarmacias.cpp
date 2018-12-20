@@ -22,14 +22,14 @@ template <> bool sorting<Cliente>::crescente = false;
 CadeiaFarmacias::CadeiaFarmacias() {
 	this->nome = ""; //Inicializacao de um nome vazio
 	farmacias.resize(0); //Vetor de farmacias vazio
-	clientes.resize(0); //Vetor de clientes vazio
+	clientes.clear(); //Set de clientes vazio
 	funcionarios.resize(0); //Vetor de funcionarios vazio
 }
 
 CadeiaFarmacias::CadeiaFarmacias(std::string nome) {
 	this->nome = nome; //Inicializacao de uma cadeia com nome
 	farmacias.resize(0); //Vetor de farmacias vazio
-	clientes.resize(0); //Vetor de clientes vazio
+	clientes.clear(); //Set de clientes vazio
 	funcionarios.resize(0); //Vetor de funcionarios vazio
 }
 
@@ -60,7 +60,7 @@ vector<Farmacia *> CadeiaFarmacias::getFarmacias() const {
 vector <Cliente*>  CadeiaFarmacias::getClientes() const {
 	vector<Cliente*> v;
 
-	for (set<Cliente*, compareClientes>::iterator it = clientes.begin(); it != clientes.end(); it++) {
+	for (set<Cliente*, clientesComp>::iterator it = clientes.begin(); it != clientes.end(); it++) {
 		v.push_back(*it);
 	}
 
@@ -104,7 +104,7 @@ void CadeiaFarmacias::addCliente(Cliente* cliente) {
 }
 
 Cliente* CadeiaFarmacias::removeCliente(const std::string &nomeC) {
-	set<Cliente*, compareClientes>::iterator it = clientes.begin();
+	set<Cliente*, clientesComp>::iterator it = clientes.begin();
 	for (; it != clientes.end(); it++) {
 		if ((*it)->getNome() == nomeC) {
 			Cliente* c1;
@@ -146,7 +146,7 @@ std::ostream& operator<<(std::ostream &output, const CadeiaFarmacias &cF) {
 		output << (*cF.farmacias[i]) << endl;
 	}
 	output << cF.clientes.size() << endl;
-	for (set<Cliente*, compareClientes>::iterator it = cF.clientes.begin(); it != cF.clientes.end(); it++) {//size_t i = 0; i < cF.clientes.size(); i++) {
+	for (set<Cliente*, clientesComp>::iterator it = cF.clientes.begin(); it != cF.clientes.end(); it++) {//size_t i = 0; i < cF.clientes.size(); i++) {
 		output << *(*it) << endl; // *cF.clientes[i]) << endl;
 	} //TODO Nao sei se funciona: vamos ter que testar isto
 	output << cF.funcionarios.size() << endl;
@@ -494,7 +494,7 @@ void import(ifstream &f, CadeiaFarmacias &cF) { //Falta corrigir o import
 		vector<Venda *> v = cF.farmacias[i]->getVendas();
 		for (size_t j = 0; j < v.size(); j++) {
 			if (clientesReceitas[j] != 0) {
-				for (vector<Cliente *>::iterator it = cF.clientes.begin(); it != cF.clientes.end(); it++) {
+				for (set<Cliente*, clientesComp>::iterator it = cF.clientes.begin(); it != cF.clientes.end(); it++) {
 					if ((*it)->getNoContribuinte() == clientesReceitas[j]) {
 						v[j]->setCliente(*it);
 						break;
@@ -503,7 +503,7 @@ void import(ifstream &f, CadeiaFarmacias &cF) { //Falta corrigir o import
 			}
 
 			if (clientes[j] != 0) {
-				for (vector<Cliente *>::iterator it = cF.clientes.begin(); it != cF.clientes.end(); it++) {
+				for (set<Cliente*, clientesComp>::iterator it = cF.clientes.begin(); it != cF.clientes.end(); it++) {
 					if ((*it)->getNoContribuinte() == clientes[j]) {
 						Receita *r;
 						r = v[j]->getReceita();

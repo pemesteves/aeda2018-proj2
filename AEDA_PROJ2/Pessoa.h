@@ -208,13 +208,13 @@ public:
 	 * Metodo para obter o distrito onde o Cliente vive
 	 * @return Distrito onde atualmente habita o Cliente
 	 */
-	std::string getDistrito() const();
+	std::string getDistrito() const;
 
 	/**
 	 * Metodo para alterar o distrito onde habita o Cliente
 	 * @param Nome do distrito para onde se mudou o Cliente
 	 */
-	bool changeDistrito(std::string novoDistrito) const;
+	bool changeDistrito(std::string novoDistrito);
 
 	/**
 	 * Metodo para obter o numero de compras realizadas pelo Cliente
@@ -286,5 +286,6 @@ public:
 	 */
 	std::string getNome() const { return nome; }
 };
+
 
 #endif
