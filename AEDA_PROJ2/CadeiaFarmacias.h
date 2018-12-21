@@ -13,6 +13,20 @@
 #include <iostream>
 #include <fstream>
 #include <set>
+#include <unordered_set>
+
+struct hFuncPtr {
+	int operator()(const FuncPtr & f1) const {
+		//TODO: implementar o operador
+		return -1;
+	}
+	bool operator()(const FuncPtr & f1, const FuncPtr & f2) const {
+		//TODO implementar o operador
+		return true;
+	}
+};
+
+typedef unordered_set<const FuncPtr, hFuncPtr, hFuncPtr> tabHFunc;
 
  /**
   * Classe CadeiaFarmacias
@@ -22,7 +36,8 @@ private:
 	std::string nome; //Nome da cadeia de farmacias
 	std::vector<Farmacia*> farmacias; //Vetor de apontadores para objetos do tipo Farmacia
 	std::set<Cliente*, clientesComp> clientes; //Set de apontadores para objetos do tipo Cliente
-	 std::vector <Funcionario*> funcionarios; //Vetor de apontadores para objetos do tipo Funcionario
+	std::vector <Funcionario*> funcionarios; //Vetor de apontadores para objetos do tipo Funcionario
+	tabHFunc registo_funcionarios; //Tabela de dispersao com funcionarios antigos e novos da Cadeia de Farmacias
 public:
 	/**
 	 *  Construtor da classe
