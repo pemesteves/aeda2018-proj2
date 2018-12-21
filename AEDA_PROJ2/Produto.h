@@ -152,5 +152,17 @@ public:
 	std::string getNome() const { return nome; }
 };
 
+class ProdutoStock{
+	Produto* prod;
+	unsigned quant;
+public:
+	ProdutoStock(){prod = NULL; quant = 0;};
+	ProdutoStock(Produto* prod, unsigned quant);
+	unsigned getQuant() const;
+	Produto* getProd() const;
+	void setQuant(unsigned quant);
+	bool operator<(const ProdutoStock &prod1) const;
+};
+
 
 #endif

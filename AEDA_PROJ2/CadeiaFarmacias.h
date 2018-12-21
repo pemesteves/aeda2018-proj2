@@ -22,7 +22,7 @@ private:
 	std::string nome; //Nome da cadeia de farmacias
 	std::vector<Farmacia*> farmacias; //Vetor de apontadores para objetos do tipo Farmacia
 	std::set<Cliente*, clientesComp> clientes; //Set de apontadores para objetos do tipo Cliente
-	std::vector <Funcionario*> funcionarios; //Vetor de apontadores para objetos do tipo Funcionario
+	 std::vector <Funcionario*> funcionarios; //Vetor de apontadores para objetos do tipo Funcionario
 public:
 	/**
 	 *  Construtor da classe

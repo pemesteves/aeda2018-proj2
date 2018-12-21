@@ -18,6 +18,7 @@
 #include <algorithm>
 #include <map>
 #include <iostream>
+#include <queue>
 
  /**
   * Classe Farmacia
@@ -28,7 +29,8 @@ private:
 	std::string morada; //Morada da Farmacia
 	Funcionario* gerente; //Apontador para o gerente da Farmacia(tipo Funcionario)
 	Funcionario* diretorTecnico; //Apontador para o diretor tecnico da Farmacia(tipo Funcionario)
-	std::map<Produto, int> produtosVender; //Map cujas keys sao objetos do tipo Produto e os valores sao as quantidades desse produto. Serve para representar os produtos a vender
+	//std::map<Produto, int> produtosVender; //Map cujas keys sao objetos do tipo Produto e os valores sao as quantidades desse produto. Serve para representar os produtos a vender
+	std::priority_queue<ProdutoStock> stock;
 	std::vector<Venda*> vendas; //Vetor de apontador para objetos do tipo Venda
 public:
 	/**
@@ -79,7 +81,7 @@ public:
 	 * Metodo que permite obter os produtos disponiveis para venda mais a sua quantidade
 	 * @return Atributo da classe -> produtosVender
 	 */
-	std::map<Produto, int> getProdutosVender() const;
+	std::vector<ProdutoStock> getStock() const;
 
 	/**
 	 * Metodo para obter o Produto com um certo codigo
@@ -178,7 +180,7 @@ public:
 	 * @param nomeP Nome do produto a remover
 	 * @return Retorna um apontador para o objeto removido ou, se este nao existir, lanca uma excecao do tipo ProdutoInexistente
 	 */
-	const Produto* removeProduto(std::string nomeP);
+	Produto* removeProduto(std::string nomeP);
 
 	/**
 	 * Metodo que permite realizar uma venda

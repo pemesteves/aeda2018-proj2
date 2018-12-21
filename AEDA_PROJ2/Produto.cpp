@@ -106,7 +106,7 @@ void Produto::showInfo() const{
 		cout << "Produto nao passivel de receita medica." << endl;
 }
 
-std::ostream& operator<<(std::ostream &output, const Produto &p){
+ostream& operator<<(ostream &output, const Produto &p){
 	output << p.codigo << endl;
 	output << p.nome << endl;
 	output << p.preco << endl;
@@ -117,4 +117,24 @@ std::ostream& operator<<(std::ostream &output, const Produto &p){
 	return output;
 }
 
+ProdutoStock::ProdutoStock(Produto* prod, unsigned quant){
+	this->prod = prod;
+	this->quant = quant;
+}
+
+unsigned ProdutoStock::getQuant() const{
+	return quant;
+}
+
+Produto* ProdutoStock::getProd() const{
+	return prod;
+}
+
+void ProdutoStock::setQuant(unsigned quant){
+	this->quant = quant;
+}
+
+bool ProdutoStock::operator<(const ProdutoStock &prod1) const{
+	return (this->quant < prod1.getQuant());
+}
 

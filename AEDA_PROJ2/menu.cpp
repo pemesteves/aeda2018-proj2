@@ -476,12 +476,12 @@ int main() {
 					break;
 				}
 				case 4: {
-					map<Produto, int> p = (*frm)->getProdutosVender();
-					map<Produto, int>::const_iterator prods;
+					vector<ProdutoStock> p = (*frm)->getStock();
+					vector<ProdutoStock>::const_iterator prods;
 					for (prods = p.begin(); prods != p.end(); prods++) {
-						cout << prods->first.getCodigo() << "  ";
-						cout << prods->first.getNome() << "   ";
-						cout << prods->second << " unidades";
+						cout << prods->getProd()->getCodigo() << "  ";
+						cout << prods->getProd()->getNome() << "   ";
+						cout << prods->getQuant() << " unidades";
 						cout << endl;
 					}
 					cout << endl;
@@ -791,13 +791,13 @@ int main() {
 							cout << endl << "Produto nao existe na farmacia" << endl;
 							continue;
 						}
-						map<Produto, int>::const_iterator prod;
-						map<Produto, int> stock = (*frm)->getProdutosVender();
-						for (prod = stock.begin(); prod != stock.end(); prod++) {
-							if (prod->first.getNome() == nome_prod)
+						vector<ProdutoStock>::iterator prod;
+						vector<ProdutoStock> st = (*frm)->getStock();
+						for (prod = st.begin(); prod != st.end(); prod++) {
+							if (prod->getProd()->getNome() == nome_prod)
 								break;
 						}
-						Produto p1 = prod->first;
+						Produto p1 = *(prod->getProd());
 						cout << endl << "Quantidade: ";
 						do {
 							cin >> quant;
