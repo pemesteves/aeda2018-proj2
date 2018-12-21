@@ -73,6 +73,9 @@ vector <Funcionario*> CadeiaFarmacias::getFuncionarios() const {
 
 void CadeiaFarmacias::addFarmacia(Farmacia* farmacia) {
 	farmacias.push_back(farmacia);
+	FuncPtr p;
+	p.func = farmacia;
+	registo_funcionarios.insert(p);
 }
 
 Farmacia* CadeiaFarmacias::removeFarmacia(const string &nomeF) {

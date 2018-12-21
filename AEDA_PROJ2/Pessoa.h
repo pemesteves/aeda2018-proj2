@@ -177,13 +177,6 @@ public:
 };
 
 /**
- * Struct com apontador para Funcionario
- */
-struct FuncPtr {
-	Funcionario* func;
-};
-
-/**
  * Classe Cliente
  */
 class Cliente : public Pessoa {

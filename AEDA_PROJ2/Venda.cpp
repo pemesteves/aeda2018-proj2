@@ -1,4 +1,3 @@
-
 #include "Venda.h"
 #include "Data.h"
 #include <iomanip>

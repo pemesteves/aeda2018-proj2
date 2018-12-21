@@ -247,6 +247,13 @@ public:
 	 */
 	void imprimeDados() const;
 
+	/*
+	 * Metodo que permite obter os produtos com quantidade em stock inferior a um valor
+	 * @param N Quantidade maxima em stock dos produtos retornados
+	 * @return Vetor com objetos do tipo ProdutoStock (produto e quantidade) com quantidade inferior a N
+	 */
+	std::vector<ProdutoStock> getProdsMenorQuant(unsigned N);
+
 	/**
 	 * Overload do operador << para exportar a farmacia
 	 * @param output Variavel para onde se quer exportar(ecra, ficheiro, ...)

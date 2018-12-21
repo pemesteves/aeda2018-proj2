@@ -360,5 +360,16 @@ void Farmacia::setVendas(vector<Venda*> v){
 	this->vendas = v;
 }
 
+std::vector<ProdutoStock> Farmacia::getProdsMenorQuant(unsigned N){
+	vector<ProdutoStock> stocktmp = getStock();
+	vector<ProdutoStock> v;
+
+	for(size_t i=0; i<stocktmp.size(); i++){
+		if(stocktmp.at(i).getQuant()<N)
+			v.push_back(stocktmp.at(i));
+	}
+
+	return v;
+}
 
 

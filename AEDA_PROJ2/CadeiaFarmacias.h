@@ -17,12 +17,10 @@
 
 struct hFuncPtr {
 	int operator()(const FuncPtr & f1) const {
-		//TODO: implementar o operador
-		return -1;
+		return (int)f1.func->getSalario()+(int)f1.func->getNoContribuinte()+f1.func->getNome().size();
 	}
 	bool operator()(const FuncPtr & f1, const FuncPtr & f2) const {
-		//TODO implementar o operador
-		return true;
+		return f1.func->getNome() == f2.func->getNome() && f1.func->getNoContribuinte() == f2.func->getNoContribuinte();
 	}
 };
 
