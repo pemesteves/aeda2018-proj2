@@ -17,7 +17,7 @@
 
 struct hFuncPtr {
 	int operator()(const FuncPtr & f1) const {
-		return (int)f1.func->getSalario()+(int)f1.func->getNoContribuinte()+f1.func->getNome().size();
+		return (int)f1.func->getSalario() + (int)f1.func->getNoContribuinte() + f1.func->getNome().size();
 	}
 	bool operator()(const FuncPtr & f1, const FuncPtr & f2) const {
 		return f1.func->getNome() == f2.func->getNome() && f1.func->getNoContribuinte() == f2.func->getNoContribuinte();
@@ -26,9 +26,9 @@ struct hFuncPtr {
 
 typedef unordered_set<const FuncPtr, hFuncPtr, hFuncPtr> tabHFunc;
 
- /**
-  * Classe CadeiaFarmacias
-  */
+/**
+ * Classe CadeiaFarmacias
+ */
 class CadeiaFarmacias {
 private:
 	std::string nome; //Nome da cadeia de farmacias
@@ -119,7 +119,7 @@ public:
 	void sortFarmacias(enum tipoSort tipo, bool crescente);
 
 	/**
-	 * Metodo que permite adicionar um apontador para Cliente a respetiva estrutura de dados 
+	 * Metodo que permite adicionar um apontador para Cliente a respetiva estrutura de dados
 	 * @param cliente Apontador para objeto do tipo Cliente que sera adicionado ao set clientes
 	 */
 	void addCliente(Cliente* cliente);
@@ -135,14 +135,14 @@ public:
 	 * Metodo que permite adicionar um apontador para Funcionario ao respetivo vetor
 	 * @param funcionario Apontador para objeto do tipo Funcionario que sera adicionado ao vetor funcionarios
 	 */
-	void addFuncionario(Funcionario* funcionario);
+	void addFuncionario(Funcionario* funcionario, bool atual_funcionario);
 
 	/**
-	 * Metodo que permite eliminar o Funcionario nomeF do respetivo vetor
-	 * @param nomeF Nome do funcionario que sera removido do vetor
-	 * @return Retorna um apontador para o objeto removido ou, se este nao existir, lanca uma excecao do tipo FuncionarioInexistente
+	 * Metodo que permite despedir o Funcionario. Remove-o do seu vetor e coloca-o como antigo funcionario na tabela de dispersao
+	 * @param nomeF Nome do funcionario que sera despedido
+	 * @return Retorna um apontador para o Funcionario despedido ou, se este nao existir, lanca uma excecao do tipo FuncionarioInexistente
 	 */
-	Funcionario* removeFuncionario(const std::string &nomeF);
+	Funcionario* despedeFuncionario(const std::string &nomeF);
 
 	/**
 	 * Metodo que permite ordenar os funcionarios

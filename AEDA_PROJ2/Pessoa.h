@@ -88,6 +88,14 @@ public:
 };
 
 /**
+ * Struct com apontador para Funcionario
+ */
+struct FuncPtr {
+	Funcionario* func;
+	bool atual_funcionario;
+};
+
+/**
  * Classe Funcionario
  */
 class Funcionario : public Pessoa {

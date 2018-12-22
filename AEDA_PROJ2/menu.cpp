@@ -33,7 +33,7 @@ void menuGerirCadeia() {
 	cout << "7. Ver clientes." << endl;
 	cout << "8. Adicionar Funcionario." << endl;
 	cout << "9. Ordenar funcionarios." << endl;
-	cout << "10. Remover Funcionario." << endl;
+	cout << "10. Despedir Funcionario." << endl;
 	cout << "11. Ver funcionarios." << endl;
 	cout << "12. Ver dados da cadeia." << endl;
 	cout << "13. Gerir Farmacia." << endl;
@@ -355,14 +355,14 @@ int main() {
 			break;
 		}
 		case 10: {
-			cout << "Nome do Funcionario a eliminar: ";
+			cout << "Nome do Funcionario a despedir: ";
 			cin.clear();
 			cin.ignore(10000, '\n');
 			getline(cin, nome);
 			try {
 				Funcionario *f;
-				f = cadeia.removeFuncionario(nome);
-				cout << "Funcionario " << f->getNome() << " eliminado" << endl;
+				f = cadeia.despedeFuncionario(nome);
+				cout << "Funcionario " << f->getNome() << " despedido" << endl;
 			}
 			catch (FuncionarioInexistente &e) {
 				cout << "Funcionario " << e.getNome() << " inexistente" << endl;

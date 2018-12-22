@@ -24,13 +24,15 @@ CadeiaFarmacias::CadeiaFarmacias() {
 	farmacias.resize(0); //Vetor de farmacias vazio
 	clientes.clear(); //Set de clientes vazio
 	funcionarios.resize(0); //Vetor de funcionarios vazio
+	registo_funcionarios.clear(); //Tabela de dispersao vazia
 }
 
-CadeiaFarmacias::CadeiaFarmacias(std::string nome) {
+CadeiaFarmacias::CadeiaFarmacias(string nome) {
 	this->nome = nome; //Inicializacao de uma cadeia com nome
 	farmacias.resize(0); //Vetor de farmacias vazio
 	clientes.clear(); //Set de clientes vazio
 	funcionarios.resize(0); //Vetor de funcionarios vazio
+	registo_funcionarios.clear(); //Tabela de dispersao vazia
 }
 
 void CadeiaFarmacias::setNome(string nome) {
@@ -106,7 +108,7 @@ void CadeiaFarmacias::addCliente(Cliente* cliente) {
 	clientes.insert(cliente);
 }
 
-Cliente* CadeiaFarmacias::removeCliente(const std::string &nomeC) {
+Cliente* CadeiaFarmacias::removeCliente(const string &nomeC) {
 	set<Cliente*, clientesComp>::iterator it = clientes.begin();
 	for (; it != clientes.end(); it++) {
 		if ((*it)->getNome() == nomeC) {
@@ -119,21 +121,37 @@ Cliente* CadeiaFarmacias::removeCliente(const std::string &nomeC) {
 	throw ClienteInexistente(nomeC); //Lançamento de uma excecao caso o cliente nao exista
 }
 
-void CadeiaFarmacias::addFuncionario(Funcionario* funcionario) {
+void CadeiaFarmacias::addFuncionario(Funcionario* funcionario, bool atual_funcionario = true) {
 	funcionarios.push_back(funcionario);
+	FuncPtr f;
+	f.func = funcionario;
+	f.atual_funcionario = atual_funcionario;
+	registo_funcionarios.insert(f);
 }
 
-Funcionario* CadeiaFarmacias::removeFuncionario(const std::string &nomeF) {
+Funcionario* CadeiaFarmacias::despedeFuncionario(const string &nomeF) { //TODO implementar metodo que percorre todas as farmacias e retira o gerente e diretor tecnico caso este seja despedido
 	vector<Funcionario*>::iterator it = funcionarios.begin();
+	Funcionario* f1;
+	bool encontrou_funcionario = false;
 	for (; it != funcionarios.end(); it++) {//Percorrer o vetor de funcionarios
 		if ((*it)->getNome() == nomeF) {
-			Funcionario* f1;
 			f1 = *it;
 			funcionarios.erase(it);
-			return f1;
+			encontrou_funcionario = true;
+			break;
 		}
 	}
-	throw FuncionarioInexistente(nomeF); //Lancamento de uma excecao caso o funcionario nao exista
+
+	if (!encontrou_funcionario)
+		throw FuncionarioInexistente(nomeF); //Lancamento de uma excecao caso o funcionario nao exista
+
+	for (tabHFunc::iterator it1 = registo_funcionarios.begin(); it1 != registo_funcionarios.end(); it1++) {
+		if ((*it1).func->getNome() == nomeF) {
+			(*it1).atual_funcionario = false;
+			break;
+		}
+	}
+	return f1;
 }
 
 void CadeiaFarmacias::sortFuncionarios(enum tipoSort tipo, bool crescente) {
@@ -143,19 +161,27 @@ void CadeiaFarmacias::sortFuncionarios(enum tipoSort tipo, bool crescente) {
 	s.sort_p(funcionarios);
 }
 
-std::ostream& operator<<(std::ostream &output, const CadeiaFarmacias &cF) {
+ostream& operator<<(ostream &output, const CadeiaFarmacias &cF) {
 	output << cF.farmacias.size() << endl;
 	for (size_t i = 0; i < cF.farmacias.size(); i++) {
 		output << (*cF.farmacias[i]) << endl;
 	}
+
 	output << cF.clientes.size() << endl;
 	for (set<Cliente*, clientesComp>::iterator it = cF.clientes.begin(); it != cF.clientes.end(); it++) {//size_t i = 0; i < cF.clientes.size(); i++) {
 		output << *(*it) << endl; // *cF.clientes[i]) << endl;
 	} //TODO Nao sei se funciona: vamos ter que testar isto
+
 	output << cF.funcionarios.size() << endl;
+	for (tabHFunc::iterator it = registo_funcionarios.begin(); it != registo_funcionarios.end(); it++) {
+		output << *(*it).func << endl;
+		output << (*it).atual_funcionario << endl;
+	}
+	/*
 	for (size_t i = 0; i < cF.funcionarios.size(); i++) {
 		output << (*cF.funcionarios[i]) << endl;
-	}
+	}*/
+
 	return output;
 }
 
@@ -177,13 +203,16 @@ void import(ifstream &f, CadeiaFarmacias &cF) { //Falta corrigir o import
 		do {
 			getline(f, nome);
 		} while (nome.length() == 0);
+
 		do {
 			getline(f, morada);
 		} while (morada.length() == 0);
+
 		Farmacia *farm = new Farmacia(nome, morada);
 		do {
 			getline(f, nome);
 		} while (nome.length() == 0);
+
 		if (nome == "NULL") {
 			gerentes.push_back(0);
 			farm->setGerente(NULL);
@@ -192,6 +221,7 @@ void import(ifstream &f, CadeiaFarmacias &cF) { //Falta corrigir o import
 			contribuinte = stoul(nome);
 			gerentes.push_back(contribuinte);
 		}
+
 		do {
 			getline(f, nome);
 		} while (nome.length() == 0);
@@ -204,6 +234,7 @@ void import(ifstream &f, CadeiaFarmacias &cF) { //Falta corrigir o import
 			contribuinte = stoul(nome);
 			diretoresTecnicos.push_back(contribuinte);
 		}
+
 		do {
 			getline(f, line);
 		} while (line.length() == 0);
@@ -222,8 +253,8 @@ void import(ifstream &f, CadeiaFarmacias &cF) { //Falta corrigir o import
 			do {
 				getline(f, line);
 			} while (line.length() == 0);
-			codigo = stoul(line);
 
+			codigo = stoul(line);
 			do {
 				getline(f, nome);
 			} while (nome.length() == 0);
@@ -252,21 +283,27 @@ void import(ifstream &f, CadeiaFarmacias &cF) { //Falta corrigir o import
 			do {
 				getline(f, line);
 			} while (line.length() == 0);
+
 			desconto = stof(line);
+
 			Produto *p = new Produto(codigo, nome, preco, morada, pasReceita, desconto, vendaSemReceita);
 			farm->addProdutoVender(p);
 			farm->setQuantidade(nome, quantidade);
 			numProd--;
 		}
+
 		do {
 			getline(f, line);
 		} while (line.length() == 0);
+
 		numProd = stoi(line); //numProd tera o numero de vendas
+
 		int dia, mes, ano, hora, minutos, segundos;
 		while (numProd > 0) {
 			do {
 				getline(f, line); //line tera: codigo data hora
 			} while (line.length() == 0);
+
 			codigo = stoul(line.substr(0, line.find(" ")));
 			line = line.substr(line.find(" ") + 1); //line tera: hora data
 			dia = stoi(line.substr(0, line.find("/")));
@@ -280,22 +317,26 @@ void import(ifstream &f, CadeiaFarmacias &cF) { //Falta corrigir o import
 			minutos = stoi(line.substr(0, line.find(":")));
 			line = line.substr(line.find(":") + 1); //line tera: segundos
 			segundos = stoi(line);
+
 			do {
 				getline(f, line);
 			} while (line.length() == 0);
 
 			clientes.push_back(stoul(line));
+
 			Venda *v = new Venda(dia, mes, ano, hora, minutos, segundos, codigo);
 
 			do {
 				getline(f, line);
 			} while (line.length() == 0);
+
 			if (line == "NULL") {
 				v->setReceita(NULL);
 				clientesReceitas.push_back(0);
 			}
 			else {
 				unsigned long numeroRec = stoul(line);
+
 				do {
 					getline(f, morada); //morada tera o nome do medico
 				} while (morada.length() == 0);
@@ -305,6 +346,7 @@ void import(ifstream &f, CadeiaFarmacias &cF) { //Falta corrigir o import
 				} while (line.length() == 0);
 
 				clientesReceitas.push_back(stoul(line));
+
 				Receita *r = new Receita(numeroRec, morada, NULL); //default para Cliente* é NULL-> sera alterado depois
 
 				do {
@@ -318,12 +360,14 @@ void import(ifstream &f, CadeiaFarmacias &cF) { //Falta corrigir o import
 					do {
 						getline(f, line);
 					} while (line.length() == 0);
+
 					codigo = stoul(line.substr(0, line.find(" "))); //codigo tera o codigo do Produto
 					line = line.substr(line.find(" ") + 1);
 
 					numeroRec = stoul(line); //numeroRec tera a quantidade do Produto
 
 					Produto p = farm->getProduto(codigo);
+
 					if (p.getCodigo() != 0)
 						*produto = p;
 
@@ -352,6 +396,7 @@ void import(ifstream &f, CadeiaFarmacias &cF) { //Falta corrigir o import
 				do {
 					getline(f, line);
 				} while (line.length() == 0);
+
 				codigo = stoul(line.substr(0, line.find(" ")));
 				line = line.substr(line.find(" ") + 1);
 				preco = stof(line.substr(0, line.find(" "))); //preco guarda a quantidade do produto
@@ -455,9 +500,10 @@ void import(ifstream &f, CadeiaFarmacias &cF) { //Falta corrigir o import
 
 		nome = line.substr(0, line.find("-")); //nome conterá o cargo do Funcionário
 		func->setCargo(nome);
+
 		line = line.substr(line.find("-") + 1);
 		double salario;
-		salario = stod(line); //contribuinte conterá o salário do Funcionário
+		salario = stod(line);
 		func->changeSalario(salario);
 
 		do {
@@ -471,8 +517,13 @@ void import(ifstream &f, CadeiaFarmacias &cF) { //Falta corrigir o import
 				break;
 			}
 		}
+
+		do {
+			getline(f, line);
+		} while (line.length() == 0);
+
 		func->setFarmacia(farm);
-		cF.addFuncionario(func);
+		cF.addFuncionario(func, (bool)stoi(line));
 		numVars--;
 	}
 
@@ -487,7 +538,7 @@ void import(ifstream &f, CadeiaFarmacias &cF) { //Falta corrigir o import
 		}
 
 		if (diretoresTecnicos[i] != 0) {
-			for (vector<Funcionario *>::iterator it = cF.funcionarios.begin(); it != cF.funcionarios.end(); it++) {
+			for (vector<Funcionario*>::iterator it = cF.funcionarios.begin(); it != cF.funcionarios.end(); it++) {
 				if ((*it)->getNoContribuinte() == diretoresTecnicos[i]) {
 					cF.farmacias[i]->setDiretorTecnico(*it);
 					break;

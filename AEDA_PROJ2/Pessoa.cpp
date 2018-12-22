@@ -10,7 +10,7 @@ using namespace std;
  * @param distrito Nome do distrito que sera verificado
  * @return Retorna true se o distrito existir. Caso contrario, retorna false. Tambem retorna por referencia o nome do distrito formatado devidamente
  */
-bool isDistrito(std::string &distrito) {
+bool isDistrito(string &distrito) {
 	for (unsigned i = 0; i < distrito.length(); i++) {
 		if (i == 0)
 			distrito[i] = toupper(distrito[i]);
@@ -21,12 +21,12 @@ bool isDistrito(std::string &distrito) {
 	}
 
 	if (distrito == "Aveiro" || distrito == "Beja" || distrito == "Braganca"
-			|| distrito == "Castelo Branco" || distrito == "Coimbra"
-					|| distrito == "Evora" || distrito == "Faro" || distrito == "Guarda"
-							|| distrito == "Leiria" || distrito == "Portalegre"
-									|| distrito == "Porto" || distrito == "Santarem"
-											|| distrito == "Setubal" || distrito == "Viana do Castelo"
-													|| distrito == "Vila Real" || distrito == "Viseu")
+		|| distrito == "Castelo Branco" || distrito == "Coimbra"
+		|| distrito == "Evora" || distrito == "Faro" || distrito == "Guarda"
+		|| distrito == "Leiria" || distrito == "Portalegre"
+		|| distrito == "Porto" || distrito == "Santarem"
+		|| distrito == "Setubal" || distrito == "Viana do Castelo"
+		|| distrito == "Vila Real" || distrito == "Viseu")
 		return true;
 	return false;
 }
@@ -63,7 +63,7 @@ void Pessoa::setNoContribuinte(unsigned long no) {
 	noContribuinte = no;
 }
 
-std::ostream& operator<<(std::ostream &output, const Pessoa &p) {
+ostream& operator<<(ostream &output, const Pessoa &p) {
 	output << p.nome << endl;
 	output << p.noContribuinte << endl;
 	output << p.morada << endl;
@@ -241,7 +241,7 @@ bool Funcionario::menorQue(const Funcionario &f1, enum tipoSort tipo, bool cresc
 	}
 }
 
-std::ostream& operator<<(std::ostream &output, const Cliente &c) {
+ostream& operator<<(ostream &output, const Cliente &c) {
 	output << c.nome << endl;
 	output << c.noContribuinte << endl;
 	output << c.morada << endl;

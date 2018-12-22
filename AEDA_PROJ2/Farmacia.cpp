@@ -25,7 +25,7 @@ Funcionario* Farmacia::getGerente() const {
 	return gerente;
 }
 
-Funcionario* Farmacia::getDiretorTecnico() const{
+Funcionario* Farmacia::getDiretorTecnico() const {
 	return diretorTecnico;
 }
 
@@ -40,7 +40,7 @@ vector<ProdutoStock> Farmacia::getStock() const {
 
 	priority_queue<ProdutoStock> st_tmp = stock;
 
-	while(!st_tmp.empty()){
+	while (!st_tmp.empty()) {
 		tmp = st_tmp.top();
 		v.push_back(tmp);
 		st_tmp.pop();
@@ -62,7 +62,7 @@ unsigned int Farmacia::getNumVendasTempo(Data d1, Data d2) const {
 	unsigned int vendas_count = 0;
 	for (size_t i = 0; i < vendas.size(); i++) {
 		Data d = vendas.at(i)->getData();
-		if ((d<d2 && d1<d) || d1 == d || d2 == d) {
+		if ((d < d2 && d1 < d) || d1 == d || d2 == d) {
 			vendas_count++;
 		}
 	}
@@ -74,7 +74,7 @@ vector<Venda*> Farmacia::getVendasTempo(Data d1, Data d2) const {
 	vector<Venda*> vendas_tempo;
 	for (size_t i = 0; i < vendas.size(); i++) {
 		Data d = vendas.at(i)->getData();
-		if ((d<d2 && d1<d) || d1 == d || d2 == d) {
+		if ((d < d2 && d1 < d) || d1 == d || d2 == d) {
 			vendas_tempo.push_back(vendas.at(i));
 		}
 	}
@@ -112,7 +112,7 @@ float Farmacia::getPrecoProduto(string nomeProd) const {
 	return -1;
 }
 
-int Farmacia::getQuantProduto(std::string nomeProd) const{
+int Farmacia::getQuantProduto(std::string nomeProd) const {
 	vector<ProdutoStock>::const_iterator it;
 	vector<ProdutoStock> v = getStock();
 	for (it = v.begin(); it != v.end(); it++) {
@@ -123,14 +123,14 @@ int Farmacia::getQuantProduto(std::string nomeProd) const{
 }
 
 void Farmacia::setGerente(Funcionario* gerente) {
-	this->gerente=gerente;
-	if(gerente != NULL)
+	this->gerente = gerente;
+	if (gerente != NULL)
 		gerente->setCargo("GERENTE");
 }
 
-void Farmacia::setDiretorTecnico(Funcionario* diretor){
-	this->diretorTecnico=diretor;
-	if(diretor != NULL)
+void Farmacia::setDiretorTecnico(Funcionario* diretor) {
+	this->diretorTecnico = diretor;
+	if (diretor != NULL)
 		diretor->setCargo("DIRETOR TECNICO");
 }
 
@@ -139,13 +139,13 @@ void Farmacia::addProdutosVender(vector<Produto*> produtosVender_new) {
 	for (size_t i = 0; i < produtosVender_new.size(); i++) {
 		p = produtosVender_new.at(i);
 		if (!existeProduto(p->getNome())) {
-			ProdutoStock tmp(p,0);
+			ProdutoStock tmp(p, 0);
 			stock.push(tmp);
 		}
 	}
 }
 
-Produto* Farmacia::removeProduto(std::string nomeP){
+Produto* Farmacia::removeProduto(std::string nomeP) {
 
 	ProdutoStock tmp;
 
@@ -153,9 +153,9 @@ Produto* Farmacia::removeProduto(std::string nomeP){
 
 	priority_queue<ProdutoStock> st_tmp;
 
-	while(!stock.empty()){
+	while (!stock.empty()) {
 		tmp = stock.top();
-		if(tmp.getProd()->getNome() != nomeP)
+		if (tmp.getProd()->getNome() != nomeP)
 			st_tmp.push(tmp);
 		else
 			p = tmp.getProd();
@@ -164,7 +164,7 @@ Produto* Farmacia::removeProduto(std::string nomeP){
 
 	stock = st_tmp;
 
-	if(p == NULL)
+	if (p == NULL)
 		throw ProdutoInexistente(nomeP);
 
 	return p;
@@ -176,21 +176,21 @@ bool Farmacia::addVenda(Venda* venda) {
 	map<Produto, vector<float>>::const_iterator it = prodVenda.begin();
 	string nomeProd;
 	int quant;
-	for (; it != prodVenda.end(); it++){
+	for (; it != prodVenda.end(); it++) {
 		nomeProd = it->first.getNome();
 		quant = static_cast<int>(it->second.at(QUANTIDADE));
-		if (!existeProdutoQuant(nomeProd, quant)){
+		if (!existeProdutoQuant(nomeProd, quant)) {
 			return false;
 		}
 	}
 	vendas.push_back(venda);
-	for (; it != prodVenda.end(); it++){
+	for (; it != prodVenda.end(); it++) {
 		nomeProd = it->first.getNome();
 		quant = getQuantProduto(nomeProd) - static_cast<int>(it->second.at(QUANTIDADE));
 		setQuantidade(nomeProd, quant);
 	}
 	Cliente *c = venda->getCliente();
-	if(c != NULL)
+	if (c != NULL)
 		c->addCompra(venda);
 
 	return true;
@@ -206,13 +206,13 @@ bool Farmacia::existeProduto(string nomeProduto) const {
 	return false;
 }
 
-bool Farmacia::existeProdutoQuant(string nomeProduto, int quant) const{
+bool Farmacia::existeProdutoQuant(string nomeProduto, int quant) const {
 	unsigned uquant = (unsigned)quant;
 	vector<ProdutoStock> v = getStock();
 	vector<ProdutoStock>::const_iterator it = v.begin();
 	for (; it != v.end(); it++) {
-		if (it->getProd()->getNome() == toupperstring(nomeProduto)){
-			if (it->getQuant()>=uquant)
+		if (it->getProd()->getNome() == toupperstring(nomeProduto)) {
+			if (it->getQuant() >= uquant)
 				return true;
 			else return false;
 		}
@@ -229,7 +229,7 @@ bool Farmacia::addProdutoVender(Produto* produtoVender) {
 	return false;
 }
 
-void Farmacia::sortVendas(enum tipoSort tipo, bool crescente){
+void Farmacia::sortVendas(enum tipoSort tipo, bool crescente) {
 	sorting<Venda> s;
 	sorting<Venda>::tipo = tipo;
 	sorting<Venda>::crescente = crescente;
@@ -248,7 +248,7 @@ bool Farmacia::setQuantidade(std::string nomeProd, int quant) {
 	return false;
 }
 
-bool Farmacia::operator< (const Farmacia &f1) const{
+bool Farmacia::operator< (const Farmacia &f1) const {
 	if (nome < f1.getNome())
 		return true;
 	if (nome == f1.getNome() && stock.size() > f1.getNumProdutos())
@@ -258,12 +258,12 @@ bool Farmacia::operator< (const Farmacia &f1) const{
 	return false;
 }
 
-void Farmacia::imprimeFatura(Venda* v) const{
+void Farmacia::imprimeFatura(Venda* v) const {
 	cout << "Farmacia " << nome << endl;
 	cout << morada << endl;
-	if(gerente != NULL)
+	if (gerente != NULL)
 		cout << endl << "Gerente: " << gerente->getNome() << endl;
-	if(gerente != NULL)
+	if (gerente != NULL)
 		cout << "Diretor Tecnico: " << diretorTecnico->getNome() << endl;
 	v->imprimeFatura();
 
@@ -279,8 +279,8 @@ void Farmacia::imprimeDados() const {
 		cout << "Diretor Tecnico: " << diretorTecnico->getNome() << "  " << diretorTecnico->getNoContribuinte() << endl;
 }
 
-bool Farmacia::menorQue(const Farmacia &f1, enum tipoSort tipo, bool crescente) const{
-	switch(tipo){
+bool Farmacia::menorQue(const Farmacia &f1, enum tipoSort tipo, bool crescente) const {
+	switch (tipo) {
 	case NOME:
 		if (crescente)
 			return nome < f1.getNome();
@@ -300,21 +300,21 @@ bool Farmacia::menorQue(const Farmacia &f1, enum tipoSort tipo, bool crescente) 
 			return vendas.size() > f1.getNumVendas();
 		break;
 	default:
-		return (*this)<f1;
+		return (*this) < f1;
 		break;
 	}
 }
 
-std::ostream& operator<<(std::ostream &output, const Farmacia &f){
+ostream& operator<<(ostream &output, const Farmacia &f) {
 	output << f.nome << endl;
 	output << f.morada << endl;
-	if(f.gerente!=NULL){
-		output << f.gerente->getNoContribuinte()<< endl;
+	if (f.gerente != NULL) {
+		output << f.gerente->getNoContribuinte() << endl;
 	}
 	else
 		output << "NULL" << endl;
 
-	if(f.diretorTecnico != NULL)
+	if (f.diretorTecnico != NULL)
 		output << f.diretorTecnico->getNoContribuinte() << endl;
 	else
 		output << "NULL" << endl;
@@ -322,50 +322,48 @@ std::ostream& operator<<(std::ostream &output, const Farmacia &f){
 	output << f.stock.size() << endl;
 	vector<ProdutoStock> v = f.getStock();
 	vector<ProdutoStock>::iterator it;
-	for(it = v.begin(); it != v.end(); it++){
-		output << it->getQuant();
-		output << endl;
+	for (it = v.begin(); it != v.end(); it++) {
+		output << it->getQuant() << endl;
 		output << *(it->getProd()) << endl;
-		output << endl;
 	}
 
 	output << f.vendas.size() << endl;
-	for(size_t i = 0; i < f.vendas.size(); i++){
+	for (size_t i = 0; i < f.vendas.size(); i++) {
 		output << (*f.vendas[i]) << endl;
 	}
 	return output;
 }
 
-Produto Farmacia::getProduto(unsigned long codigo){
+Produto Farmacia::getProduto(unsigned long codigo) {
 	vector<ProdutoStock> v = getStock();
 	vector<ProdutoStock>::const_iterator it = v.begin();
-	for(; it != v.end(); it++){
-		if(it->getProd()->getCodigo() == codigo){
+	for (; it != v.end(); it++) {
+		if (it->getProd()->getCodigo() == codigo) {
 			return *(it->getProd());
 		}
 	}
 	return Produto(0, "", 0, "", 0, 0, 0);
 }
 
-Venda* Farmacia::getVenda(unsigned long codigo) const{
-	for(vector<Venda*>::const_iterator it = vendas.begin(); it != vendas.end(); it++){
-		if((*it)->getCodigo() == codigo)
+Venda* Farmacia::getVenda(unsigned long codigo) const {
+	for (vector<Venda*>::const_iterator it = vendas.begin(); it != vendas.end(); it++) {
+		if ((*it)->getCodigo() == codigo)
 			return (*it);
 	}
 
 	return NULL;
 }
 
-void Farmacia::setVendas(vector<Venda*> v){
+void Farmacia::setVendas(vector<Venda*> v) {
 	this->vendas = v;
 }
 
-std::vector<ProdutoStock> Farmacia::getProdsMenorQuant(unsigned N){
+std::vector<ProdutoStock> Farmacia::getProdsMenorQuant(unsigned N) {
 	vector<ProdutoStock> stocktmp = getStock();
 	vector<ProdutoStock> v;
 
-	for(size_t i=0; i<stocktmp.size(); i++){
-		if(stocktmp.at(i).getQuant()<N)
+	for (size_t i = 0; i < stocktmp.size(); i++) {
+		if (stocktmp.at(i).getQuant() < N)
 			v.push_back(stocktmp.at(i));
 	}
 
