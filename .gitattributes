@@ -1,5 +1,7 @@
 #This file is used to hide the languages only used in documentation. The real project language is C++, so other languages will be hidden.
 
-*.html
-*.css
-*.js
+.gitattributes export-ignore
+*.txt text
+*.html text
+*.css text
+*.js text
