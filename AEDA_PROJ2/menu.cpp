@@ -32,14 +32,13 @@ void menuGerirCadeia() {
 	cout << "6. Remover Cliente." << endl;
 	cout << "7. Ver clientes." << endl;
 	cout << "8. Adicionar Funcionario." << endl;
-	cout << "9. Ordenar funcionarios." << endl;
-	cout << "10. Despedir Funcionario." << endl;
-	cout << "11. Ver funcionarios." << endl;
-	cout << "12. Ver dados da cadeia." << endl;
-	cout << "13. Gerir Farmacia." << endl;
-	cout << "14. Gerir Funcionario." << endl;
-	cout << "15. Gerir Cliente." << endl;
-	cout << "16. Sair." << endl;
+	cout << "9. Despedir Funcionario." << endl;
+	cout << "10. Ver funcionarios." << endl;
+	cout << "11. Ver dados da cadeia." << endl;
+	cout << "12. Gerir Farmacia." << endl;
+	cout << "13. Gerir Funcionario." << endl;
+	cout << "14. Gerir Cliente." << endl;
+	cout << "15. Sair." << endl;
 }
 
 void menuFarmacia() {
@@ -299,62 +298,10 @@ int main() {
 				}
 			} while (cin.fail());
 			Funcionario *f = new Funcionario(nome, morada, contribuinte);
-			cadeia.addFuncionario(f);
+			cadeia.addFuncionario(f, true);
 			break;
 		}
 		case 9: {
-			cout << "Como pretende ordenar os funcionarios? " << endl;
-			cout << "	1-Por nome;" << endl;
-			cout << "	2-Por contribuinte;" << endl;
-			cout << "	3-Por salario;" << endl;
-			do {
-				cin >> option;
-				if (cin.fail()) {
-					cin.clear();
-					cin.ignore(10000, '\n');
-					cout << "Opcao Invalida. Tente outra vez: ";
-				}
-			} while (cin.fail());
-			char crescente;
-			if (option >= 1 && option <= 3) {
-				cout << "Pretende fazer esta ordenacao por ordem crescente(c) ou decrescente(d)? ";
-				do {
-					cin >> crescente;
-					if (cin.fail()) {
-						cin.clear();
-						cin.ignore(10000, '\n');
-						cout << "Opcao Invalida. Tente outra vez: ";
-					}
-				} while ((tolower(crescente) != 'c' && tolower(crescente) != 'd') || cin.fail());
-			}
-
-			switch (option) {
-			case 1:
-				if (crescente == 'c')
-					cadeia.sortFuncionarios(NOME, true);
-				else
-					cadeia.sortFuncionarios(NOME, false);
-				break;
-			case 2:
-				if (crescente == 'c')
-					cadeia.sortFuncionarios(CONTRIBUINTE, true);
-				else
-					cadeia.sortFuncionarios(CONTRIBUINTE, false);
-				break;
-			case 3:
-				if (crescente == 'c')
-					cadeia.sortFuncionarios(SALARIO, true);
-				else
-					cadeia.sortFuncionarios(SALARIO, false);
-				break;
-			default:
-				cadeia.sortFuncionarios(DEFAULT, true);
-				break;
-			}
-
-			break;
-		}
-		case 10: {
 			cout << "Nome do Funcionario a despedir: ";
 			cin.clear();
 			cin.ignore(10000, '\n');
@@ -369,22 +316,22 @@ int main() {
 			}
 			break;
 		}
-		case 11: {
-			vector<Funcionario *> v = cadeia.getFuncionarios();
+		case 10: {
+			vector<FuncPtr> v = cadeia.getFuncionarios();
 			for (size_t i = 0; i < cadeia.getFuncionarios().size(); i++) {
-				v.at(i)->showInfo();
+				v.at(i).func->showInfo();
 				cout << endl;
 			}
 			break;
 		}
-		case 12: {
+		case 11: {
 			cout << "Cadeia de Farmacias " << cadeia.getNome() << endl;
 			cout << "	Numero de Farmacias: " << cadeia.getNumFarmacias() << endl;
 			cout << "	Numero de Funcionarios: " << cadeia.getNumFuncionarios() << endl;
 			cout << "	Numero de Clientes: " << cadeia.getNumClientes() << endl << endl;
 			break;
 		}
-		case 13: {
+		case 12: {
 			cout << endl << "Nome da Farmacia: ";
 			cin.clear();
 			cin.ignore(10000, '\n');
@@ -425,13 +372,13 @@ int main() {
 					cin.clear();
 					cin.ignore(10000, '\n');
 					getline(cin, num);
-					vector<Funcionario*>::iterator f;
+					vector<FuncPtr>::iterator f;
 					for (f = cadeia.getFuncionarios().begin(); f != cadeia.getFuncionarios().end(); f++) {
-						if ((*f)->getNoContribuinte() == stoul(num)) {
-							if ((*f)->getFarmacia() != NULL) {
-								if ((*f)->getFarmacia()->getNome() == frm_nome) {
-									(*frm)->setGerente(*f);
-									string func_nome = (*f)->getNome();
+						if (f->func->getNoContribuinte() == stoul(num)) {
+							if (f->func->getFarmacia() != NULL) {
+								if (f->func->getFarmacia()->getNome() == frm_nome) {
+									(*frm)->setGerente(f->func);
+									string func_nome = f->func->getNome();
 									cout << "Novo gerente: " << func_nome;
 									cout << endl;
 								}
@@ -455,14 +402,14 @@ int main() {
 					cin.clear();
 					cin.ignore(10000, '\n');
 					getline(cin, num);
-					vector<Funcionario*> func = cadeia.getFuncionarios();
-					vector<Funcionario*>::iterator f;
+					vector<FuncPtr> func = cadeia.getFuncionarios();
+					vector<FuncPtr>::iterator f;
 					for (f = func.begin(); f != func.end(); f++) {
-						if ((*f)->getNoContribuinte() == stoul(num)) {
-							if ((*f)->getFarmacia() != NULL) {
-								if ((*f)->getFarmacia()->getNome() == frm_nome) {
-									(*frm)->setDiretorTecnico(*f);
-									string func_nome = (*f)->getNome();
+						if (f->func->getNoContribuinte() == stoul(num)) {
+							if (f->func->getFarmacia() != NULL) {
+								if (f->func->getFarmacia()->getNome() == frm_nome) {
+									(*frm)->setDiretorTecnico(f->func);
+									string func_nome = f->func->getNome();
 									cout << "Novo diretor tecnico: " << func_nome << endl;
 								}
 							}
@@ -890,15 +837,15 @@ int main() {
 			} while (true);
 			break;
 		}
-		case 14: {
+		case 13: {
 			cout << endl << "Nome do Funcionario: ";
 			cin.clear();
 			cin.ignore(10000, '\n');
 			getline(cin, nome);
-			vector<Funcionario *> v = cadeia.getFuncionarios();
-			vector<Funcionario *>::iterator func;
+			vector<FuncPtr> v = cadeia.getFuncionarios();
+			vector<FuncPtr>::iterator func;
 			for (func = v.begin(); func != v.end(); func++) {
-				if ((*func)->getNome() == nome)
+				if (func->func->getNome() == nome)
 					break;
 			}
 
@@ -920,7 +867,7 @@ int main() {
 				} while (cin.fail());
 				switch (option) {
 				case 1: {
-					(*func)->showInfo();
+					func->func->showInfo();
 					cout << endl;
 					break;
 				}
@@ -934,8 +881,8 @@ int main() {
 					vector<Farmacia*>::iterator frm;
 					for (frm = farmacias.begin(); frm != farmacias.end(); frm++) {
 						if (toupperstring((*frm)->getNome()) == toupperstring(nome_farmacia_nova)) {
-							(*func)->setFarmacia((*frm));
-							string nome_funcionario = (*func)->getNome();
+							func->func->setFarmacia((*frm));
+							string nome_funcionario = func->func->getNome();
 							cout << nome_funcionario << " trabalha agora na farmacia " << nome_farmacia_nova << endl;
 							break;
 						}
@@ -951,7 +898,7 @@ int main() {
 					cin.clear();
 					cin.ignore(10000, '\n');
 					getline(cin, novo_cargo);
-					(*func)->setCargo(novo_cargo);
+					func->func->setCargo(novo_cargo);
 					break;
 				}
 				case 4: {
@@ -965,7 +912,7 @@ int main() {
 							cout << "Salario Invalido. Tente outra vez: ";
 						}
 					} while (cin.fail());
-					(*func)->changeSalario(novo_salario);
+					func->func->changeSalario(novo_salario);
 					break;
 				}
 				case 5: {
@@ -974,7 +921,7 @@ int main() {
 					cin.clear();
 					cin.ignore(10000, '\n');
 					getline(cin, nova_morada);
-					(*func)->setMorada(nova_morada);
+					func->func->setMorada(nova_morada);
 					break;
 				}
 				case 6: {
@@ -987,7 +934,7 @@ int main() {
 
 			break;
 		}
-		case 15: {
+		case 14: {
 			cout << endl << "Nome do Cliente: ";
 			cin.clear();
 			cin.ignore(10000, '\n');
@@ -1046,7 +993,7 @@ int main() {
 			} while (true);
 			break;
 		}
-		case 16: {
+		case 15: {
 			string op;
 			cout << endl << "Deseja guardar as alteracoes? (S / N)";
 			cin.clear();

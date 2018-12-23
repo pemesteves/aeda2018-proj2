@@ -92,7 +92,7 @@ public:
  */
 struct FuncPtr {
 	Funcionario* func;
-	bool atual_funcionario;
+	mutable bool atual_funcionario;
 };
 
 /**

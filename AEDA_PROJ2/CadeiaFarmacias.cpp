@@ -23,7 +23,7 @@ CadeiaFarmacias::CadeiaFarmacias() {
 	this->nome = ""; //Inicializacao de um nome vazio
 	farmacias.resize(0); //Vetor de farmacias vazio
 	clientes.clear(); //Set de clientes vazio
-	funcionarios.resize(0); //Vetor de funcionarios vazio
+	//funcionarios.resize(0); //Vetor de funcionarios vazio
 	registo_funcionarios.clear(); //Tabela de dispersao vazia
 }
 
@@ -31,7 +31,7 @@ CadeiaFarmacias::CadeiaFarmacias(string nome) {
 	this->nome = nome; //Inicializacao de uma cadeia com nome
 	farmacias.resize(0); //Vetor de farmacias vazio
 	clientes.clear(); //Set de clientes vazio
-	funcionarios.resize(0); //Vetor de funcionarios vazio
+	//funcionarios.resize(0); //Vetor de funcionarios vazio
 	registo_funcionarios.clear(); //Tabela de dispersao vazia
 }
 
@@ -52,7 +52,7 @@ unsigned int CadeiaFarmacias::getNumClientes() const {
 }
 
 unsigned int CadeiaFarmacias::getNumFuncionarios() const {
-	return funcionarios.size();
+	return registo_funcionarios.size();
 }
 
 vector<Farmacia *> CadeiaFarmacias::getFarmacias() const {
@@ -69,15 +69,20 @@ vector <Cliente*>  CadeiaFarmacias::getClientes() const {
 	return v;
 }
 
-vector <Funcionario*> CadeiaFarmacias::getFuncionarios() const {
-	return funcionarios;
+vector <FuncPtr> CadeiaFarmacias::getFuncionarios() const {
+	vector<FuncPtr> f;
+
+	tabHFunc::const_iterator it = registo_funcionarios.begin();
+
+	for(; it!=registo_funcionarios.end(); it++){
+		f.push_back(*it);
+	}
+
+	return f;
 }
 
 void CadeiaFarmacias::addFarmacia(Farmacia* farmacia) {
 	farmacias.push_back(farmacia);
-	FuncPtr p;
-	p.func = farmacia;
-	registo_funcionarios.insert(p);
 }
 
 Farmacia* CadeiaFarmacias::removeFarmacia(const string &nomeF) {
@@ -85,11 +90,11 @@ Farmacia* CadeiaFarmacias::removeFarmacia(const string &nomeF) {
 	for (; it != farmacias.end(); it++) { //Percorrer o vetor farmacias
 		if ((*it)->getNome() == nomeF) {
 			farmacias.erase(it); //Eliminar o elemento pretendido
-			vector<Funcionario*>::iterator itFunc = funcionarios.begin();
-			for (; itFunc != funcionarios.end(); itFunc++) { //Percorrer o vetor funcionarios
-				Farmacia* f = (*itFunc)->getFarmacia();
+			tabHFunc::iterator itFunc = registo_funcionarios.begin();
+			for (; itFunc != registo_funcionarios.end(); itFunc++) { //Percorrer o vetor funcionarios
+				Farmacia* f = itFunc->func->getFarmacia();
 				if (nomeF == f->getNome()) //Se a Farmacia a eliminar e igual a Farmacia onde trabalha o Funcionario, esta e apagada
-					(*itFunc)->setFarmacia(NULL);
+					itFunc->func->setFarmacia(NULL);
 			}
 			return *it;
 		}
@@ -122,7 +127,6 @@ Cliente* CadeiaFarmacias::removeCliente(const string &nomeC) {
 }
 
 void CadeiaFarmacias::addFuncionario(Funcionario* funcionario, bool atual_funcionario = true) {
-	funcionarios.push_back(funcionario);
 	FuncPtr f;
 	f.func = funcionario;
 	f.atual_funcionario = atual_funcionario;
@@ -130,13 +134,13 @@ void CadeiaFarmacias::addFuncionario(Funcionario* funcionario, bool atual_funcio
 }
 
 Funcionario* CadeiaFarmacias::despedeFuncionario(const string &nomeF) { //TODO implementar metodo que percorre todas as farmacias e retira o gerente e diretor tecnico caso este seja despedido
-	vector<Funcionario*>::iterator it = funcionarios.begin();
+	tabHFunc::iterator it = registo_funcionarios.begin();
 	Funcionario* f1;
 	bool encontrou_funcionario = false;
-	for (; it != funcionarios.end(); it++) {//Percorrer o vetor de funcionarios
-		if ((*it)->getNome() == nomeF) {
-			f1 = *it;
-			funcionarios.erase(it);
+	for (; it != registo_funcionarios.end(); it++) {//Percorrer o vetor de funcionarios
+		if (it->func->getNome() == nomeF) {
+			f1 = it->func;
+			it->atual_funcionario = false;
 			encontrou_funcionario = true;
 			break;
 		}
@@ -145,20 +149,7 @@ Funcionario* CadeiaFarmacias::despedeFuncionario(const string &nomeF) { //TODO i
 	if (!encontrou_funcionario)
 		throw FuncionarioInexistente(nomeF); //Lancamento de uma excecao caso o funcionario nao exista
 
-	for (tabHFunc::iterator it1 = registo_funcionarios.begin(); it1 != registo_funcionarios.end(); it1++) {
-		if ((*it1).func->getNome() == nomeF) {
-			(*it1).atual_funcionario = false;
-			break;
-		}
-	}
 	return f1;
-}
-
-void CadeiaFarmacias::sortFuncionarios(enum tipoSort tipo, bool crescente) {
-	sorting<Funcionario> s;
-	sorting<Funcionario>::tipo = tipo;
-	sorting<Funcionario>::crescente = crescente;
-	s.sort_p(funcionarios);
 }
 
 ostream& operator<<(ostream &output, const CadeiaFarmacias &cF) {
@@ -172,10 +163,12 @@ ostream& operator<<(ostream &output, const CadeiaFarmacias &cF) {
 		output << *(*it) << endl; // *cF.clientes[i]) << endl;
 	} //TODO Nao sei se funciona: vamos ter que testar isto
 
-	output << cF.funcionarios.size() << endl;
-	for (tabHFunc::iterator it = registo_funcionarios.begin(); it != registo_funcionarios.end(); it++) {
-		output << *(*it).func << endl;
-		output << (*it).atual_funcionario << endl;
+	output << cF.registo_funcionarios.size() << endl;
+	vector<FuncPtr> f = cF.getFuncionarios();
+	vector<FuncPtr>::iterator it = f.begin();
+	for (; it != f.end(); it++) {
+		output << *(it->func) << endl;
+		output << it->atual_funcionario << endl;
 	}
 	/*
 	for (size_t i = 0; i < cF.funcionarios.size(); i++) {
@@ -529,18 +522,20 @@ void import(ifstream &f, CadeiaFarmacias &cF) { //Falta corrigir o import
 
 	for (size_t i = 0; i < cF.farmacias.size(); i++) {
 		if (gerentes[i] != 0) {
-			for (vector<Funcionario *>::iterator it = cF.funcionarios.begin(); it != cF.funcionarios.end(); it++) {
-				if ((*it)->getNoContribuinte() == gerentes[i]) {
-					cF.farmacias[i]->setGerente(*it);
+			tabHFunc::iterator itfnc;
+			for (itfnc = cF.registo_funcionarios.begin(); itfnc != cF.registo_funcionarios.end(); itfnc++) {
+				if (itfnc->func->getNoContribuinte() == gerentes[i]) {
+					cF.farmacias[i]->setGerente(itfnc->func);
 					break;
 				}
 			}
 		}
 
 		if (diretoresTecnicos[i] != 0) {
-			for (vector<Funcionario*>::iterator it = cF.funcionarios.begin(); it != cF.funcionarios.end(); it++) {
-				if ((*it)->getNoContribuinte() == diretoresTecnicos[i]) {
-					cF.farmacias[i]->setDiretorTecnico(*it);
+			tabHFunc::iterator itfnc;
+			for (itfnc = cF.registo_funcionarios.begin(); itfnc != cF.registo_funcionarios.end(); itfnc++) {
+				if (itfnc->func->getNoContribuinte() == diretoresTecnicos[i]) {
+					cF.farmacias[i]->setDiretorTecnico(itfnc->func);
 					break;
 				}
 			}

@@ -17,14 +17,16 @@
 
 struct hFuncPtr {
 	int operator()(const FuncPtr & f1) const {
-		return (int)f1.func->getSalario() + (int)f1.func->getNoContribuinte() + f1.func->getNome().size();
+		return (int) f1.func->getSalario() + (int) f1.func->getNoContribuinte()
+				+ f1.func->getNome().size();
 	}
 	bool operator()(const FuncPtr & f1, const FuncPtr & f2) const {
-		return f1.func->getNome() == f2.func->getNome() && f1.func->getNoContribuinte() == f2.func->getNoContribuinte();
+		return f1.func->getNome() == f2.func->getNome()
+				&& f1.func->getNoContribuinte() == f2.func->getNoContribuinte();
 	}
 };
 
-typedef unordered_set<const FuncPtr, hFuncPtr, hFuncPtr> tabHFunc;
+typedef std::unordered_set<const FuncPtr, hFuncPtr, hFuncPtr> tabHFunc;
 
 /**
  * Classe CadeiaFarmacias
@@ -34,7 +36,6 @@ private:
 	std::string nome; //Nome da cadeia de farmacias
 	std::vector<Farmacia*> farmacias; //Vetor de apontadores para objetos do tipo Farmacia
 	std::set<Cliente*, clientesComp> clientes; //Set de apontadores para objetos do tipo Cliente
-	std::vector <Funcionario*> funcionarios; //Vetor de apontadores para objetos do tipo Funcionario
 	tabHFunc registo_funcionarios; //Tabela de dispersao com funcionarios antigos e novos da Cadeia de Farmacias
 public:
 	/**
@@ -88,15 +89,15 @@ public:
 
 	/**
 	 * Metodo que retorna um vetor de clientes
-	 * @return Vetor clientes (atributo da classe)
+	 * @return Vetor com os clientes da cadeia
 	 */
-	std::vector <Cliente*> getClientes() const;
+	std::vector<Cliente*> getClientes() const;
 
 	/**
 	 * Metodo que retorna um vetor de funcionarios
-	 * @return Vetor funcionarios (atributo da classe)
+	 * @return Vetor com os funcionarios da cadeia (atuais e antigos)
 	 */
-	std::vector <Funcionario*> getFuncionarios() const;
+	std::vector<FuncPtr> getFuncionarios() const;
 
 	/**
 	 * Metodo que permite adicionar um apontador para Farmacia ao respetivo vetor
@@ -145,19 +146,13 @@ public:
 	Funcionario* despedeFuncionario(const std::string &nomeF);
 
 	/**
-	 * Metodo que permite ordenar os funcionarios
-	 * @param tipo Enumeracao do tipo tipoSort que permite ao utilizador escolher o modo de ordenacao do vetor
-	 * @param crescente Booleano que permite ao utilizador escolher se quer realizar a ordenacao por ordem crescente ou decrescente
-	 */
-	void sortFuncionarios(enum tipoSort tipo, bool crescente);
-
-	/**
 	 * Overload do operador exportar a cadeia de farmacias
 	 * @param output Variavel para onde se quer exportar(ecra, ficheiro, ...)
 	 * @param cF Cadeia de Farmacias que se quer exportar
 	 * @return Retorna referencia para a variavel para onde se quer exportar
 	 */
-	friend std::ostream& operator<<(std::ostream &output, const CadeiaFarmacias &cF);
+	friend std::ostream& operator<<(std::ostream &output,
+			const CadeiaFarmacias &cF);
 
 	/**
 	 * Metodo para importar a cadeia de farmacias
