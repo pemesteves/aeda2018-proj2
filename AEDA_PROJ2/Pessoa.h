@@ -280,19 +280,19 @@ public:
  * Classe FuncionarioInexistente
  */
 class FuncionarioInexistente {
-	std::string nome; //Nome do Funcionario
+	unsigned long cont; //Nome do Funcionario
 public:
 	/**
 	 * Construtor da classe -> classe utilizada em excecões
-	 * @param nomeF Nome utilizado para a procura do funcionario que nao existe
+	 * @param contF Contribuinte utilizado para a procura do funcionario que nao existe
 	 */
-	FuncionarioInexistente(std::string nomeF) { nome = nomeF; }
+	FuncionarioInexistente(unsigned long contF) { cont = contF; }
 
 	/**
 	 * Metodo que permite obter o nome utilizado na procura do funcionario
 	 * @return Retorna o nome do funcionario inexistente
 	 */
-	std::string getNome() const { return nome; }
+	unsigned long  getCont() const { return cont; }
 };
 
 

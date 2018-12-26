@@ -26,7 +26,7 @@ struct hFuncPtr {
 	}
 };
 
-typedef std::unordered_set<const FuncPtr, hFuncPtr, hFuncPtr> tabHFunc;
+typedef std::unordered_set<FuncPtr, hFuncPtr, hFuncPtr> tabHFunc;
 
 /**
  * Classe CadeiaFarmacias
@@ -133,17 +133,36 @@ public:
 	Cliente* removeCliente(const std::string &nomeC);
 
 	/**
-	 * Metodo que permite adicionar um apontador para Funcionario ao respetivo vetor
-	 * @param funcionario Apontador para objeto do tipo Funcionario que sera adicionado ao vetor funcionarios
+	 * Metodo que permite adicionar um Funcionario a Cadeia de Farmacias
+	 * @param funcionario Objeto do tipo FuncPtr que sera adicionado a tabela de dispersao de funcionarios
+	 * @param atual_funcionario Booleano que indica se o funcionario a adicionar trabalha atualmente na cadeia ou e um funcionario antigo
+	 * @return Retorna true se o funcionario foi adicionado, ou seja, se nao existia nenhum funcionario com o mesmo numero de contribuinte, e false caso contrario
 	 */
-	void addFuncionario(Funcionario* funcionario, bool atual_funcionario);
+	bool addFuncionario(Funcionario* funcionario, bool atual_funcionario);
 
 	/**
-	 * Metodo que permite despedir o Funcionario. Remove-o do seu vetor e coloca-o como antigo funcionario na tabela de dispersao
-	 * @param nomeF Nome do funcionario que sera despedido
+	 * Metodo que permite obter os funcionarios antigos da cadeia
+	 * @return Vetor de apontadores para os antigos funcionarios da cadeia
+	 */
+	std::vector<Funcionario*> getFuncionariosAntigos() const;
+
+	/**
+	 * Metodo que permite obter os funcionarios atuais da cadeia
+	 * @return Vetor de apontadores para os atuais funcionarios da cadeia
+	 */
+	std::vector<Funcionario*> getFuncionariosAtuais() const;
+
+	/**
+	 * Metodo que imprime no ecra os dados dos funcionarios antigos
+	 */
+	void mostrarFuncionariosAntigos() const;
+
+	/**
+	 * Metodo que permite despedir o Funcionario. Coloca-o como antigo funcionario na tabela de dispersao
+	 * @param contF Numero de contribuinte do funcionario que sera despedido
 	 * @return Retorna um apontador para o Funcionario despedido ou, se este nao existir, lanca uma excecao do tipo FuncionarioInexistente
 	 */
-	Funcionario* despedeFuncionario(const std::string &nomeF);
+	Funcionario* despedeFuncionario(const unsigned long contF);
 
 	/**
 	 * Overload do operador exportar a cadeia de farmacias

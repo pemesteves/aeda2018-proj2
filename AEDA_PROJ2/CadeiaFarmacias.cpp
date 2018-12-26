@@ -126,20 +126,63 @@ Cliente* CadeiaFarmacias::removeCliente(const string &nomeC) {
 	throw ClienteInexistente(nomeC); //Lançamento de uma excecao caso o cliente nao exista
 }
 
-void CadeiaFarmacias::addFuncionario(Funcionario* funcionario, bool atual_funcionario = true) {
+bool CadeiaFarmacias::addFuncionario(Funcionario* funcionario, bool atual_funcionario=true) {
 	FuncPtr f;
 	f.func = funcionario;
 	f.atual_funcionario = atual_funcionario;
+	tabHFunc::iterator it = registo_funcionarios.begin();
+	for (; it != registo_funcionarios.end(); it++) {//Percorrer o vetor de funcionarios
+		if (it->func->getNoContribuinte() == funcionario->getNoContribuinte()) {
+			return false;
+
+		}
+	}
 	registo_funcionarios.insert(f);
+	return true;
 }
 
-Funcionario* CadeiaFarmacias::despedeFuncionario(const string &nomeF) { //TODO implementar metodo que percorre todas as farmacias e retira o gerente e diretor tecnico caso este seja despedido
+vector<Funcionario*> CadeiaFarmacias::getFuncionariosAntigos() const{
+	tabHFunc::const_iterator it = registo_funcionarios.begin();
+	vector<Funcionario*> v;
+	for (; it != registo_funcionarios.end(); it++) {
+		if(!it->atual_funcionario){
+			v.push_back(it->func);
+		}
+	}
+	return v;
+}
+
+vector<Funcionario*> CadeiaFarmacias::getFuncionariosAtuais() const{
+	tabHFunc::const_iterator it = registo_funcionarios.begin();
+	vector<Funcionario*> v;
+	for (; it != registo_funcionarios.end(); it++) {
+		if(it->atual_funcionario){
+			v.push_back(it->func);
+		}
+	}
+	return v;
+}
+
+void CadeiaFarmacias::mostrarFuncionariosAntigos() const{
+	vector<Funcionario*> v = getFuncionariosAntigos();
+	for(size_t i=0; i<v.size(); i++){
+		cout << "Nome: " << v.at(i)->getNome() << endl;
+		cout << "Contribuinte: " << v.at(i)->getNoContribuinte() << endl;
+		cout << "Ultimo cargo exercido: " << v.at(i)->getCargo() << endl;
+		cout << "Ultimo salario: " << v.at(i)->getSalario() << endl;
+
+	}
+}
+
+
+Funcionario* CadeiaFarmacias::despedeFuncionario(const unsigned long contF) {
 	tabHFunc::iterator it = registo_funcionarios.begin();
 	Funcionario* f1;
 	bool encontrou_funcionario = false;
-	for (; it != registo_funcionarios.end(); it++) {//Percorrer o vetor de funcionarios
-		if (it->func->getNome() == nomeF) {
+	for (; it != registo_funcionarios.end(); it++) {//Percorrer o registo de funcionarios
+		if (it->func->getNoContribuinte() == contF) {
 			f1 = it->func;
+			it->func->setFarmacia(NULL);
 			it->atual_funcionario = false;
 			encontrou_funcionario = true;
 			break;
@@ -147,7 +190,19 @@ Funcionario* CadeiaFarmacias::despedeFuncionario(const string &nomeF) { //TODO i
 	}
 
 	if (!encontrou_funcionario)
-		throw FuncionarioInexistente(nomeF); //Lancamento de uma excecao caso o funcionario nao exista
+		throw FuncionarioInexistente(contF); //Lancamento de uma excecao caso o funcionario nao exista
+
+	vector<Farmacia*>::iterator itf = farmacias.begin();
+
+	for(; itf != farmacias.end(); itf++){
+		if((*itf)->getDiretorTecnico()->getNoContribuinte() == contF){
+			(*itf)->setDiretorTecnico(NULL);
+		}
+		if((*itf)->getGerente()->getNoContribuinte() == contF){
+			(*itf)->setGerente(NULL);
+		}
+
+	}
 
 	return f1;
 }

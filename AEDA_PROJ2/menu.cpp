@@ -33,12 +33,14 @@ void menuGerirCadeia() {
 	cout << "7. Ver clientes." << endl;
 	cout << "8. Adicionar Funcionario." << endl;
 	cout << "9. Despedir Funcionario." << endl;
-	cout << "10. Ver funcionarios." << endl;
-	cout << "11. Ver dados da cadeia." << endl;
-	cout << "12. Gerir Farmacia." << endl;
-	cout << "13. Gerir Funcionario." << endl;
-	cout << "14. Gerir Cliente." << endl;
-	cout << "15. Sair." << endl;
+	cout << "10. Ver todos os funcionarios." << endl;
+	cout << "11. Ver funcinarios atuais." << endl;
+	cout << "12. Ver funcionarios antigos." << endl;
+	cout << "13. Ver dados da cadeia." << endl;
+	cout << "14. Gerir Farmacia." << endl;
+	cout << "15. Gerir Funcionario." << endl;
+	cout << "16. Gerir Cliente." << endl;
+	cout << "17. Sair." << endl;
 }
 
 void menuFarmacia() {
@@ -131,7 +133,7 @@ int main() {
 	}
 
 	do {
-	menu_cadeia:
+		menu_cadeia:
 
 		menuGerirCadeia();
 		do {
@@ -298,40 +300,65 @@ int main() {
 				}
 			} while (cin.fail());
 			Funcionario *f = new Funcionario(nome, morada, contribuinte);
-			cadeia.addFuncionario(f, true);
+			if(!cadeia.addFuncionario(f,true)){
+				cout << "Funcionario com contribuinte " << contribuinte << " ja existe." << endl;
+			}
+			else
+				cout << "Funcionario adicionado com sucesso." << endl;
 			break;
 		}
 		case 9: {
-			cout << "Nome do Funcionario a despedir: ";
+			cout << "Numero de contribuinte do Funcionario a despedir: ";
 			cin.clear();
 			cin.ignore(10000, '\n');
-			getline(cin, nome);
+			unsigned long contribuinte;
+			do {
+				cin >> contribuinte;
+				if (cin.fail()) {
+					cin.clear();
+					cin.ignore(10000, '\n');
+					cout << "Contribuinte Invalido. Tente outra vez: ";
+				}
+			} while (cin.fail());
 			try {
 				Funcionario *f;
-				f = cadeia.despedeFuncionario(nome);
-				cout << "Funcionario " << f->getNome() << " despedido" << endl;
+				f = cadeia.despedeFuncionario(contribuinte);
+				cout << "Funcionario " << f->getNoContribuinte() << " despedido" << endl;
 			}
 			catch (FuncionarioInexistente &e) {
-				cout << "Funcionario " << e.getNome() << " inexistente" << endl;
+				cout << "Funcionario " << e.getCont() << " inexistente" << endl;
 			}
 			break;
 		}
 		case 10: {
 			vector<FuncPtr> v = cadeia.getFuncionarios();
-			for (size_t i = 0; i < cadeia.getFuncionarios().size(); i++) {
+			for (size_t i = 0; i < v.size(); i++) {
 				v.at(i).func->showInfo();
 				cout << endl;
 			}
 			break;
 		}
-		case 11: {
+		case 11:{
+			vector<Funcionario*> v = cadeia.getFuncionariosAtuais();
+			for (size_t i = 0; i < cadeia.getFuncionariosAtuais().size(); i++) {
+				v.at(i)->showInfo();
+				cout << endl;
+			}
+			break;
+		}
+		case 12:{
+			cadeia.mostrarFuncionariosAntigos();
+			cout << endl;
+			break;
+		}
+		case 13: {
 			cout << "Cadeia de Farmacias " << cadeia.getNome() << endl;
 			cout << "	Numero de Farmacias: " << cadeia.getNumFarmacias() << endl;
 			cout << "	Numero de Funcionarios: " << cadeia.getNumFuncionarios() << endl;
 			cout << "	Numero de Clientes: " << cadeia.getNumClientes() << endl << endl;
 			break;
 		}
-		case 12: {
+		case 14: {
 			cout << endl << "Nome da Farmacia: ";
 			cin.clear();
 			cin.ignore(10000, '\n');
@@ -348,7 +375,7 @@ int main() {
 				break;
 			}
 			do {
-			menu_farmacia:
+				menu_farmacia:
 
 				menuFarmacia();
 				do {
@@ -837,21 +864,32 @@ int main() {
 			} while (true);
 			break;
 		}
-		case 13: {
-			cout << endl << "Nome do Funcionario: ";
+		case 15: {
+			cout << endl << "Numero de Contribuinte do Funcionario: ";
 			cin.clear();
 			cin.ignore(10000, '\n');
-			getline(cin, nome);
+			unsigned long cont;
+			do {
+				cin >> cont;
+				if (cin.fail()) {
+					cin.clear();
+					cin.ignore(10000, '\n');
+					cout << "Contribuinte Invalido. Tente outra vez: ";
+				}
+			} while (cin.fail());
 			vector<FuncPtr> v = cadeia.getFuncionarios();
 			vector<FuncPtr>::iterator func;
 			for (func = v.begin(); func != v.end(); func++) {
-				if (func->func->getNome() == nome)
+				if (func->func->getNoContribuinte() == cont)
 					break;
 			}
 
 			if (func == v.end()) {
-				cout << "Funcionario " << nome << " inexistente" << endl;
+				cout << "Funcionario " << cont << " inexistente." << endl;
 				break;
+			}
+			if(!func->atual_funcionario){
+				cout << "Funcionario " << cont << " nao trabalha atualmente na cadeia." << endl;
 			}
 
 			do {
@@ -934,7 +972,7 @@ int main() {
 
 			break;
 		}
-		case 14: {
+		case 16: {
 			cout << endl << "Nome do Cliente: ";
 			cin.clear();
 			cin.ignore(10000, '\n');
@@ -993,7 +1031,7 @@ int main() {
 			} while (true);
 			break;
 		}
-		case 15: {
+		case 17: {
 			string op;
 			cout << endl << "Deseja guardar as alteracoes? (S / N)";
 			cin.clear();
@@ -1016,7 +1054,7 @@ int main() {
 
 
 
-sairDoPrograma:
+	sairDoPrograma:
 	return 0;
 }
 
