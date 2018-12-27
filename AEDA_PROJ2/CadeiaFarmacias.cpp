@@ -207,6 +207,20 @@ Funcionario* CadeiaFarmacias::despedeFuncionario(const unsigned long contF) {
 	return f1;
 }
 
+int CadeiaFarmacias::contratarFuncAntigo(unsigned long contF){
+	tabHFunc::iterator it = registo_funcionarios.begin();
+	for(; it!=registo_funcionarios.end(); it++){
+		if(it->func->getNoContribuinte() == contF){
+			if(it->atual_funcionario)
+				return 1;
+			it->atual_funcionario = true;
+			return 0;
+		}
+	}
+
+	return 2;
+}
+
 ostream& operator<<(ostream &output, const CadeiaFarmacias &cF) {
 	output << cF.farmacias.size() << endl;
 	for (size_t i = 0; i < cF.farmacias.size(); i++) {

@@ -164,6 +164,13 @@ public:
 	 */
 	Funcionario* despedeFuncionario(const unsigned long contF);
 
+	/*
+	 * Metodo que permite voltar a contratar um funcionario antigo
+	 * @param contF Numero de contribuinte do funcionario que vai ser contratado
+	 * @return Retorna 0 se o funcionario foi contratado com sucesso (se o contribuinte correspondia a um funcionario antigo da cadeia), 1 se o contribuinte corresponde a um funcionario atual da cadeia e portanto nao pode voltar a ser contratado, e 2 se o contribuinte nao corresponde a um funcionario, atual ou antigo, da cadeia
+	 */
+	int contratarFuncAntigo(unsigned long contF);
+
 	/**
 	 * Overload do operador exportar a cadeia de farmacias
 	 * @param output Variavel para onde se quer exportar(ecra, ficheiro, ...)

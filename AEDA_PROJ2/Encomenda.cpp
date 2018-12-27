@@ -20,19 +20,19 @@ Encomenda::Encomenda(std::string fornecedor, unsigned long prod, unsigned quant)
 	codigo_sequencial++;
 }
 
-std::string Encomenda::getFornecedor(){
+std::string Encomenda::getFornecedor() const{
 	return fornecedor;
 }
 
-unsigned long Encomenda::getCodigo(){
+unsigned long Encomenda::getCodigo() const{
 	return codigo;
 }
 
-unsigned long Encomenda::getProd(){
+unsigned long Encomenda::getProd() const{
 	return prod;
 }
 
-unsigned Encomenda::getQuant(){
+unsigned Encomenda::getQuant() const{
 	return quant;
 }
 

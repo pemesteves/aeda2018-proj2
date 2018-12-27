@@ -32,15 +32,16 @@ void menuGerirCadeia() {
 	cout << "6. Remover Cliente." << endl;
 	cout << "7. Ver clientes." << endl;
 	cout << "8. Adicionar Funcionario." << endl;
-	cout << "9. Despedir Funcionario." << endl;
-	cout << "10. Ver todos os funcionarios." << endl;
-	cout << "11. Ver funcinarios atuais." << endl;
-	cout << "12. Ver funcionarios antigos." << endl;
-	cout << "13. Ver dados da cadeia." << endl;
-	cout << "14. Gerir Farmacia." << endl;
-	cout << "15. Gerir Funcionario." << endl;
-	cout << "16. Gerir Cliente." << endl;
-	cout << "17. Sair." << endl;
+	cout << "9. Contratar Funcionario antigo." << endl;
+	cout << "10. Despedir Funcionario." << endl;
+	cout << "11. Ver todos os funcionarios." << endl;
+	cout << "12. Ver funcinarios atuais." << endl;
+	cout << "13. Ver funcionarios antigos." << endl;
+	cout << "14. Ver dados da cadeia." << endl;
+	cout << "15. Gerir Farmacia." << endl;
+	cout << "16. Gerir Funcionario." << endl;
+	cout << "17. Gerir Cliente." << endl;
+	cout << "18. Sair." << endl;
 }
 
 void menuFarmacia() {
@@ -308,6 +309,28 @@ int main() {
 			break;
 		}
 		case 9: {
+			cout << "Numero de contribuinte do Funcionario a contratar: ";
+			unsigned long contribuinte;
+			do {
+				cin >> contribuinte;
+				if (cin.fail()) {
+					cin.clear();
+					cin.ignore(10000, '\n');
+					cout << "Contribuinte Invalido. Tente outra vez: ";
+				}
+			} while (cin.fail());
+
+			int n = cadeia.contratarFuncAntigo(contribuinte);
+
+			if(n==0)
+				cout << "Funcionario contratado com sucesso." << endl;
+			else if(n==1)
+				cout << "Funcionario ja trabalha na cadeia." << endl;
+			else
+				cout << "Funcionario " << contribuinte << " nao encontrado no registo." << endl;
+			break;
+		}
+		case 10: {
 			cout << "Numero de contribuinte do Funcionario a despedir: ";
 			cin.clear();
 			cin.ignore(10000, '\n');
@@ -330,7 +353,7 @@ int main() {
 			}
 			break;
 		}
-		case 10: {
+		case 11: {
 			vector<FuncPtr> v = cadeia.getFuncionarios();
 			for (size_t i = 0; i < v.size(); i++) {
 				v.at(i).func->showInfo();
@@ -338,7 +361,7 @@ int main() {
 			}
 			break;
 		}
-		case 11:{
+		case 12:{
 			vector<Funcionario*> v = cadeia.getFuncionariosAtuais();
 			for (size_t i = 0; i < cadeia.getFuncionariosAtuais().size(); i++) {
 				v.at(i)->showInfo();
@@ -346,19 +369,19 @@ int main() {
 			}
 			break;
 		}
-		case 12:{
+		case 13:{
 			cadeia.mostrarFuncionariosAntigos();
 			cout << endl;
 			break;
 		}
-		case 13: {
+		case 14: {
 			cout << "Cadeia de Farmacias " << cadeia.getNome() << endl;
 			cout << "	Numero de Farmacias: " << cadeia.getNumFarmacias() << endl;
 			cout << "	Numero de Funcionarios: " << cadeia.getNumFuncionarios() << endl;
 			cout << "	Numero de Clientes: " << cadeia.getNumClientes() << endl << endl;
 			break;
 		}
-		case 14: {
+		case 15: {
 			cout << endl << "Nome da Farmacia: ";
 			cin.clear();
 			cin.ignore(10000, '\n');
@@ -864,7 +887,7 @@ int main() {
 			} while (true);
 			break;
 		}
-		case 15: {
+		case 16: {
 			cout << endl << "Numero de Contribuinte do Funcionario: ";
 			cin.clear();
 			cin.ignore(10000, '\n');
@@ -972,7 +995,7 @@ int main() {
 
 			break;
 		}
-		case 16: {
+		case 17: {
 			cout << endl << "Nome do Cliente: ";
 			cin.clear();
 			cin.ignore(10000, '\n');
@@ -1031,7 +1054,7 @@ int main() {
 			} while (true);
 			break;
 		}
-		case 17: {
+		case 18: {
 			string op;
 			cout << endl << "Deseja guardar as alteracoes? (S / N)";
 			cin.clear();
