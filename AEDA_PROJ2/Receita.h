@@ -1,8 +1,8 @@
 /**
  * Header File que contem a classe Receita
  *
- * @author Marcia, Pedro e Rita
- * @date Novembro, 2018
+ * @author Marcia e Pedro
+ * @date Dezembro, 2018
  */
 
 #ifndef RECEITA_H

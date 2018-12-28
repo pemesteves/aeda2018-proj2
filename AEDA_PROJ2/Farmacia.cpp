@@ -358,7 +358,7 @@ void Farmacia::setVendas(vector<Venda*> v) {
 	this->vendas = v;
 }
 
-std::vector<ProdutoStock> Farmacia::getProdsMenorQuant(unsigned N) {
+vector<ProdutoStock> Farmacia::getProdsMenorQuant(unsigned N) {
 	vector<ProdutoStock> stocktmp = getStock();
 	vector<ProdutoStock> v;
 
@@ -368,6 +368,37 @@ std::vector<ProdutoStock> Farmacia::getProdsMenorQuant(unsigned N) {
 	}
 
 	return v;
+}
+
+void Farmacia::criaEncomenda(string fornecedor, unsigned N, unsigned quantidade_encomenda){
+	vector<ProdutoStock> v = getProdsMenorQuant(N);
+	for(vector<ProdutoStock>::iterator it = v.begin(); it != v.end(); it++){
+		Encomenda e(fornecedor, (*it).getProd()->getCodigo(), quantidade_encomenda, (*it).getQuant());
+		encomendas.push(e);
+	}
+}
+
+void Farmacia::aviaEncomendas(unsigned num_encomendas){
+	priority_queue<ProdutoStock> s;
+
+	while(num_encomendas > 0){
+		Encomenda e = encomendas.top();
+		encomendas.pop();
+
+		ProdutoStock p = stock.top();
+		p.setQuant(p.getQuant() + e.getQuant());
+		s.push(p);
+		stock.pop();
+
+		num_encomendas--;
+	}
+
+	while(!stock.empty()){
+		s.push(stock.top());
+		stock.pop();
+	}
+
+	stock = s;
 }
 
 

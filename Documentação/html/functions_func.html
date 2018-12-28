@@ -74,7 +74,7 @@ $(function() {
 : <a class="el" href="class_cadeia_farmacias.html#a292e72ffac82bddd9d2a3a44130c8963">CadeiaFarmacias</a>
 </li>
 <li>addFuncionario()
-: <a class="el" href="class_cadeia_farmacias.html#a9892b788b73dd7ca879ff6aae6733932">CadeiaFarmacias</a>
+: <a class="el" href="class_cadeia_farmacias.html#a781ec8cb3045b86d6e6f090744f42cab">CadeiaFarmacias</a>
 </li>
 <li>addProduto()
 : <a class="el" href="class_receita.html#a116671c6c18237391eb8779443deb7eb">Receita</a>
@@ -118,6 +118,9 @@ $(function() {
 <li>Data()
 : <a class="el" href="class_data.html#af11f741cb7f587e2e495452a8905a22a">Data</a>
 </li>
+<li>despedeFuncionario()
+: <a class="el" href="class_cadeia_farmacias.html#aa332da4d6d93528d3d62faf148f5c0d8">CadeiaFarmacias</a>
+</li>
 </ul>
 
 
@@ -145,7 +148,7 @@ $(function() {
 : <a class="el" href="class_funcionario.html#a2a1f1852f07edb013274306226dbcecc">Funcionario</a>
 </li>
 <li>FuncionarioInexistente()
-: <a class="el" href="class_funcionario_inexistente.html#a462e462dfc777af8459a8b5ffc8ad244">FuncionarioInexistente</a>
+: <a class="el" href="class_funcionario_inexistente.html#a87d6a7b0dfc8a672b79ab5b7c453553f">FuncionarioInexistente</a>
 </li>
 </ul>
 
@@ -167,6 +170,9 @@ $(function() {
 <li>getCodigo()
 : <a class="el" href="class_produto.html#a37ba7a9d3e04a25ad3f102932e00c196">Produto</a>
 , <a class="el" href="class_venda.html#ae48b64c5a19dafc528d2581502bf961e">Venda</a>
+</li>
+<li>getCont()
+: <a class="el" href="class_funcionario_inexistente.html#a43c7a0c5bf21ec664ab46c2db9112dc4">FuncionarioInexistente</a>
 </li>
 <li>getData()
 : <a class="el" href="class_venda.html#a082403cd6bc694a2c9f2f6c013307188">Venda</a>
@@ -190,7 +196,13 @@ $(function() {
 : <a class="el" href="class_cadeia_farmacias.html#aa7730e98a92a09a855e2f0695f4203a4">CadeiaFarmacias</a>
 </li>
 <li>getFuncionarios()
-: <a class="el" href="class_cadeia_farmacias.html#a5d5c27dfbd0c318ffbc757e5ea1d91ec">CadeiaFarmacias</a>
+: <a class="el" href="class_cadeia_farmacias.html#ad98dc67bc64198fe6d9210904ddbdbf9">CadeiaFarmacias</a>
+</li>
+<li>getFuncionariosAntigos()
+: <a class="el" href="class_cadeia_farmacias.html#a8f1384ca9e38c53bf305b51a79fe9117">CadeiaFarmacias</a>
+</li>
+<li>getFuncionariosAtuais()
+: <a class="el" href="class_cadeia_farmacias.html#a694b1f5a364ecdfd9f1578006c154bb6">CadeiaFarmacias</a>
 </li>
 <li>getGerente()
 : <a class="el" href="class_farmacia.html#ade65919e3c0c77fc3bd071986c76c95b">Farmacia</a>
@@ -223,7 +235,6 @@ $(function() {
 , <a class="el" href="class_cliente_inexistente.html#a84fa61086416fafe436639cd54a297b1">ClienteInexistente</a>
 , <a class="el" href="class_farmacia.html#a50a9a2fac678c724f67b75e2e1a9f936">Farmacia</a>
 , <a class="el" href="class_farmacia_inexistente.html#ae54305f0ff431b43722334cea4b76512">FarmaciaInexistente</a>
-, <a class="el" href="class_funcionario_inexistente.html#ab0d896bccc705a7ed096fc556006c92d">FuncionarioInexistente</a>
 , <a class="el" href="class_pessoa.html#a8d551db3b19e1f07022adb3793cb8ed7">Pessoa</a>
 , <a class="el" href="class_produto.html#a59a5e4b3c31c7f90b54d89ae4b4686ec">Produto</a>
 , <a class="el" href="class_produto_inexistente.html#a8462b1e57c9df154b7527a3b9b29efdb">ProdutoInexistente</a>
@@ -341,6 +352,9 @@ $(function() {
 , <a class="el" href="class_funcionario.html#a8fd9d4bb390b543b8da570e63d62f6f4">Funcionario</a>
 , <a class="el" href="class_venda.html#ab40631259dc46aa31f2bc986f3e790ff">Venda</a>
 </li>
+<li>mostrarFuncionariosAntigos()
+: <a class="el" href="class_cadeia_farmacias.html#a8d78eb89417e49c41c798ee1e15d7095">CadeiaFarmacias</a>
+</li>
 </ul>
 
 
@@ -384,9 +398,6 @@ $(function() {
 </li>
 <li>removeFarmacia()
 : <a class="el" href="class_cadeia_farmacias.html#a683f5cecbd433a6ea76db19a18ce010a">CadeiaFarmacias</a>
-</li>
-<li>removeFuncionario()
-: <a class="el" href="class_cadeia_farmacias.html#ad96112926066367fb07840329e722c5e">CadeiaFarmacias</a>
 </li>
 <li>removeProduto()
 : <a class="el" href="class_farmacia.html#a277add3a34147a06fe5097a260269814">Farmacia</a>
@@ -451,9 +462,6 @@ $(function() {
 </li>
 <li>sortFarmacias()
 : <a class="el" href="class_cadeia_farmacias.html#a07098c5b2f9c861e57f286625be7ef88">CadeiaFarmacias</a>
-</li>
-<li>sortFuncionarios()
-: <a class="el" href="class_cadeia_farmacias.html#ab7962e6a3a043473c94b0b5eee04a0fb">CadeiaFarmacias</a>
 </li>
 <li>sortVendas()
 : <a class="el" href="class_farmacia.html#a92fa4522a7903aaa97c7ef77f935502e">Farmacia</a>

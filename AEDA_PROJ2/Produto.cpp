@@ -135,6 +135,6 @@ void ProdutoStock::setQuant(unsigned quant){
 }
 
 bool ProdutoStock::operator<(const ProdutoStock &prod1) const{
-	return (this->quant < prod1.getQuant());
+	return (this->quant > prod1.getQuant());
 }
 

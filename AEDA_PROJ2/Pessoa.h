@@ -1,8 +1,8 @@
 /**
- * Header File que contem as classes Produto, Medicamento, PassivelReceita e ProdutoInexistente
+ * Header File que contem as classes Pessoa, Funcionario, Cliente, ClienteInexistente e FuncionarioInexistente
  *
- * @author Marcia, Pedro e Rita
- * @date Novembro, 2018
+ * @author Marcia e Pedro
+ * @date Dezembro, 2018
  */
 
 #ifndef PESSOA_H

@@ -1,8 +1,8 @@
 /**
  * Header File que contem as classes Produto e ProdutoInexistente
  *
- * @author Marcia, Pedro e Rita
- * @date Novembro, 2018
+ * @author Marcia e Pedro
+ * @date Dezembro, 2018
  */
 #ifndef PRODUTO_H
 #define PRODUTO_H
@@ -10,9 +10,9 @@
 #include <string>
 #include <iostream>
 
- /**
-  * Classe Produto
-  */
+/**
+ * Classe Produto
+ */
 class Produto {
 protected:
 	unsigned long codigo; //Codigo do Produto
@@ -153,14 +153,44 @@ public:
 };
 
 class ProdutoStock{
-	Produto* prod;
-	unsigned quant;
+	Produto* prod; //Apontador para objeto da classe Produto
+	unsigned quant; //Quantidade do Produto em stock
 public:
-	ProdutoStock(){prod = NULL; quant = 0;};
+	/**
+	 * Construtor da classe ProdutoStock: inicializa o produto a NULL e quantidade a 0
+	 */
+	ProdutoStock(){prod = NULL; quant = 0;}
+
+	/**
+	 * Construtor da classe ProdutoStock com parametros dados
+	 * @param prod Apontador para objeto da classe Produto
+	 * @param quant Quantidade do produto a colocar em stock
+	 */
 	ProdutoStock(Produto* prod, unsigned quant);
+
+	/**
+	 * Metodo para obter a quantidade do Produto em stock
+	 * @return Quantidade do Prodto em stock
+	 */
 	unsigned getQuant() const;
+
+	/**
+	 * Metodo para obter o Produto em stock
+	 * @return Apontador para o Produto em stock
+	 */
 	Produto* getProd() const;
+
+	/**
+	 * Metodo que permite alterar a quantidade do Produto em stock
+	 * @param quant Quantidade do Produto em stock
+	 */
 	void setQuant(unsigned quant);
+
+	/**
+	 * Operador menor: Compara dois produtos em stock com regras pre-definidas
+	 * @param prod1 Produto que ira ser comparado
+	 * @return Retorna true se o ProdutoStock for menor que prod1. Caso contrario, retorna false
+	 */
 	bool operator<(const ProdutoStock &prod1) const;
 };
 

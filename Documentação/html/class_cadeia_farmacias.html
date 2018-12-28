@@ -92,8 +92,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aa7730e98a92a09a855e2f0695f4203a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a28bb71eaac01460ea524dcda28785847"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_cliente.html">Cliente</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cadeia_farmacias.html#a28bb71eaac01460ea524dcda28785847">getClientes</a> () const</td></tr>
 <tr class="separator:a28bb71eaac01460ea524dcda28785847"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5d5c27dfbd0c318ffbc757e5ea1d91ec"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_funcionario.html">Funcionario</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cadeia_farmacias.html#a5d5c27dfbd0c318ffbc757e5ea1d91ec">getFuncionarios</a> () const</td></tr>
-<tr class="separator:a5d5c27dfbd0c318ffbc757e5ea1d91ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad98dc67bc64198fe6d9210904ddbdbf9"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="struct_func_ptr.html">FuncPtr</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cadeia_farmacias.html#ad98dc67bc64198fe6d9210904ddbdbf9">getFuncionarios</a> () const</td></tr>
+<tr class="separator:ad98dc67bc64198fe6d9210904ddbdbf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a292e72ffac82bddd9d2a3a44130c8963"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cadeia_farmacias.html#a292e72ffac82bddd9d2a3a44130c8963">addFarmacia</a> (<a class="el" href="class_farmacia.html">Farmacia</a> *farmacia)</td></tr>
 <tr class="separator:a292e72ffac82bddd9d2a3a44130c8963"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a683f5cecbd433a6ea76db19a18ce010a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_farmacia.html">Farmacia</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cadeia_farmacias.html#a683f5cecbd433a6ea76db19a18ce010a">removeFarmacia</a> (const std::string &amp;nomeF)</td></tr>
@@ -104,12 +104,19 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aa231a2857a066ac7c3ace713d7768f20"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1673699ebef1e8534522f5c2f0178144"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_cliente.html">Cliente</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cadeia_farmacias.html#a1673699ebef1e8534522f5c2f0178144">removeCliente</a> (const std::string &amp;nomeC)</td></tr>
 <tr class="separator:a1673699ebef1e8534522f5c2f0178144"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9892b788b73dd7ca879ff6aae6733932"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cadeia_farmacias.html#a9892b788b73dd7ca879ff6aae6733932">addFuncionario</a> (<a class="el" href="class_funcionario.html">Funcionario</a> *funcionario)</td></tr>
-<tr class="separator:a9892b788b73dd7ca879ff6aae6733932"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad96112926066367fb07840329e722c5e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_funcionario.html">Funcionario</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cadeia_farmacias.html#ad96112926066367fb07840329e722c5e">removeFuncionario</a> (const std::string &amp;nomeF)</td></tr>
-<tr class="separator:ad96112926066367fb07840329e722c5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab7962e6a3a043473c94b0b5eee04a0fb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cadeia_farmacias.html#ab7962e6a3a043473c94b0b5eee04a0fb">sortFuncionarios</a> (enum tipoSort tipo, bool crescente)</td></tr>
-<tr class="separator:ab7962e6a3a043473c94b0b5eee04a0fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a781ec8cb3045b86d6e6f090744f42cab"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cadeia_farmacias.html#a781ec8cb3045b86d6e6f090744f42cab">addFuncionario</a> (<a class="el" href="class_funcionario.html">Funcionario</a> *funcionario, bool atual_funcionario)</td></tr>
+<tr class="separator:a781ec8cb3045b86d6e6f090744f42cab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f1384ca9e38c53bf305b51a79fe9117"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_funcionario.html">Funcionario</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cadeia_farmacias.html#a8f1384ca9e38c53bf305b51a79fe9117">getFuncionariosAntigos</a> () const</td></tr>
+<tr class="separator:a8f1384ca9e38c53bf305b51a79fe9117"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a694b1f5a364ecdfd9f1578006c154bb6"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_funcionario.html">Funcionario</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cadeia_farmacias.html#a694b1f5a364ecdfd9f1578006c154bb6">getFuncionariosAtuais</a> () const</td></tr>
+<tr class="separator:a694b1f5a364ecdfd9f1578006c154bb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d78eb89417e49c41c798ee1e15d7095"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cadeia_farmacias.html#a8d78eb89417e49c41c798ee1e15d7095">mostrarFuncionariosAntigos</a> () const</td></tr>
+<tr class="separator:a8d78eb89417e49c41c798ee1e15d7095"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa332da4d6d93528d3d62faf148f5c0d8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_funcionario.html">Funcionario</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cadeia_farmacias.html#aa332da4d6d93528d3d62faf148f5c0d8">despedeFuncionario</a> (const unsigned long contF)</td></tr>
+<tr class="separator:aa332da4d6d93528d3d62faf148f5c0d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1de27f14ede44a77f42d299c9e85eb8c"><td class="memItemLeft" align="right" valign="top"><a id="a1de27f14ede44a77f42d299c9e85eb8c"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>contratarFuncAntigo</b> (unsigned long contF)</td></tr>
+<tr class="separator:a1de27f14ede44a77f42d299c9e85eb8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
 Friends</h2></td></tr>
@@ -212,27 +219,64 @@ Friends</h2></td></tr>
 
 </div>
 </div>
-<a id="a9892b788b73dd7ca879ff6aae6733932"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9892b788b73dd7ca879ff6aae6733932">&#9670;&nbsp;</a></span>addFuncionario()</h2>
+<a id="a781ec8cb3045b86d6e6f090744f42cab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a781ec8cb3045b86d6e6f090744f42cab">&#9670;&nbsp;</a></span>addFuncionario()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void CadeiaFarmacias::addFuncionario </td>
+          <td class="memname">bool CadeiaFarmacias::addFuncionario </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="class_funcionario.html">Funcionario</a> *&#160;</td>
-          <td class="paramname"><em>funcionario</em></td><td>)</td>
+          <td class="paramname"><em>funcionario</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>atual_funcionario</em> = <code>true</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Metodo que permite adicionar um <a class="el" href="class_funcionario.html">Funcionario</a> a Cadeia de Farmacias </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">funcionario</td><td>Objeto do tipo <a class="el" href="struct_func_ptr.html">FuncPtr</a> que sera adicionado a tabela de dispersao de funcionarios </td></tr>
+    <tr><td class="paramname">atual_funcionario</td><td>Booleano que indica se o funcionario a adicionar trabalha atualmente na cadeia ou e um funcionario antigo </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Retorna true se o funcionario foi adicionado, ou seja, se nao existia nenhum funcionario com o mesmo numero de contribuinte, e false caso contrario </dd></dl>
+
+</div>
+</div>
+<a id="aa332da4d6d93528d3d62faf148f5c0d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa332da4d6d93528d3d62faf148f5c0d8">&#9670;&nbsp;</a></span>despedeFuncionario()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_funcionario.html">Funcionario</a> * CadeiaFarmacias::despedeFuncionario </td>
+          <td>(</td>
+          <td class="paramtype">const unsigned long&#160;</td>
+          <td class="paramname"><em>contF</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Metodo que permite adicionar um apontador para <a class="el" href="class_funcionario.html">Funcionario</a> ao respetivo vetor </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Metodo que permite despedir o <a class="el" href="class_funcionario.html">Funcionario</a>. Coloca-o como antigo funcionario na tabela de dispersao </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">funcionario</td><td>Apontador para objeto do tipo <a class="el" href="class_funcionario.html">Funcionario</a> que sera adicionado ao vetor funcionarios </td></tr>
+    <tr><td class="paramname">contF</td><td>Numero de contribuinte do funcionario que sera despedido </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>Retorna um apontador para o <a class="el" href="class_funcionario.html">Funcionario</a> despedido ou, se este nao existir, lanca uma excecao do tipo <a class="el" href="class_funcionario_inexistente.html">FuncionarioInexistente</a> </dd></dl>
 
 </div>
 </div>
@@ -250,7 +294,7 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Metodo que retorna um vetor de clientes </p><dl class="section return"><dt>Returns</dt><dd>Vetor clientes (atributo da classe) </dd></dl>
+<p>Metodo que retorna um vetor de clientes </p><dl class="section return"><dt>Returns</dt><dd>Vetor com os clientes da cadeia </dd></dl>
 
 </div>
 </div>
@@ -272,21 +316,57 @@ Friends</h2></td></tr>
 
 </div>
 </div>
-<a id="a5d5c27dfbd0c318ffbc757e5ea1d91ec"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5d5c27dfbd0c318ffbc757e5ea1d91ec">&#9670;&nbsp;</a></span>getFuncionarios()</h2>
+<a id="ad98dc67bc64198fe6d9210904ddbdbf9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad98dc67bc64198fe6d9210904ddbdbf9">&#9670;&nbsp;</a></span>getFuncionarios()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">vector&lt; <a class="el" href="class_funcionario.html">Funcionario</a> * &gt; CadeiaFarmacias::getFuncionarios </td>
+          <td class="memname">vector&lt; <a class="el" href="struct_func_ptr.html">FuncPtr</a> &gt; CadeiaFarmacias::getFuncionarios </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Metodo que retorna um vetor de funcionarios </p><dl class="section return"><dt>Returns</dt><dd>Vetor funcionarios (atributo da classe) </dd></dl>
+<p>Metodo que retorna um vetor de funcionarios </p><dl class="section return"><dt>Returns</dt><dd>Vetor com os funcionarios da cadeia (atuais e antigos) </dd></dl>
+
+</div>
+</div>
+<a id="a8f1384ca9e38c53bf305b51a79fe9117"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f1384ca9e38c53bf305b51a79fe9117">&#9670;&nbsp;</a></span>getFuncionariosAntigos()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">vector&lt; <a class="el" href="class_funcionario.html">Funcionario</a> * &gt; CadeiaFarmacias::getFuncionariosAntigos </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Metodo que permite obter os funcionarios antigos da cadeia </p><dl class="section return"><dt>Returns</dt><dd>Vetor de apontadores para os antigos funcionarios da cadeia </dd></dl>
+
+</div>
+</div>
+<a id="a694b1f5a364ecdfd9f1578006c154bb6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a694b1f5a364ecdfd9f1578006c154bb6">&#9670;&nbsp;</a></span>getFuncionariosAtuais()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">vector&lt; <a class="el" href="class_funcionario.html">Funcionario</a> * &gt; CadeiaFarmacias::getFuncionariosAtuais </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Metodo que permite obter os funcionarios atuais da cadeia </p><dl class="section return"><dt>Returns</dt><dd>Vetor de apontadores para os atuais funcionarios da cadeia </dd></dl>
 
 </div>
 </div>
@@ -362,6 +442,24 @@ Friends</h2></td></tr>
 
 </div>
 </div>
+<a id="a8d78eb89417e49c41c798ee1e15d7095"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d78eb89417e49c41c798ee1e15d7095">&#9670;&nbsp;</a></span>mostrarFuncionariosAntigos()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CadeiaFarmacias::mostrarFuncionariosAntigos </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Metodo que imprime no ecra os dados dos funcionarios antigos </p>
+
+</div>
+</div>
 <a id="a1673699ebef1e8534522f5c2f0178144"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1673699ebef1e8534522f5c2f0178144">&#9670;&nbsp;</a></span>removeCliente()</h2>
 
@@ -409,31 +507,6 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Retorna um apontador para o objeto removido ou, se este nao existir, lanca uma excecao do tipo <a class="el" href="class_farmacia_inexistente.html">FarmaciaInexistente</a> </dd></dl>
-
-</div>
-</div>
-<a id="ad96112926066367fb07840329e722c5e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad96112926066367fb07840329e722c5e">&#9670;&nbsp;</a></span>removeFuncionario()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_funcionario.html">Funcionario</a> * CadeiaFarmacias::removeFuncionario </td>
-          <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>nomeF</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Metodo que permite eliminar o <a class="el" href="class_funcionario.html">Funcionario</a> nomeF do respetivo vetor </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">nomeF</td><td>Nome do funcionario que sera removido do vetor </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Retorna um apontador para o objeto removido ou, se este nao existir, lanca uma excecao do tipo <a class="el" href="class_funcionario_inexistente.html">FuncionarioInexistente</a> </dd></dl>
 
 </div>
 </div>
@@ -487,41 +560,6 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Metodo que permite ordenar as farmacias </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">tipo</td><td>Enumeracao do tipo tipoSort que permite ao utilizador escolher o modo de ordenacao do vetor </td></tr>
-    <tr><td class="paramname">crescente</td><td>Booleano que permite ao utilizador escolher se quer realizar a ordenacao por ordem crescente ou decrescente </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="ab7962e6a3a043473c94b0b5eee04a0fb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab7962e6a3a043473c94b0b5eee04a0fb">&#9670;&nbsp;</a></span>sortFuncionarios()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void CadeiaFarmacias::sortFuncionarios </td>
-          <td>(</td>
-          <td class="paramtype">enum tipoSort&#160;</td>
-          <td class="paramname"><em>tipo</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>crescente</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Metodo que permite ordenar os funcionarios </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">tipo</td><td>Enumeracao do tipo tipoSort que permite ao utilizador escolher o modo de ordenacao do vetor </td></tr>
     <tr><td class="paramname">crescente</td><td>Booleano que permite ao utilizador escolher se quer realizar a ordenacao por ordem crescente ou decrescente </td></tr>
@@ -620,8 +658,8 @@ Friends</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li><a class="el" href="_cadeia_farmacias_8h_source.html">CadeiaFarmacias.h</a></li>
-<li>CadeiaFarmacias.cpp</li>
+<li>C:/Users/ASUS1/Desktop/aeda2018-proj2/AEDA_PROJ2/<a class="el" href="_cadeia_farmacias_8h_source.html">CadeiaFarmacias.h</a></li>
+<li>C:/Users/ASUS1/Desktop/aeda2018-proj2/AEDA_PROJ2/CadeiaFarmacias.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

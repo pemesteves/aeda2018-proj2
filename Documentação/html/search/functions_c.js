@@ -17,6 +17,5 @@ var searchData=
   ['setvendasemreceita',['setVendaSemReceita',['../class_produto.html#a18f54ca06716bcbb3016b1ee84087366',1,'Produto']]],
   ['showinfo',['showInfo',['../class_pessoa.html#a97314f282759a64f2680ac709d1f8c24',1,'Pessoa::showInfo()'],['../class_funcionario.html#a754f2cb4226d557af5f70891a3c8584d',1,'Funcionario::showInfo()'],['../class_cliente.html#a308ef55d331d2a18303df5b14a8e3b66',1,'Cliente::showInfo()'],['../class_produto.html#a582884430e2cac4e5ab74d74f66628be',1,'Produto::showInfo()']]],
   ['sortfarmacias',['sortFarmacias',['../class_cadeia_farmacias.html#a07098c5b2f9c861e57f286625be7ef88',1,'CadeiaFarmacias']]],
-  ['sortfuncionarios',['sortFuncionarios',['../class_cadeia_farmacias.html#ab7962e6a3a043473c94b0b5eee04a0fb',1,'CadeiaFarmacias']]],
   ['sortvendas',['sortVendas',['../class_farmacia.html#a92fa4522a7903aaa97c7ef77f935502e',1,'Farmacia']]]
 ];

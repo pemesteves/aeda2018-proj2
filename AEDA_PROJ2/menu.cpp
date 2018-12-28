@@ -253,6 +253,7 @@ int main() {
 			string distrito;
 			cin.clear();
 			cin.ignore(10000, '\n');
+			cout << "Distrito: ";
 			getline(cin, distrito);
 
 			Cliente *c = new Cliente(nome, morada, contribuinte, distrito);

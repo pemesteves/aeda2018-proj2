@@ -8,14 +8,16 @@ Encomenda::Encomenda(){
 	fornecedor = "";
 	prod = 0;
 	quant = 0;
+	quant_stock = 0;
 	codigo = codigo_sequencial;
 	codigo_sequencial++;
 }
 
-Encomenda::Encomenda(std::string fornecedor, unsigned long prod, unsigned quant){
+Encomenda::Encomenda(std::string fornecedor, unsigned long prod, unsigned quant, unsigned quant_stock){
 	this->fornecedor = fornecedor;
 	this->prod = prod;
 	this->quant = quant;
+	this->quant_stock = quant_stock;
 	codigo = codigo_sequencial;
 	codigo_sequencial++;
 }
@@ -51,6 +53,12 @@ void Encomenda::setQuant(unsigned q){
 void Encomenda::setCodigo(unsigned long c){
 	codigo = c;
 	codigo_sequencial = c++;
+}
+
+bool Encomenda::operator< (const Encomenda &e) const{
+	if(quant_stock > e.getQuant())
+		return true;
+	return false;
 }
 
 

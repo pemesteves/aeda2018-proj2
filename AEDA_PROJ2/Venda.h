@@ -2,8 +2,8 @@
 /**
  * Header File que contem a classe Venda
  *
- * @author Marcia, Pedro e Rita
- * @date Novembro, 2018
+ * @author Marcia e Pedro
+ * @date Dezembro, 2018
  */
 
 #ifndef VENDA_H

@@ -1,8 +1,8 @@
 /**
  * Header File que contem a classe Farmacia e a classe FarmaciaInexistente
  *
- * @author Marcia, Pedro e Rita
- * @date Novembro, 2018
+ * @author Marcia e Pedro
+ * @date Dezembro, 2018
  */
 
 #ifndef FARMACIA_H
@@ -12,6 +12,7 @@
 #include "Pessoa.h"
 #include "Venda.h"
 #include "Data.h"
+#include "Encomenda.h"
 
 #include <vector>
 #include <string>
@@ -31,6 +32,7 @@ private:
 	Funcionario* diretorTecnico; //Apontador para o diretor tecnico da Farmacia(tipo Funcionario)
 	//std::map<Produto, int> produtosVender; //Map cujas keys sao objetos do tipo Produto e os valores sao as quantidades desse produto. Serve para representar os produtos a vender
 	std::priority_queue<ProdutoStock> stock;
+	std::priority_queue<Encomenda> encomendas;
 	std::vector<Venda*> vendas; //Vetor de apontador para objetos do tipo Venda
 public:
 	/**
@@ -255,12 +257,26 @@ public:
 	std::vector<ProdutoStock> getProdsMenorQuant(unsigned N);
 
 	/**
+	 * Metodo que cria uma encomenda para todos os produtos com stock inferior a um valor dado
+	 * @param N Produtos com quantidade inferior a N serao encomendados
+	 * @param quantidade_encomenda Quantidade de produtos a encomendar
+	 */
+	void criaEncomenda(std::string fornecedor, unsigned N, unsigned quantidade_encomenda);
+
+	/**
+	 * Metodo que avia o numero de encomendas especificadas
+	 * @param num_encomendas Numero de encomendas
+	 */
+	void aviaEncomendas(unsigned num_encomendas);
+
+	/**
 	 * Overload do operador << para exportar a farmacia
 	 * @param output Variavel para onde se quer exportar(ecra, ficheiro, ...)
 	 * @param f Farmacia que se quer exportar
 	 * @return Retorna referencia para a variavel para onde se quer exportar
 	 */
 	friend std::ostream& operator<<(std::ostream &output, const Farmacia &f);
+
 };
 
 /**
