@@ -87,6 +87,14 @@ public:
 	 * @return Retorna true se o stock do produto respetivo for superior. Retorna false, caso contrario
 	 */
 	bool operator< (const Encomenda &e) const;
+
+	/**
+	 * Overload do operador << que permite exportar uma encomenda
+	 * @param output Variavel para onde se quer exportar(ecra, ficheiro, ...)
+	 * @param e1 Encomenda que se quer exportar
+	 * @return Retorna referencia para a variavel para onde se quer exportar
+	 */
+	friend std::ostream& operator<<(std::ostream &output, const Encomenda &e1);
 };
 
 #endif

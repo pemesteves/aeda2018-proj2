@@ -61,5 +61,12 @@ bool Encomenda::operator< (const Encomenda &e) const{
 	return false;
 }
 
+std::ostream& operator<<(std::ostream &output, const Encomenda &e1){
+	output << e1.codigo << endl;
+	output << e1.fornecedor << endl;
+	output << e1.prod << endl << e1.quant_stock << endl << e1.quant << endl;
+
+	return output;
+}
 
 
