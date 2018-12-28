@@ -82,6 +82,11 @@ public:
 	void setCodigo(unsigned long c);
 
 	/**
+	 * Metodo que mostra no ecra os dados da encomenda
+	 */
+	void showInfo();
+
+	/**
 	 * Metodo que compara duas encomendas
 	 * @param e Encomenda a ser comparada
 	 * @return Retorna true se o stock do produto respetivo for superior. Retorna false, caso contrario

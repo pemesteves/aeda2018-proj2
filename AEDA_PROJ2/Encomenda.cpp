@@ -55,6 +55,13 @@ void Encomenda::setCodigo(unsigned long c){
 	codigo_sequencial = c++;
 }
 
+void Encomenda::showInfo(){
+	cout << "ENCOMENDA " << codigo << endl;
+	cout << "Fornecedor: "<< fornecedor << endl;
+	cout << "Produto: " << prod << endl;
+	cout << "Quantidade: " << quant << endl;
+}
+
 bool Encomenda::operator< (const Encomenda &e) const{
 	if(quant_stock > e.getQuant())
 		return true;

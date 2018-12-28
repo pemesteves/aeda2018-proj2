@@ -57,7 +57,10 @@ void menuFarmacia() {
 	cout << "8. Ver vendas entre duas datas." << endl;
 	cout << "9. Realizar Venda." << endl;
 	cout << "10. Ordenar Vendas." << endl;
-	cout << "11. Voltar atras." << endl;
+	cout << "11. Encomendar produtos com pouca quantidade disponivel." << endl;
+	cout << "12. Receber Encomendas." << endl;
+	cout << "13. Ver encomendas pendentes." << endl;
+	cout << "14. Voltar atras." << endl;
 }
 
 void menuFuncionario() {
@@ -881,7 +884,69 @@ int main() {
 					}
 					break;
 				}
-				case 11:
+				case 11:{
+					cout << endl << "Qual a quantidade maxima disponivel em stock dos produtos a encomendar? ";
+					cin.clear();
+					cin.ignore(10000, '\n');
+					unsigned n;
+					do {
+						cin >> n;
+						if (cin.fail()) {
+							cin.clear();
+							cin.ignore(10000, '\n');
+							cout << "Quantidade invalida. Tente outra vez: ";
+						}
+					} while (cin.fail());
+
+					cout << "Quantas unidades de cada produto pretende encomendar? " << endl;
+					cin.clear();
+					cin.ignore(10000, '\n');
+					unsigned q;
+					do {
+						cin >> q;
+						if (cin.fail()) {
+							cin.clear();
+							cin.ignore(10000, '\n');
+							cout << "Quantidade invalida. Tente outra vez: ";
+						}
+					} while (cin.fail());
+
+					cout << "Nome do fornecedor: " << endl;
+					string nomefor;
+					cin.clear();
+					cin.ignore(10000, '\n');
+					getline(cin, nomefor);
+					(*frm)->criaEncomenda(nomefor, n, q);
+					cout  << endl << "Encomenda realizada com sucesso." << endl << endl;
+					break;
+				}
+				case 12:{
+					cout << "Quantas encomendas recebeu? ";
+					cin.clear();
+					cin.ignore(10000, '\n');
+					unsigned i;
+					do {
+						cin >> i;
+						if (cin.fail()) {
+							cin.clear();
+							cin.ignore(10000, '\n');
+							cout << "Quantidade invalida. Tente outra vez: ";
+						}
+					} while (cin.fail());
+
+					(*frm)->entregaEncomendas(i);
+					cout << "Encomendas recebidas com sucesso." << endl << endl;
+					break;
+				}
+				case 13:{
+					vector<Encomenda> v= (*frm)->getEncomendas();
+					for(size_t i = 0; i<v.size(); i++){
+						v.at(i).showInfo();
+						cout << endl;
+					}
+					break;
+				}
+				case 14:
 					goto menu_cadeia;
 					break;
 				}
