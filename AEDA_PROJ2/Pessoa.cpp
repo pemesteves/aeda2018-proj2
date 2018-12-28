@@ -195,6 +195,11 @@ unsigned int Cliente::getNumCompras() const {
 	return historialCompras.size();
 }
 
+
+void Cliente::setDistrito(std::string novoDistrito){
+	this->distrito = novoDistrito;
+}
+
 void Cliente::addCompra(Venda* compra) {
 	historialCompras.push_back(compra);
 }

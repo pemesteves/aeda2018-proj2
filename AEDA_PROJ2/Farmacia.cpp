@@ -378,7 +378,7 @@ void Farmacia::criaEncomenda(string fornecedor, unsigned N, unsigned quantidade_
 	}
 }
 
-void Farmacia::aviaEncomendas(unsigned num_encomendas){
+void Farmacia::entregaEncomendas(unsigned num_encomendas = 1){
 	priority_queue<ProdutoStock> s;
 
 	while(num_encomendas > 0){

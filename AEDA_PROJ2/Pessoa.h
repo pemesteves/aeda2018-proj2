@@ -219,6 +219,12 @@ public:
 	std::string getDistrito() const;
 
 	/**
+	 * Metodo para alterar o distrito do Cliente
+	 * @param novoDistrito Novo distrito do Cliente
+	 */
+	void setDistrito(std::string novoDistrito);
+
+	/**
 	 * Metodo para alterar o distrito onde habita o Cliente
 	 * @param Nome do distrito para onde se mudou o Cliente
 	 */

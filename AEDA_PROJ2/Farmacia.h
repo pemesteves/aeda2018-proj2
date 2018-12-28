@@ -264,10 +264,10 @@ public:
 	void criaEncomenda(std::string fornecedor, unsigned N, unsigned quantidade_encomenda);
 
 	/**
-	 * Metodo que avia o numero de encomendas especificadas
+	 * Metodo que entrega o numero de encomendas especificadas
 	 * @param num_encomendas Numero de encomendas
 	 */
-	void aviaEncomendas(unsigned num_encomendas);
+	void entregaEncomendas(unsigned num_encomendas);
 
 	/**
 	 * Overload do operador << para exportar a farmacia
