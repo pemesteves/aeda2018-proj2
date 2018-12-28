@@ -20,9 +20,9 @@
 #include <string>
 #include <map>
 
- /**
-  * Classe Venda
-  */
+/**
+ * Classe Venda
+ */
 class Venda {
 private:
 	unsigned long codigo; //Codigo da venda

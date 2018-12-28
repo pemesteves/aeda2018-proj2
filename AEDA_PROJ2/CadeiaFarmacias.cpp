@@ -354,6 +354,51 @@ void import(ifstream &f, CadeiaFarmacias &cF) { //Falta corrigir o import
 			numProd--;
 		}
 
+		do{
+			getline(f, line);
+		} while(line.length() == 0);
+
+		numProd = stoi(line); //numProd tera o numero de encomendas
+
+		while(numProd > 0){
+			unsigned long codigo_encomenda, codigo_produto;
+			unsigned quantidade_stock, quantidade_encomenda;
+			string fornecedor;
+
+			do{
+				getline(f, line);
+			}while(line.length() == 0);
+
+			codigo_encomenda = stoul(line);
+
+			do{
+				getline(f, fornecedor);
+			}while(fornecedor.length() == 0);
+
+			do{
+				getline(f, line);
+			} while(line.length() == 0);
+
+			codigo_produto = stoul(line);
+
+			do{
+				getline(f, line);
+			} while(line.length() == 0);
+
+			quantidade_stock = stoi(line);
+
+			do{
+				getline(f, line);
+			} while(line.length() == 0);
+
+			quantidade_encomenda = stoi(line);
+
+			Encomenda e(fornecedor, codigo_produto, quantidade_encomenda, quantidade_stock);
+			e.setCodigo(codigo_encomenda);
+			farm->addEncomenda(e);
+			numProd--;
+		}
+
 		do {
 			getline(f, line);
 		} while (line.length() == 0);
@@ -501,8 +546,9 @@ void import(ifstream &f, CadeiaFarmacias &cF) { //Falta corrigir o import
 		} while (morada.length() == 0);
 
 		string distrito;
-
-		getline(f, distrito);
+		do{
+			getline(f, distrito);
+		}while(distrito.length() == 0);
 
 		Cliente *c = new Cliente(nome, morada, contribuinte, distrito);
 		size_t numCompras = 0;

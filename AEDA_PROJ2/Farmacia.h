@@ -21,9 +21,9 @@
 #include <iostream>
 #include <queue>
 
- /**
-  * Classe Farmacia
-  */
+/**
+ * Classe Farmacia
+ */
 class Farmacia {
 private:
 	std::string nome; //Nome da Farmacia
@@ -270,13 +270,24 @@ public:
 	void entregaEncomendas(unsigned num_encomendas);
 
 	/**
+	 * Metodo que permite obter as encomendas realizadas
+	 * @return Atributo da classe -> encomendas
+	 */
+	std::vector<Encomenda> getEncomendas() const;
+
+	/**
+	 * Metodo para adicionar encomendas a sua priority_queue
+	 * @param e Encomenda a ser adicionada
+	 */
+	void addEncomenda(const Encomenda &e);
+
+	/**
 	 * Overload do operador << para exportar a farmacia
 	 * @param output Variavel para onde se quer exportar(ecra, ficheiro, ...)
 	 * @param f Farmacia que se quer exportar
 	 * @return Retorna referencia para a variavel para onde se quer exportar
 	 */
 	friend std::ostream& operator<<(std::ostream &output, const Farmacia &f);
-
 };
 
 /**

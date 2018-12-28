@@ -327,10 +327,18 @@ ostream& operator<<(ostream &output, const Farmacia &f) {
 		output << *(it->getProd()) << endl;
 	}
 
+	vector<Encomenda> enc = f.getEncomendas();
+	output << enc.size() << endl;
+	for(vector<Encomenda>::iterator it1 = enc.begin(); it1 != enc.end(); it1++){
+		output << (*it1) << endl;
+	}
+
 	output << f.vendas.size() << endl;
 	for (size_t i = 0; i < f.vendas.size(); i++) {
 		output << (*f.vendas[i]) << endl;
 	}
+
+
 	return output;
 }
 
@@ -399,6 +407,25 @@ void Farmacia::entregaEncomendas(unsigned num_encomendas = 1){
 	}
 
 	stock = s;
+}
+
+vector<Encomenda> Farmacia::getEncomendas() const{
+	vector<Encomenda> v;
+	Encomenda tmp;
+
+	priority_queue<Encomenda> enc_tmp = encomendas;
+
+	while (!enc_tmp.empty()) {
+		tmp = enc_tmp.top();
+		v.push_back(tmp);
+		enc_tmp.pop();
+	}
+
+	return v;
+}
+
+void Farmacia::addEncomenda(const Encomenda &e){
+	encomendas.push(e);
 }
 
 
