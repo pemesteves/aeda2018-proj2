@@ -137,19 +137,19 @@ public:
  * Classe ProdutoInexistente
  */
 class ProdutoInexistente {
-	std::string nome; //Nome do produto inexistente
+	unsigned long codigo; //Codigo do produto inexistente
 public:
 	/**
 	 * Construtor da classe ProdutoInexistente
 	 * @param nomeProd Nome do Produto
 	 */
-	ProdutoInexistente(std::string nomeProd) { nome = nomeProd; }
+	ProdutoInexistente(unsigned long codigo) { this->codigo = codigo; }
 
 	/**
-	 * Metodo para obter o nome do produto inexistente
-	 * @return Nome do Produto
+	 * Metodo para obter o codigo do produto inexistente
+	 * @return Codigo do Produto
 	 */
-	std::string getNome() const { return nome; }
+	unsigned long getNome() const { return codigo; }
 };
 
 class ProdutoStock{

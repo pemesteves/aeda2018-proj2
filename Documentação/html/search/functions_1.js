@@ -5,5 +5,7 @@ var searchData=
   ['changepreco',['changePreco',['../class_produto.html#ac6c899fa29702f6847a5b488b01b3854',1,'Produto']]],
   ['changesalario',['changeSalario',['../class_funcionario.html#aee4067fb4639f8d878b658af70b9375e',1,'Funcionario']]],
   ['cliente',['Cliente',['../class_cliente.html#a35f7af1d7e8e24424f0a93608625bbc4',1,'Cliente']]],
-  ['clienteinexistente',['ClienteInexistente',['../class_cliente_inexistente.html#a5bea99296840a40c57f64d1845ba276a',1,'ClienteInexistente']]]
+  ['clienteinexistente',['ClienteInexistente',['../class_cliente_inexistente.html#a5bea99296840a40c57f64d1845ba276a',1,'ClienteInexistente']]],
+  ['criaencomenda',['criaEncomenda',['../class_farmacia.html#a8d5f3e38ee3b835fa1a3366e38f72587',1,'Farmacia']]],
+  ['criaencomendade1produto',['criaEncomendaDe1Produto',['../class_farmacia.html#a8d3317e272b145910454613151eec34a',1,'Farmacia']]]
 ];

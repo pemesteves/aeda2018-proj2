@@ -90,12 +90,12 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a0f6eff61d730d1631b99758060992295"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a14d58fab1302f235f8c09f08f6b8da97"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_produto.html">Produto</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_receita.html#a14d58fab1302f235f8c09f08f6b8da97">getProdutos</a> () const</td></tr>
 <tr class="separator:a14d58fab1302f235f8c09f08f6b8da97"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9344cb068d458c7c61d4e7775c1b2c2d"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_receita.html#a9344cb068d458c7c61d4e7775c1b2c2d">getPrecoMax</a> (std::string nomeProd) const</td></tr>
-<tr class="separator:a9344cb068d458c7c61d4e7775c1b2c2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a265768b9a72c1384b40096b221111459"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_receita.html#a265768b9a72c1384b40096b221111459">getPrecoMax</a> (unsigned long codigo) const</td></tr>
+<tr class="separator:a265768b9a72c1384b40096b221111459"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a116671c6c18237391eb8779443deb7eb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_receita.html#a116671c6c18237391eb8779443deb7eb">addProduto</a> (<a class="el" href="class_produto.html">Produto</a> *produto, unsigned long quant)</td></tr>
 <tr class="separator:a116671c6c18237391eb8779443deb7eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a176e5863b802cc0504f51c4b0ec33713"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_produto.html">Produto</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_receita.html#a176e5863b802cc0504f51c4b0ec33713">removeProduto</a> (std::string nome)</td></tr>
-<tr class="separator:a176e5863b802cc0504f51c4b0ec33713"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af38eb650d6ee0ee931dcd0bb6ba6a399"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_produto.html">Produto</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_receita.html#af38eb650d6ee0ee931dcd0bb6ba6a399">removeProduto</a> (unsigned long codigo)</td></tr>
+<tr class="separator:af38eb650d6ee0ee931dcd0bb6ba6a399"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a841af3d2058cf32ce034ef398a9bd82a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_receita.html#a841af3d2058cf32ce034ef398a9bd82a">existeProdReceita</a> (std::string nome) const</td></tr>
 <tr class="separator:a841af3d2058cf32ce034ef398a9bd82a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa485df906f3d7463dbf74ca1b7839afd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_receita.html#aa485df906f3d7463dbf74ca1b7839afd">imprimeReceita</a> () const</td></tr>
@@ -266,8 +266,8 @@ Friends</h2></td></tr>
 
 </div>
 </div>
-<a id="a9344cb068d458c7c61d4e7775c1b2c2d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9344cb068d458c7c61d4e7775c1b2c2d">&#9670;&nbsp;</a></span>getPrecoMax()</h2>
+<a id="a265768b9a72c1384b40096b221111459"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a265768b9a72c1384b40096b221111459">&#9670;&nbsp;</a></span>getPrecoMax()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -275,15 +275,15 @@ Friends</h2></td></tr>
         <tr>
           <td class="memname">double Receita::getPrecoMax </td>
           <td>(</td>
-          <td class="paramtype">std::string&#160;</td>
-          <td class="paramname"><em>nomeProd</em></td><td>)</td>
+          <td class="paramtype">unsigned long&#160;</td>
+          <td class="paramname"><em>codigo</em></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
 <p>Metodo para obter o preco maximo de um produto </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">nomeProd</td><td>Nome do produto a procurar </td></tr>
+    <tr><td class="paramname">codigo</td><td>Codigo do produto a procurar </td></tr>
   </table>
   </dd>
 </dl>
@@ -327,8 +327,8 @@ Friends</h2></td></tr>
 
 </div>
 </div>
-<a id="a176e5863b802cc0504f51c4b0ec33713"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a176e5863b802cc0504f51c4b0ec33713">&#9670;&nbsp;</a></span>removeProduto()</h2>
+<a id="af38eb650d6ee0ee931dcd0bb6ba6a399"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af38eb650d6ee0ee931dcd0bb6ba6a399">&#9670;&nbsp;</a></span>removeProduto()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -336,15 +336,15 @@ Friends</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="class_produto.html">Produto</a> Receita::removeProduto </td>
           <td>(</td>
-          <td class="paramtype">std::string&#160;</td>
-          <td class="paramname"><em>nome</em></td><td>)</td>
+          <td class="paramtype">unsigned long&#160;</td>
+          <td class="paramname"><em>codigo</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 <p>Metodo para remover um produto do map </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">nome</td><td>Nome do produto a remover </td></tr>
+    <tr><td class="paramname">codigo</td><td>Codigo do produto a remover </td></tr>
   </table>
   </dd>
 </dl>

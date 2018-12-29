@@ -82,10 +82,10 @@ public:
 
 	/**
 	 * Metodo para obter o preco maximo de um produto
-	 * @param nomeProd Nome do produto a procurar
+	 * @param codigo Codigo do produto a procurar
 	 * @return Retorna o preco maximo do produto. Caso nao exista, lanca uma excecao do tipo ProdutoInexistente
 	 */
-	double getPrecoMax(std::string nomeProd) const;
+	double getPrecoMax(unsigned long codigo) const;
 
 	/**
 	 * Metodo para adicionar um Produto ao map de Produtos
@@ -96,10 +96,10 @@ public:
 
 	/**
 	 * Metodo para remover um produto do map
-	 * @param nome Nome do produto a remover
+	 * @param codigo Codigo do produto a remover
 	 * @return Retorna o Produto removido. Caso nao exista, lanca uma excecao do tipo ProdutoInexistente
 	 */
-	Produto removeProduto(std::string nome);
+	Produto removeProduto(unsigned long codigo);
 
 	/**
 	 * Metodo que permite saber se um produto existe na receita

@@ -164,24 +164,24 @@ public:
 	void setVendas(std::vector<Venda*> v);
 
 	/**
-	 * Metodo que permite adicionar varios produtos ao map produtosVender
+	 * Metodo que permite adicionar varios produtos ao stock
 	 * @param produtosVender_new Vetor de apontadores para objetos da classe Produto
 	 */
 	void addProdutosVender(std::vector<Produto*> produtosVender_new);
 
 	/**
-	 * Metodo que permite adicionar um produto ao map produtosVender
+	 * Metodo que permite adicionar um produto ao stock
 	 * @param produtoVender Apontador para objeto da classe Porduto
 	 * @return Booleano que indica se a operacao foi efetuada com sucesso
 	 */
 	bool addProdutoVender(Produto* produtoVender);
 
 	/**
-	 * Metodo que permite remover um produto do map produtosVender
-	 * @param nomeP Nome do produto a remover
+	 * Metodo que permite remover um produto do stock
+	 * @param codigo Codigo do produto a remover
 	 * @return Retorna um apontador para o objeto removido ou, se este nao existir, lanca uma excecao do tipo ProdutoInexistente
 	 */
-	Produto* removeProduto(std::string nomeP);
+	Produto* removeProduto(unsigned long codigo);
 
 	/**
 	 * Metodo que permite realizar uma venda
@@ -257,16 +257,33 @@ public:
 
 	/**
 	 * Metodo que cria uma encomenda para todos os produtos com stock inferior a um valor dado
+	 * @param fornecedor Nome do fornecedor a quem se faz a encomenda
 	 * @param N Produtos com quantidade inferior a N serao encomendados
 	 * @param quantidade_encomenda Quantidade de produtos a encomendar
 	 */
 	void criaEncomenda(std::string fornecedor, unsigned N, unsigned quantidade_encomenda);
 
 	/**
+	 * Metodo que cria uma encomenda de um produto especificado como parametro
+	 * @param fornecedor Nome do fornecedor a quem se faz a encomenda
+	 * @param codigo_produto Codigo do produto a encomendar
+	 * @param quantidade_encomenda Quantidade do produto a ser encomendada
+	 * @return Retorna o produto a encomendar. Caso nao exist, lanca uma excessao do tipo ProdutoInexistente
+	 */
+	ProdutoStock criaEncomendaDe1Produto(std::string fornecedor, unsigned long codigo_produto, unsigned quantidade_encomenda);
+
+	/**
 	 * Metodo que entrega o numero de encomendas especificadas
 	 * @param num_encomendas Numero de encomendas
 	 */
 	void entregaEncomendas(unsigned num_encomendas);
+
+	/**
+	 * Metodo que entrega a encomenda de um certo produto especificado pelo utilizador
+	 * @param codigo_produto Codigo do produto a ser entregue
+	 * @return Retorna o produto a ser entregue. Caso nao exista, lanca uma excecao do tipo ProdutoInexistente ou do tipo EncomendaInexistente
+	 */
+	ProdutoStock entregaEncomendaProduto(unsigned long codigo_produto);
 
 	/**
 	 * Metodo que permite obter as encomendas realizadas

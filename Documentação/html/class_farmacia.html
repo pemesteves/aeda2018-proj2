@@ -118,8 +118,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aea718ec5213834da18eb88f2f47ebec5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad58b09f2fa63d14d2f23848e33a65846"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_farmacia.html#ad58b09f2fa63d14d2f23848e33a65846">addProdutoVender</a> (<a class="el" href="class_produto.html">Produto</a> *produtoVender)</td></tr>
 <tr class="separator:ad58b09f2fa63d14d2f23848e33a65846"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a277add3a34147a06fe5097a260269814"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_produto.html">Produto</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_farmacia.html#a277add3a34147a06fe5097a260269814">removeProduto</a> (std::string nomeP)</td></tr>
-<tr class="separator:a277add3a34147a06fe5097a260269814"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3cc635777806d14d5abfc7d94b53fd6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_produto.html">Produto</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_farmacia.html#ac3cc635777806d14d5abfc7d94b53fd6">removeProduto</a> (unsigned long codigo)</td></tr>
+<tr class="separator:ac3cc635777806d14d5abfc7d94b53fd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac1c79766218fd54a2e02c385facabc67"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_farmacia.html#ac1c79766218fd54a2e02c385facabc67">addVenda</a> (<a class="el" href="class_venda.html">Venda</a> *venda)</td></tr>
 <tr class="separator:ac1c79766218fd54a2e02c385facabc67"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a92fa4522a7903aaa97c7ef77f935502e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_farmacia.html#a92fa4522a7903aaa97c7ef77f935502e">sortVendas</a> (enum tipoSort tipo, bool crescente)</td></tr>
@@ -128,8 +128,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a16d5ce2f3603963edbf26f29291ed4cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8a1b059aa81776d7e492b0263bdc1c5a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_farmacia.html#a8a1b059aa81776d7e492b0263bdc1c5a">existeProdutoQuant</a> (std::string nomeProduto, int quant) const</td></tr>
 <tr class="separator:a8a1b059aa81776d7e492b0263bdc1c5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1274e7e34d3a59e3407447bf1b7949c4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_farmacia.html#a1274e7e34d3a59e3407447bf1b7949c4">setQuantidade</a> (std::string nomeProd, int quant)</td></tr>
-<tr class="separator:a1274e7e34d3a59e3407447bf1b7949c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0761f92f1e021e3125959b5fc8ce31b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_farmacia.html#aa0761f92f1e021e3125959b5fc8ce31b">setQuantidade</a> (std::string nomeProd, unsigned quant)</td></tr>
+<tr class="separator:aa0761f92f1e021e3125959b5fc8ce31b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae51baf242418d5416c970f04498cd2da"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_farmacia.html#ae51baf242418d5416c970f04498cd2da">operator&lt;</a> (const <a class="el" href="class_farmacia.html">Farmacia</a> &amp;f1) const</td></tr>
 <tr class="separator:ae51baf242418d5416c970f04498cd2da"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8d776c7e0c570cb91cf8299bc79ee931"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_farmacia.html#a8d776c7e0c570cb91cf8299bc79ee931">menorQue</a> (const <a class="el" href="class_farmacia.html">Farmacia</a> &amp;f1, enum tipoSort tipo, bool crescente) const</td></tr>
@@ -139,9 +139,21 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:abb438ff55b49d199703bee2e4bebf384"><td class="memItemLeft" align="right" valign="top"><a id="abb438ff55b49d199703bee2e4bebf384"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>imprimeDados</b> () const</td></tr>
 <tr class="separator:abb438ff55b49d199703bee2e4bebf384"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a24de0875f7e04dbcf07bdf8e6cef8db2"><td class="memItemLeft" align="right" valign="top"><a id="a24de0875f7e04dbcf07bdf8e6cef8db2"></a>
+<tr class="memitem:a672b45b51634bf85a1255793d60ee27c"><td class="memItemLeft" align="right" valign="top"><a id="a672b45b51634bf85a1255793d60ee27c"></a>
 std::vector&lt; <a class="el" href="class_produto_stock.html">ProdutoStock</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getProdsMenorQuant</b> (unsigned N)</td></tr>
-<tr class="separator:a24de0875f7e04dbcf07bdf8e6cef8db2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:a672b45b51634bf85a1255793d60ee27c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d5f3e38ee3b835fa1a3366e38f72587"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_farmacia.html#a8d5f3e38ee3b835fa1a3366e38f72587">criaEncomenda</a> (std::string fornecedor, unsigned N, unsigned quantidade_encomenda)</td></tr>
+<tr class="separator:a8d5f3e38ee3b835fa1a3366e38f72587"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d3317e272b145910454613151eec34a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_produto_stock.html">ProdutoStock</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_farmacia.html#a8d3317e272b145910454613151eec34a">criaEncomendaDe1Produto</a> (std::string fornecedor, unsigned long codigo_produto, unsigned quantidade_encomenda)</td></tr>
+<tr class="separator:a8d3317e272b145910454613151eec34a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf72d2c91a338fe8474fa45a4e4ba135"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_farmacia.html#acf72d2c91a338fe8474fa45a4e4ba135">entregaEncomendas</a> (unsigned num_encomendas)</td></tr>
+<tr class="separator:acf72d2c91a338fe8474fa45a4e4ba135"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abfb675d0ea8d23d454f6e94f7bad1e35"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_produto_stock.html">ProdutoStock</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_farmacia.html#abfb675d0ea8d23d454f6e94f7bad1e35">entregaEncomendaProduto</a> (unsigned long codigo_produto)</td></tr>
+<tr class="separator:abfb675d0ea8d23d454f6e94f7bad1e35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e21225600b654442819dbe6a0bfd970"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_encomenda.html">Encomenda</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_farmacia.html#a7e21225600b654442819dbe6a0bfd970">getEncomendas</a> () const</td></tr>
+<tr class="separator:a7e21225600b654442819dbe6a0bfd970"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d7af2665dac36cef6076cb45a92c7a7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_farmacia.html#a1d7af2665dac36cef6076cb45a92c7a7">addEncomenda</a> (const <a class="el" href="class_encomenda.html">Encomenda</a> &amp;e)</td></tr>
+<tr class="separator:a1d7af2665dac36cef6076cb45a92c7a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
 Friends</h2></td></tr>
@@ -150,8 +162,8 @@ Friends</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Header File que contem a classe <a class="el" href="class_farmacia.html">Farmacia</a> e a classe <a class="el" href="class_farmacia_inexistente.html">FarmaciaInexistente</a></p>
-<dl class="section author"><dt>Author</dt><dd>Marcia, Pedro e Rita </dd></dl>
-<dl class="section date"><dt>Date</dt><dd>Novembro, 2018 Classe <a class="el" href="class_farmacia.html">Farmacia</a> </dd></dl>
+<dl class="section author"><dt>Author</dt><dd>Marcia e Pedro </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>Dezembro, 2018 Classe <a class="el" href="class_farmacia.html">Farmacia</a> </dd></dl>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aa0c870a810c151125cc817c19f0d143f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa0c870a810c151125cc817c19f0d143f">&#9670;&nbsp;</a></span>Farmacia()</h2>
@@ -189,6 +201,30 @@ Friends</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a1d7af2665dac36cef6076cb45a92c7a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d7af2665dac36cef6076cb45a92c7a7">&#9670;&nbsp;</a></span>addEncomenda()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Farmacia::addEncomenda </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_encomenda.html">Encomenda</a> &amp;&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Metodo para adicionar encomendas a sua priority_queue </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">e</td><td><a class="el" href="class_encomenda.html">Encomenda</a> a ser adicionada </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="aea718ec5213834da18eb88f2f47ebec5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aea718ec5213834da18eb88f2f47ebec5">&#9670;&nbsp;</a></span>addProdutosVender()</h2>
 
@@ -204,7 +240,7 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Metodo que permite adicionar varios produtos ao map produtosVender </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Metodo que permite adicionar varios produtos ao stock </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">produtosVender_new</td><td>Vetor de apontadores para objetos da classe <a class="el" href="class_produto.html">Produto</a> </td></tr>
   </table>
@@ -228,7 +264,7 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Metodo que permite adicionar um produto ao map produtosVender </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Metodo que permite adicionar um produto ao stock </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">produtoVender</td><td>Apontador para objeto da classe Porduto </td></tr>
   </table>
@@ -260,6 +296,140 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Retorna true caso </dd></dl>
+
+</div>
+</div>
+<a id="a8d5f3e38ee3b835fa1a3366e38f72587"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d5f3e38ee3b835fa1a3366e38f72587">&#9670;&nbsp;</a></span>criaEncomenda()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Farmacia::criaEncomenda </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>fornecedor</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned&#160;</td>
+          <td class="paramname"><em>N</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned&#160;</td>
+          <td class="paramname"><em>quantidade_encomenda</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Metodo que cria uma encomenda para todos os produtos com stock inferior a um valor dado </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fornecedor</td><td>Nome do fornecedor a quem se faz a encomenda </td></tr>
+    <tr><td class="paramname">N</td><td>Produtos com quantidade inferior a N serao encomendados </td></tr>
+    <tr><td class="paramname">quantidade_encomenda</td><td>Quantidade de produtos a encomendar </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a8d3317e272b145910454613151eec34a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d3317e272b145910454613151eec34a">&#9670;&nbsp;</a></span>criaEncomendaDe1Produto()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_produto_stock.html">ProdutoStock</a> Farmacia::criaEncomendaDe1Produto </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>fornecedor</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned long&#160;</td>
+          <td class="paramname"><em>codigo_produto</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned&#160;</td>
+          <td class="paramname"><em>quantidade_encomenda</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Metodo que cria uma encomenda de um produto especificado como parametro </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fornecedor</td><td>Nome do fornecedor a quem se faz a encomenda </td></tr>
+    <tr><td class="paramname">codigo_produto</td><td>Codigo do produto a encomendar </td></tr>
+    <tr><td class="paramname">quantidade_encomenda</td><td>Quantidade do produto a ser encomendada </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Retorna o produto a encomendar. Caso nao exist, lanca uma excessao do tipo <a class="el" href="class_produto_inexistente.html">ProdutoInexistente</a> </dd></dl>
+
+</div>
+</div>
+<a id="abfb675d0ea8d23d454f6e94f7bad1e35"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abfb675d0ea8d23d454f6e94f7bad1e35">&#9670;&nbsp;</a></span>entregaEncomendaProduto()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_produto_stock.html">ProdutoStock</a> Farmacia::entregaEncomendaProduto </td>
+          <td>(</td>
+          <td class="paramtype">unsigned long&#160;</td>
+          <td class="paramname"><em>codigo_produto</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Metodo que entrega a encomenda de um certo produto especificado pelo utilizador </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">codigo_produto</td><td>Codigo do produto a ser entregue </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Retorna o produto a ser entregue. Caso nao exista, lanca uma excecao do tipo <a class="el" href="class_produto_inexistente.html">ProdutoInexistente</a> ou do tipo <a class="el" href="class_encomenda_inexistente.html">EncomendaInexistente</a> </dd></dl>
+
+</div>
+</div>
+<a id="acf72d2c91a338fe8474fa45a4e4ba135"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf72d2c91a338fe8474fa45a4e4ba135">&#9670;&nbsp;</a></span>entregaEncomendas()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Farmacia::entregaEncomendas </td>
+          <td>(</td>
+          <td class="paramtype">unsigned&#160;</td>
+          <td class="paramname"><em>num_encomendas</em> = <code>1</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Metodo que entrega o numero de encomendas especificadas </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">num_encomendas</td><td>Numero de encomendas </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -339,6 +509,24 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Metodo que permite obter o diretor tecnico da farmacia </p><dl class="section return"><dt>Returns</dt><dd>Apontador para um objeto da classe <a class="el" href="class_funcionario.html">Funcionario(atributo da classe)</a> </dd></dl>
+
+</div>
+</div>
+<a id="a7e21225600b654442819dbe6a0bfd970"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e21225600b654442819dbe6a0bfd970">&#9670;&nbsp;</a></span>getEncomendas()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">vector&lt; <a class="el" href="class_encomenda.html">Encomenda</a> &gt; Farmacia::getEncomendas </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Metodo que permite obter as encomendas realizadas </p><dl class="section return"><dt>Returns</dt><dd>Atributo da classe -&gt; encomendas </dd></dl>
 
 </div>
 </div>
@@ -780,8 +968,8 @@ Friends</h2></td></tr>
 
 </div>
 </div>
-<a id="a277add3a34147a06fe5097a260269814"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a277add3a34147a06fe5097a260269814">&#9670;&nbsp;</a></span>removeProduto()</h2>
+<a id="ac3cc635777806d14d5abfc7d94b53fd6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac3cc635777806d14d5abfc7d94b53fd6">&#9670;&nbsp;</a></span>removeProduto()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -789,15 +977,15 @@ Friends</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="class_produto.html">Produto</a> * Farmacia::removeProduto </td>
           <td>(</td>
-          <td class="paramtype">std::string&#160;</td>
-          <td class="paramname"><em>nomeP</em></td><td>)</td>
+          <td class="paramtype">unsigned long&#160;</td>
+          <td class="paramname"><em>codigo</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Metodo que permite remover um produto do map produtosVender </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Metodo que permite remover um produto do stock </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">nomeP</td><td>Nome do produto a remover </td></tr>
+    <tr><td class="paramname">codigo</td><td>Codigo do produto a remover </td></tr>
   </table>
   </dd>
 </dl>
@@ -853,8 +1041,8 @@ Friends</h2></td></tr>
 
 </div>
 </div>
-<a id="a1274e7e34d3a59e3407447bf1b7949c4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1274e7e34d3a59e3407447bf1b7949c4">&#9670;&nbsp;</a></span>setQuantidade()</h2>
+<a id="aa0761f92f1e021e3125959b5fc8ce31b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa0761f92f1e021e3125959b5fc8ce31b">&#9670;&nbsp;</a></span>setQuantidade()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -868,7 +1056,7 @@ Friends</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype">unsigned&#160;</td>
           <td class="paramname"><em>quant</em>&#160;</td>
         </tr>
         <tr>

@@ -2,6 +2,7 @@ var searchData=
 [
   ['addcliente',['addCliente',['../class_cadeia_farmacias.html#aa231a2857a066ac7c3ace713d7768f20',1,'CadeiaFarmacias']]],
   ['addcompra',['addCompra',['../class_cliente.html#ae5ea0c3067897bb057aea62f1a1ed586',1,'Cliente']]],
+  ['addencomenda',['addEncomenda',['../class_farmacia.html#a1d7af2665dac36cef6076cb45a92c7a7',1,'Farmacia']]],
   ['addfarmacia',['addFarmacia',['../class_cadeia_farmacias.html#a292e72ffac82bddd9d2a3a44130c8963',1,'CadeiaFarmacias']]],
   ['addfuncionario',['addFuncionario',['../class_cadeia_farmacias.html#a781ec8cb3045b86d6e6f090744f42cab',1,'CadeiaFarmacias']]],
   ['addproduto',['addProduto',['../class_receita.html#a116671c6c18237391eb8779443deb7eb',1,'Receita::addProduto()'],['../class_venda.html#a622a9e76843d3d9cff4e43f9310e6beb',1,'Venda::addProduto()']]],

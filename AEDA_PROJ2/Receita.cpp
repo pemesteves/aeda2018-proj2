@@ -34,13 +34,13 @@ vector<Produto> Receita::getProdutos() const {
 	return p;
 }
 
-double Receita::getPrecoMax(string nomeProd) const {
+double Receita::getPrecoMax(unsigned long codigo) const {
 	map<Produto, unsigned long>::const_iterator it;
 	for (it = produtos.begin(); it != produtos.end(); it++) {
-		if (it->first.getNome() == nomeProd) //Compara o nome de cada produto com o nome recebido como argumento
+		if (it->first.getCodigo() == codigo) //Compara o nome de cada produto com o nome recebido como argumento
 			return it->second;
 	}
-	throw ProdutoInexistente(nomeProd);
+	throw ProdutoInexistente(codigo);
 }
 
 Receita::Receita(unsigned long numero, string medico, Cliente* cliente) {
@@ -69,15 +69,15 @@ bool Receita::existeProdReceita(string nome) const{
 	return false;
 }
 
-Produto Receita::removeProduto(string nome){
+Produto Receita::removeProduto(unsigned long codigo){
 	map<Produto, unsigned long>::iterator it = produtos.begin();
 	for(; it != produtos.end(); it++){
-		if ((*it).first.getNome() == nome){
+		if ((*it).first.getCodigo() == codigo){
 			produtos.erase(it);
 			return (*it).first;
 		}
 	}
-	throw ProdutoInexistente(nome);
+	throw ProdutoInexistente(codigo);
 }
 
 void Receita::imprimeReceita() const{

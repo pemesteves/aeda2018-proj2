@@ -145,7 +145,7 @@ void Farmacia::addProdutosVender(vector<Produto*> produtosVender_new) {
 	}
 }
 
-Produto* Farmacia::removeProduto(std::string nomeP) {
+Produto* Farmacia::removeProduto(unsigned long codigo) {
 
 	ProdutoStock tmp;
 
@@ -155,7 +155,7 @@ Produto* Farmacia::removeProduto(std::string nomeP) {
 
 	while (!stock.empty()) {
 		tmp = stock.top();
-		if (tmp.getProd()->getNome() != nomeP)
+		if (tmp.getProd()->getCodigo() != codigo)
 			st_tmp.push(tmp);
 		else
 			p = tmp.getProd();
@@ -165,7 +165,7 @@ Produto* Farmacia::removeProduto(std::string nomeP) {
 	stock = st_tmp;
 
 	if (p == NULL)
-		throw ProdutoInexistente(nomeP);
+		throw ProdutoInexistente(codigo);
 
 	return p;
 }
@@ -390,22 +390,37 @@ vector<ProdutoStock> Farmacia::getProdsMenorQuant(unsigned N) {
 void Farmacia::criaEncomenda(string fornecedor, unsigned N, unsigned quantidade_encomenda){
 	vector<ProdutoStock> v = getProdsMenorQuant(N);
 	for(vector<ProdutoStock>::iterator it = v.begin(); it != v.end(); it++){
-		Encomenda e(fornecedor, (*it).getProd()->getCodigo(), quantidade_encomenda, (*it).getQuant());
-		encomendas.push(e);
+		if((*it).getProd() != NULL){
+			Encomenda e(fornecedor, (*it).getProd()->getCodigo(), quantidade_encomenda, (*it).getQuant());
+			encomendas.push(e);
+		}
 	}
 }
 
 void Farmacia::entregaEncomendas(unsigned num_encomendas = 1){
-	priority_queue<ProdutoStock> s;
+	priority_queue<ProdutoStock> s, s1, s2;
 
 	while(num_encomendas > 0 && !encomendas.empty()){
 		Encomenda e = encomendas.top();
 		encomendas.pop();
 
-		ProdutoStock p = stock.top();
-		p.setQuant(p.getQuant() + e.getQuant());
-		s.push(p);
-		stock.pop();
+		while(!s2.empty()){
+			s2.pop();
+		}
+
+		s1 = stock;
+		while(!s1.empty()){
+			if(s1.top().getProd() != NULL){
+				if(s1.top().getProd()->getCodigo() == e.getCodigo()){
+					ProdutoStock p = s1.top();
+					p.setQuant(p.getQuant() + e.getQuant());
+					s.push(p);
+					s1.pop();
+				}
+			}
+			s2.push(s1.top());
+		}
+		stock = s2;
 
 		num_encomendas--;
 	}
@@ -416,6 +431,25 @@ void Farmacia::entregaEncomendas(unsigned num_encomendas = 1){
 	}
 
 	stock = s;
+}
+
+ProdutoStock Farmacia::criaEncomendaDe1Produto(std::string fornecedor, unsigned long codigo_produto, unsigned quantidade_encomenda){
+	ProdutoStock p;
+	priority_queue<ProdutoStock> s = stock;
+
+	while(!s.empty()){
+		if(s.top().getProd() != NULL){
+			if(s.top().getProd()->getCodigo() == codigo_produto){
+				p = s.top();
+				Encomenda e(fornecedor, codigo_produto, quantidade_encomenda, s.top().getQuant());
+				encomendas.push(e);
+				return p;
+			}
+		}
+		s.pop();
+	}
+
+	throw ProdutoInexistente(codigo_produto);
 }
 
 vector<Encomenda> Farmacia::getEncomendas() const{
@@ -431,6 +465,49 @@ vector<Encomenda> Farmacia::getEncomendas() const{
 	}
 
 	return v;
+}
+
+ProdutoStock Farmacia::entregaEncomendaProduto(unsigned long codigo_produto){
+	priority_queue<ProdutoStock> s;
+	ProdutoStock ps;
+	while(!stock.empty()){
+		if(stock.top().getProd() != NULL){
+			if(stock.top().getProd()->getCodigo() == codigo_produto){ //Encontrou o produto
+				ps = stock.top();
+				priority_queue<Encomenda> e;
+				bool found_encomenda = false;
+				while(!encomendas.empty()){
+					if(encomendas.top().getProd() == codigo_produto){ //Encontrou a encomenda
+						ps.setQuant(ps.getQuant() + encomendas.top().getQuant());
+						found_encomenda = true;
+					}
+					else
+						e.push(encomendas.top());
+
+					encomendas.pop();
+				}
+				encomendas = e;
+				if(!found_encomenda) //Se nao encontrou encomenda, lanca excecao
+					throw EncomendaInexistente(codigo_produto);
+
+				stock.pop();
+				s.push(ps);
+				break;
+			}
+		}
+		s.push(stock.top());
+		stock.pop();
+	}
+
+	while(!s.empty()){
+		stock.push(s.top());
+		s.pop();
+	}
+
+	if(ps.getProd() == NULL) //Se nao encontrou o produto, lanca excecao
+		throw ProdutoInexistente(codigo_produto);
+	else
+		return ps;
 }
 
 void Farmacia::addEncomenda(const Encomenda &e){

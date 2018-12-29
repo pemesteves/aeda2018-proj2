@@ -581,18 +581,18 @@ int main() {
 					break;
 				}
 				case 6: {
-					string nome;
-					cout << "Nome do produto: ";
+					string code;
+					cout << "Codigo do produto: ";
 					cin.clear();
 					cin.ignore(10000, '\n');
-					getline(cin, nome);
-					nome = toupperstring(nome);
+					getline(cin, code);
+
 					try {
-						(*frm)->removeProduto(nome);
-						cout << "Produto " << nome << " eliminado" << endl;
+						(*frm)->removeProduto(stoul(code));
+						cout << "Produto " << code << " eliminado" << endl;
 					}
 					catch (ProdutoInexistente &e) {
-						cout << "Produto " << nome << " inexistente" << endl;
+						cout << "Produto " << code << " inexistente" << endl;
 					}
 					break;
 				}

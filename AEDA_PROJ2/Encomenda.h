@@ -1,5 +1,5 @@
 /**
- * Header File que contem a classe Encomenda
+ * Header File que contem a classe Encomenda e a excecao EncomendaInexistente
  *
  * @author Marcia e Pedro
  * @date Dezembro, 2018
@@ -100,6 +100,25 @@ public:
 	 * @return Retorna referencia para a variavel para onde se quer exportar
 	 */
 	friend std::ostream& operator<<(std::ostream &output, const Encomenda &e1);
+};
+
+/**
+ * Classe EncomendaInexistente
+ */
+class EncomendaInexistente {
+	unsigned long codigo_produto; //Codigo do Produto nao encomendado
+public:
+	/**
+	 * Construtor da classe -> classe utilizada em excecões
+	 * @param codigo Codigo do produto utilizado para a procura de uma encomenda que nao existe
+	 */
+	EncomendaInexistente(unsigned long codigo) { codigo_produto = codigo; }
+
+	/**
+	 * Metodo que permite obter o codigo do produto utilizado na procura da encomenda
+	 * @return Retorna o codigo do produto nao encomendado
+	 */
+	unsigned long getNome() const { return codigo_produto; }
 };
 
 #endif
