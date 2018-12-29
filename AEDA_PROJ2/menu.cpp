@@ -58,9 +58,11 @@ void menuFarmacia() {
 	cout << "9. Realizar Venda." << endl;
 	cout << "10. Ordenar Vendas." << endl;
 	cout << "11. Encomendar produtos com pouca quantidade disponivel." << endl;
-	cout << "12. Receber Encomendas." << endl;
-	cout << "13. Ver encomendas pendentes." << endl;
-	cout << "14. Voltar atras." << endl;
+	cout << "12. Encomendar um produto a escolher." << endl;
+	cout << "13. Receber Encomendas." << endl;
+	cout << "14. Receber Encomenda de um produto a escolher." <
+			cout << "15. Ver encomendas pendentes." << endl;
+	cout << "16. Voltar atras." << endl;
 }
 
 void menuFuncionario() {
@@ -922,6 +924,47 @@ int main() {
 					break;
 				}
 				case 12:{
+					cout << endl << "Qual o codigo do produto a encomendar? ";
+					cin.clear();
+					cin.ignore(10000, '\n');
+					unsigned n;
+					do {
+						cin >> n;
+						if (cin.fail()) {
+							cin.clear();
+							cin.ignore(10000, '\n');
+							cout << "Codigo invalido. Tente outra vez: ";
+						}
+					} while (cin.fail());
+
+					cout << "Quantas unidades do produto pretende encomendar? ";
+					cin.clear();
+					cin.ignore(10000, '\n');
+					unsigned q;
+					do {
+						cin >> q;
+						if (cin.fail()) {
+							cin.clear();
+							cin.ignore(10000, '\n');
+							cout << "Quantidade invalida. Tente outra vez: ";
+						}
+					} while (cin.fail());
+
+					cout << "Nome do fornecedor: ";
+					string nomefor;
+					cin.clear();
+					cin.ignore(10000, '\n');
+					getline(cin, nomefor);
+					try{
+						ProdutoStock p = (*frm)->criaEncomendaDe1Produto(nomefor, n, q);
+						cout  << endl << "Encomenda de " << p.getProd()->getNome() << " realizada com sucesso." << endl << endl;
+					}
+					catch(ProdutoInexistente &p1){
+						cout << endl << "Produto com codigo " << p1.getCodigo() << " nao existe." << endl << endl;
+					}
+					break;
+				}
+				case 13:{
 					cout << "Quantas encomendas recebeu? ";
 					cin.clear();
 					cin.ignore(10000, '\n');
@@ -939,7 +982,33 @@ int main() {
 					cout << "Encomendas recebidas com sucesso." << endl << endl;
 					break;
 				}
-				case 13:{
+				case 14:{
+					cout << "Qual o codigo do produto que recebeu? ";
+					cin.clear();
+					cin.ignore(10000, '\n');
+					unsigned codigo;
+					do {
+						cin >> codigo;
+						if (cin.fail()) {
+							cin.clear();
+							cin.ignore(10000, '\n');
+							cout << "Quantidade invalida. Tente outra vez: ";
+						}
+					} while (cin.fail());
+
+					try{
+						ProdutoStock ps = (*frm)->entregaEncomendaProduto(codigo);
+						cout << "Encomenda de " << ps.getProd()->getNome() << " recebida com sucesso." << endl << endl;
+					}
+					catch(ProdutoInexistente &p){
+						cout << endl << "Produto com codigo " << p.getCodigo() << " nao existe." << endl << endl;
+					}
+					catch(EncomendaInexistente &e){
+						cout << endl << "Nao foi realizada nenhuma encomenda do produto com codigo " << e.getCodigo() << "." << endl << endl;
+					}
+					break;
+				}
+				case 15:{
 					vector<Encomenda> v= (*frm)->getEncomendas();
 					for(size_t i = 0; i<v.size(); i++){
 						v.at(i).showInfo();

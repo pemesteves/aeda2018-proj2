@@ -149,7 +149,7 @@ public:
 	 * Metodo para obter o codigo do produto inexistente
 	 * @return Codigo do Produto
 	 */
-	unsigned long getNome() const { return codigo; }
+	unsigned long getCodigo() const { return codigo; }
 };
 
 class ProdutoStock{

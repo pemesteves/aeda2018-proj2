@@ -118,7 +118,7 @@ public:
 	 * Metodo que permite obter o codigo do produto utilizado na procura da encomenda
 	 * @return Retorna o codigo do produto nao encomendado
 	 */
-	unsigned long getNome() const { return codigo_produto; }
+	unsigned long getCodigo() const { return codigo_produto; }
 };
 
 #endif
