@@ -14,16 +14,11 @@ using namespace std;
 
 template <> enum tipoSort sorting<Farmacia>::tipo = DEFAULT;
 template <> bool sorting<Farmacia>::crescente = false;
-template <> enum tipoSort sorting<Funcionario>::tipo = DEFAULT;
-template <> bool sorting<Funcionario>::crescente = false;
-template <> enum tipoSort sorting<Cliente>::tipo = DEFAULT;
-template <> bool sorting<Cliente>::crescente = false;
 
 CadeiaFarmacias::CadeiaFarmacias() {
 	this->nome = ""; //Inicializacao de um nome vazio
 	farmacias.resize(0); //Vetor de farmacias vazio
 	clientes.clear(); //Set de clientes vazio
-	//funcionarios.resize(0); //Vetor de funcionarios vazio
 	registo_funcionarios.clear(); //Tabela de dispersao vazia
 }
 
@@ -31,7 +26,6 @@ CadeiaFarmacias::CadeiaFarmacias(string nome) {
 	this->nome = nome; //Inicializacao de uma cadeia com nome
 	farmacias.resize(0); //Vetor de farmacias vazio
 	clientes.clear(); //Set de clientes vazio
-	//funcionarios.resize(0); //Vetor de funcionarios vazio
 	registo_funcionarios.clear(); //Tabela de dispersao vazia
 }
 
@@ -192,17 +186,25 @@ Funcionario* CadeiaFarmacias::despedeFuncionario(const unsigned long contF) {
 	if (!encontrou_funcionario)
 		throw FuncionarioInexistente(contF); //Lancamento de uma excecao caso o funcionario nao exista
 
-	vector<Farmacia*>::iterator itf = farmacias.begin();
+	//vector<Farmacia*>::iterator itf = farmacias.begin();
 
-	for(; itf != farmacias.end(); itf++){
-		if((*itf)->getDiretorTecnico()->getNoContribuinte() == contF){
-			(*itf)->setDiretorTecnico(NULL);
-		}
-		if((*itf)->getGerente()->getNoContribuinte() == contF){
-			(*itf)->setGerente(NULL);
+	/*for(; itf != farmacias.end(); itf++){
+		if((*itf)->getDiretorTecnico() != NULL)
+			if((*itf)->getDiretorTecnico()->getNoContribuinte() == contF){
+				(*itf)->setDiretorTecnico(NULL);
+				break;
+			}
+		if((*itf)->getGerente() != NULL){
+			cout << "olaaaa" << endl;
+			if((*itf)->getGerente()->getNoContribuinte() == contF){
+				cout << "olaaaa" << endl;
+				(*itf)->setGerente(NULL);
+				cout << "olaaaa" << endl;
+				break;
+			}
 		}
 
-	}
+	}*/
 
 	return f1;
 }

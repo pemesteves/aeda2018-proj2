@@ -28,11 +28,10 @@ class Farmacia {
 private:
 	std::string nome; //Nome da Farmacia
 	std::string morada; //Morada da Farmacia
-	Funcionario* gerente; //Apontador para o gerente da Farmacia(tipo Funcionario)
-	Funcionario* diretorTecnico; //Apontador para o diretor tecnico da Farmacia(tipo Funcionario)
-	//std::map<Produto, int> produtosVender; //Map cujas keys sao objetos do tipo Produto e os valores sao as quantidades desse produto. Serve para representar os produtos a vender
-	std::priority_queue<ProdutoStock> stock;
-	std::priority_queue<Encomenda> encomendas;
+	Funcionario* gerente; //Apontador para o gerente da Farmacia (tipo Funcionario)
+	Funcionario* diretorTecnico; //Apontador para o diretor tecnico da Farmacia (tipo Funcionario)
+	std::priority_queue<ProdutoStock> stock; //Fila de prioridade com os produtos em stock, em que os produtos com menor quantidade tem maior prioridade
+	std::priority_queue<Encomenda> encomendas; //Fila de prioridade com as encomendas pendentes, em que as encomendas de produtos com menor quantidade em stock tem maior prioridade
 	std::vector<Venda*> vendas; //Vetor de apontador para objetos do tipo Venda
 public:
 	/**
@@ -220,7 +219,7 @@ public:
 	 * @param quant Quantidade a alterar
 	 * @return Retorna true se a operacao foi realizada com sucesso. Caso contrario, retorna false
 	 */
-	bool setQuantidade(std::string nomeProd, int quant);
+	bool setQuantidade(std::string nomeProd, unsigned quant);
 
 	/**
 	 * Operador menor: Compara duas farmacias com regras pre-definidas

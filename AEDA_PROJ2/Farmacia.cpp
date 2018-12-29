@@ -200,7 +200,7 @@ bool Farmacia::existeProduto(string nomeProduto) const {
 	vector<ProdutoStock> v = getStock();
 	vector<ProdutoStock>::const_iterator it = v.begin();
 	for (; it != v.end(); it++) {
-		if (it->getProd()->getNome() == toupperstring(nomeProduto))
+		if (toupperstring(it->getProd()->getNome()) == toupperstring(nomeProduto))
 			return true;
 	}
 	return false;
@@ -236,16 +236,24 @@ void Farmacia::sortVendas(enum tipoSort tipo, bool crescente) {
 	s.sort_p(vendas);
 }
 
-bool Farmacia::setQuantidade(std::string nomeProd, int quant) {
-	vector<ProdutoStock> v = getStock();
-	vector<ProdutoStock>::iterator it = v.begin();
-	for (; it != v.end(); it++) {
-		if (nomeProd == it->getProd()->getNome()) {
-			it->setQuant(quant);
-			return true;
+bool Farmacia::setQuantidade(std::string nomeProd, unsigned quant) {
+
+	bool found = false;
+	priority_queue<ProdutoStock> st_tmp;
+	while(!stock.empty()){
+		if(toupperstring(stock.top().getProd()->getNome()) == toupperstring(nomeProd)){
+			ProdutoStock p_tmp(stock.top().getProd(), quant);
+			st_tmp.push(p_tmp);
+			stock.pop();
+			found = true;
+		}
+		else {
+			st_tmp.push(stock.top());
+			stock.pop();
 		}
 	}
-	return false;
+	stock = st_tmp;
+	return found;
 }
 
 bool Farmacia::operator< (const Farmacia &f1) const {
@@ -277,6 +285,7 @@ void Farmacia::imprimeDados() const {
 		cout << "Gerente: " << gerente->getNome() << "  " << gerente->getNoContribuinte() << endl;
 	if (diretorTecnico != NULL)
 		cout << "Diretor Tecnico: " << diretorTecnico->getNome() << "  " << diretorTecnico->getNoContribuinte() << endl;
+	cout << endl;
 }
 
 bool Farmacia::menorQue(const Farmacia &f1, enum tipoSort tipo, bool crescente) const {
@@ -389,7 +398,7 @@ void Farmacia::criaEncomenda(string fornecedor, unsigned N, unsigned quantidade_
 void Farmacia::entregaEncomendas(unsigned num_encomendas = 1){
 	priority_queue<ProdutoStock> s;
 
-	while(num_encomendas > 0){
+	while(num_encomendas > 0 && !encomendas.empty()){
 		Encomenda e = encomendas.top();
 		encomendas.pop();
 

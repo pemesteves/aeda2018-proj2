@@ -482,6 +482,7 @@ int main() {
 					for (prods = p.begin(); prods != p.end(); prods++) {
 						cout << prods->getProd()->getCodigo() << "  ";
 						cout << prods->getProd()->getNome() << "   ";
+						cout << prods->getProd()->getPreco() << "€   ";
 						cout << prods->getQuant() << " unidades";
 						cout << endl;
 					}
@@ -511,7 +512,7 @@ int main() {
 								cout << "Codigo Invalido. Tente outra vez: ";
 							}
 						} while (cin.fail());
-						cout << endl << "Preco do produto: ";
+						cout << "Preco do produto: ";
 						do {
 							cin >> preco;
 							if (cin.fail()) {
@@ -565,7 +566,7 @@ int main() {
 							(*frm)->addProdutoVender(p);
 						}
 					}
-					int quant;
+					unsigned quant;
 					cout << endl << "Quantidade do produto: ";
 					do {
 						cin >> quant;
@@ -898,7 +899,7 @@ int main() {
 						}
 					} while (cin.fail());
 
-					cout << "Quantas unidades de cada produto pretende encomendar? " << endl;
+					cout << "Quantas unidades de cada produto pretende encomendar? ";
 					cin.clear();
 					cin.ignore(10000, '\n');
 					unsigned q;
@@ -911,7 +912,7 @@ int main() {
 						}
 					} while (cin.fail());
 
-					cout << "Nome do fornecedor: " << endl;
+					cout << "Nome do fornecedor: ";
 					string nomefor;
 					cin.clear();
 					cin.ignore(10000, '\n');

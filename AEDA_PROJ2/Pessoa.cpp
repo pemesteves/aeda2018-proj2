@@ -94,12 +94,14 @@ void Funcionario::setFarmacia(Farmacia* f) {
 	if (cargo1 == "GERENTE") {
 		if (farmaciaTrabalho != NULL)
 			farmaciaTrabalho->setGerente(NULL);
-		f->setGerente(this);
+		if (f != NULL)
+			f->setGerente(this);
 	}
 	else if (cargo1 == "DIRETOR TECNICO" || cargo1 == "DIRETOR TÉCNICO") {
 		if (farmaciaTrabalho != NULL)
 			farmaciaTrabalho->setDiretorTecnico(NULL);
-		f->setDiretorTecnico(this);
+		if (f != NULL)
+			f->setDiretorTecnico(this);
 	}
 	this->farmaciaTrabalho = f;
 }
@@ -208,6 +210,7 @@ void Cliente::showInfo() const {
 	cout << "Cliente" << endl;
 	cout << "Nome: " << nome << endl;
 	cout << "Morada: " << morada << endl;
+	cout << "Distrito: " << distrito << endl;
 	cout << "Contribuinte: " << noContribuinte << endl;
 }
 
