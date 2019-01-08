@@ -14,8 +14,16 @@ using namespace std;
 
 CadeiaFarmacias cadeia;
 
+void logo_cadeia_farmacias(){
+	cout << " ___________________ " << endl;
+	cout << "|                   |" << endl;
+	cout << "|Cadeia de Farmacias|" << endl;
+	cout << "|___________________|" << endl;
+}
+
 void menuCriarCadeia() {
-	cout << "CADEIA DE FARMACIAS" << endl << endl;
+	logo_cadeia_farmacias();
+	cout << endl;
 	cout << "1. Criar nova cadeia. " << endl;
 	cout << "2. Importar cadeia. " << endl;
 	cout << "3. Sair. " << endl;
@@ -357,7 +365,7 @@ int main() {
 			try {
 				Funcionario *f;
 				f = cadeia.despedeFuncionario(contribuinte);
-				cout << "Funcionario " << f->getNoContribuinte() << " despedido" << endl;
+				cout << "Despedimento de " << f->getNome() << endl;
 			}
 			catch (FuncionarioInexistente &e) {
 				cout << "Funcionario " << e.getCont() << " inexistente" << endl;
@@ -368,6 +376,10 @@ int main() {
 			vector<FuncPtr> v = cadeia.getFuncionarios();
 			for (size_t i = 0; i < v.size(); i++) {
 				v.at(i).func->showInfo();
+				if(v.at(i).atual_funcionario)
+					cout << "Atualmente trabalha" << endl;
+				else
+					cout << "Despedido" << endl;
 				cout << endl;
 			}
 			break;
