@@ -60,8 +60,8 @@ void menuFarmacia() {
 	cout << "11. Encomendar produtos com pouca quantidade disponivel." << endl;
 	cout << "12. Encomendar um produto a escolher." << endl;
 	cout << "13. Receber Encomendas." << endl;
-	cout << "14. Receber Encomenda de um produto a escolher." <
-			cout << "15. Ver encomendas pendentes." << endl;
+	cout << "14. Receber Encomenda de um produto a escolher." << endl;
+	cout << "15. Ver encomendas pendentes." << endl;
 	cout << "16. Voltar atras." << endl;
 }
 
@@ -1016,7 +1016,7 @@ int main() {
 					}
 					break;
 				}
-				case 14:
+				case 16:
 					goto menu_cadeia;
 					break;
 				}
