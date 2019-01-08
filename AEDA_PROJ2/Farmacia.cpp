@@ -419,6 +419,7 @@ void Farmacia::entregaEncomendas(unsigned num_encomendas = 1){
 				}
 			}
 			s2.push(s1.top());
+			s1.pop();
 		}
 		stock = s2;
 

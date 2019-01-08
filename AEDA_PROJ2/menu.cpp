@@ -1192,7 +1192,7 @@ int main() {
 		}
 		case 18: {
 			string op;
-			cout << endl << "Deseja guardar as alteracoes? (S / N)";
+			cout << endl << "Deseja guardar as alteracoes? (S / N) ";
 			cin.clear();
 			cin.ignore(10000, '\n');
 			getline(cin, op);
