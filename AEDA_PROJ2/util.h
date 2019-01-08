@@ -48,11 +48,22 @@ inline std::string toupperstring(std::string str) {
 template<typename T>
 class sorting {
 public:
-	static enum tipoSort tipo;
-	static bool crescente;
+	static enum tipoSort tipo; /**< @brief Tipo de sort a realizar */
+	static bool crescente; /**< @brief Booleano que indica se o sort será realizado de modo crescente ou decrescente */
+
+	/**
+	 * Funcao que compara dois tipos de dados
+	 * @param a, b Valores a serem comparados
+	 * @return Retorna true se foi menor que b. Retorna false caso contrario
+	 */
 	static bool compare_p(const T* a, const T* b) {
 		return a->menorQue(*b, tipo, crescente);
 	}
+
+	/**
+	 * Funcao que ordena um vetor de apontadores para valores T
+	 * @param v Vetor a ser ordenado
+	 */
 	void sort_p(std::vector<T*> &v) {
 		sort(v.begin(), v.end(), compare_p);
 	}
@@ -63,7 +74,6 @@ public:
  * @param c1, c2 Apontadores para Clientes a serem comparados
  * @return Retorna true se o Cliente c1 for menor que c2. Caso contrário, retorna false
  */
-
 struct clientesComp {
 	template<class T>
 	bool operator()(const T* c1, const T* c2) const {

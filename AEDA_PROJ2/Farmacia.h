@@ -26,13 +26,13 @@
  */
 class Farmacia {
 private:
-	std::string nome; //Nome da Farmacia
-	std::string morada; //Morada da Farmacia
-	Funcionario* gerente; //Apontador para o gerente da Farmacia (tipo Funcionario)
-	Funcionario* diretorTecnico; //Apontador para o diretor tecnico da Farmacia (tipo Funcionario)
-	std::priority_queue<ProdutoStock> stock; //Fila de prioridade com os produtos em stock, em que os produtos com menor quantidade tem maior prioridade
-	std::priority_queue<Encomenda> encomendas; //Fila de prioridade com as encomendas pendentes, em que as encomendas de produtos com menor quantidade em stock tem maior prioridade
-	std::vector<Venda*> vendas; //Vetor de apontador para objetos do tipo Venda
+	std::string nome; /**< @brief Nome da Farmacia */
+	std::string morada; /**< @brief Morada da Farmacia */
+	Funcionario* gerente; /**< @brief Apontador para o gerente da Farmacia (tipo Funcionario) */
+	Funcionario* diretorTecnico; /**< @brief Apontador para o diretor tecnico da Farmacia (tipo Funcionario) */
+	std::priority_queue<ProdutoStock> stock; /**< @brief Fila de prioridade com os produtos em stock, em que os produtos com menor quantidade tem maior prioridade */
+	std::priority_queue<Encomenda> encomendas; /**< @brief Fila de prioridade com as encomendas pendentes, em que as encomendas de produtos com menor quantidade em stock tem maior prioridade */
+	std::vector<Venda*> vendas; /**< @brief Vetor de apontador para objetos do tipo Venda */
 public:
 	/**
 	 * Construtor da Classe Farmacia
@@ -310,7 +310,7 @@ public:
  * Classe FarmaciaInexistente
  */
 class FarmaciaInexistente {
-	std::string nome; //Nome da Farmacia
+	std::string nome; /**< @brief Nome da Farmacia */
 public:
 	/**
 	 * Construtor da classe -> classe utilizada em excecões

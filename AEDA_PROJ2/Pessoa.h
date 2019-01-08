@@ -15,14 +15,15 @@
 #include <vector>
 
 class Farmacia;
+
 /**
  * Classe Pessoa
  */
 class Pessoa {
 protected:
-	std::string nome; //Nome da Pessoa
-	std::string morada; //Morada da Pessoa
-	unsigned long noContribuinte; //Numero de Contribuinte da Pessoa
+	std::string nome; /**< @brief Nome da Pessoa */
+	std::string morada; /**< @brief Morada da Pessoa */
+	unsigned long noContribuinte; /**< @brief Numero de Contribuinte da Pessoa */
 public:
 	/**
 	 * Construtor da classe Pessoa
@@ -91,8 +92,8 @@ public:
  * Struct com apontador para Funcionario
  */
 struct FuncPtr {
-	Funcionario* func;
-	mutable bool atual_funcionario;
+	Funcionario* func; /**< @brief Apontador para Funcionario */
+	mutable bool atual_funcionario; /**< @brief Booleano que indica se o Funcionario ainda trabalho */
 };
 
 /**
@@ -100,9 +101,9 @@ struct FuncPtr {
  */
 class Funcionario : public Pessoa {
 private:
-	double salario; //Salario do Funcionario
-	Farmacia* farmaciaTrabalho; //Apontador para a Farmacia onde o Funcionario trabalha
-	std::string cargo; //Cargo na Farmacia (funcionario, gerente,...)
+	double salario; /**< @brief Salario do Funcionario */
+	Farmacia* farmaciaTrabalho; /**< @brief Apontador para a Farmacia onde o Funcionario trabalha */
+	std::string cargo; /**< @brief Cargo na Farmacia (funcionario, gerente,...) */
 public:
 	/**
 	 * Construtor da classe Funcionario
@@ -189,8 +190,8 @@ public:
  */
 class Cliente : public Pessoa {
 private:
-	std::string distrito;
-	std::vector<Venda*> historialCompras; //Historial de Compras do Cliente
+	std::string distrito; /**< @brief Distrito do Cliente */
+	std::vector<Venda*> historialCompras; /**< @brief Historial de Compras do Cliente */
 public:
 	/**
 	 * Construtor da classe Cliente
@@ -267,7 +268,7 @@ public:
  * Classe ClienteInexistente
  */
 class ClienteInexistente {
-	std::string nome; //Nome do Cliente
+	std::string nome; /**< @brief Nome do Cliente */
 public:
 	/**
 	 * Construtor da classe -> classe utilizada em excecões
@@ -286,7 +287,7 @@ public:
  * Classe FuncionarioInexistente
  */
 class FuncionarioInexistente {
-	unsigned long cont; //Nome do Funcionario
+	unsigned long cont; /**< @brief Nome do Funcionario */
 public:
 	/**
 	 * Construtor da classe -> classe utilizada em excecões

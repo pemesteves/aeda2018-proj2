@@ -12,12 +12,12 @@
 #include <string>
 
 class Encomenda{
-	std::string fornecedor; //Nome do fornecedor da encomenda
-	unsigned long codigo; //Codigo da encomenda: atribuido sequencialmente
-	unsigned long prod; //Codigo do produto a ser encomendado
-	static unsigned long codigo_sequencial; //Variavel que permite atribuir o codigo da encomenda sequencialmente
-	unsigned quant; //Quantidade do produto a encomendar
-	unsigned quant_stock; //Quantidade do produto em stock
+	std::string fornecedor; /**< @brief Nome do fornecedor da encomenda */
+	unsigned long codigo; /**< @brief Codigo da encomenda: atribuido sequencialmente */
+	unsigned long prod; /**< @brief Codigo do produto a ser encomendado */
+	static unsigned long codigo_sequencial; /**< @brief Variavel que permite atribuir o codigo da encomenda sequencialmente */
+	unsigned quant; /**< @brief Quantidade do produto a encomendar */
+	unsigned quant_stock; /**< @brief Quantidade do produto em stock */
 
 public:
 	/**
@@ -106,7 +106,7 @@ public:
  * Classe EncomendaInexistente
  */
 class EncomendaInexistente {
-	unsigned long codigo_produto; //Codigo do Produto nao encomendado
+	unsigned long codigo_produto; /**< @brief Codigo do Produto nao encomendado */
 public:
 	/**
 	 * Construtor da classe -> classe utilizada em excecões

@@ -15,17 +15,34 @@
 #include <set>
 #include <unordered_set>
 
+/**
+ * Struct hFuncPtr
+ */
 struct hFuncPtr {
+	/**
+	 * @brief Operador () que devolve a posição de um FuncPtr na tabela de dispersão
+	 * @param f1 FuncPtr a colocar na tabela de dispersão
+	 * @return Posição na tabela de dispersão
+	 */
 	int operator()(const FuncPtr & f1) const {
 		return (int) f1.func->getSalario() + (int) f1.func->getNoContribuinte()
 				+ f1.func->getNome().size();
 	}
+
+	/**
+	 * @brief Operador () que compara dois FuncPtr
+	 * @param f1, f2 FuncPtr a verificar se são iguais
+	 * @return Retorna true se forem iguais, ou falso noutro caso
+	 */
 	bool operator()(const FuncPtr & f1, const FuncPtr & f2) const {
 		return f1.func->getNome() == f2.func->getNome()
 				&& f1.func->getNoContribuinte() == f2.func->getNoContribuinte();
 	}
 };
 
+/**
+ * Definição do unordered_set: tabela de dispersão
+ */
 typedef std::unordered_set<FuncPtr, hFuncPtr, hFuncPtr> tabHFunc;
 
 /**
@@ -33,14 +50,14 @@ typedef std::unordered_set<FuncPtr, hFuncPtr, hFuncPtr> tabHFunc;
  */
 class CadeiaFarmacias {
 private:
-	std::string nome; //Nome da cadeia de farmacias
-	std::vector<Farmacia*> farmacias; //Vetor de apontadores para objetos do tipo Farmacia
-	std::set<Cliente*, clientesComp> clientes; //Set de apontadores para objetos do tipo Cliente
-	tabHFunc registo_funcionarios; //Tabela de dispersao com funcionarios antigos e novos da Cadeia de Farmacias
+	std::string nome; /**< @brief Nome da cadeia de farmacias */
+	std::vector<Farmacia*> farmacias; /**< @brief Vetor de apontadores para objetos do tipo Farmacia */
+	std::set<Cliente*, clientesComp> clientes; /**< @brief Set de apontadores para objetos do tipo Cliente */
+	tabHFunc registo_funcionarios; /**< @brief Tabela de dispersao com funcionarios antigos e novos da Cadeia de Farmacias */
 public:
 	/**
 	 *  Construtor da classe
-	 * 	Inicializa um objeto da classe colocando todos os vetores vazios
+	 *  Inicializa um objeto da classe colocando todos os vetores vazios
 	 */
 	CadeiaFarmacias();
 

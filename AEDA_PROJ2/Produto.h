@@ -15,13 +15,13 @@
  */
 class Produto {
 protected:
-	unsigned long codigo; //Codigo do Produto
-	std::string nome; //Nome do Produto
-	float preco; //Preco do Produto
-	std::string descricao; //Descricao do Produto
-	bool passivelReceita; //Booleano que indica se o medicamento e passivel de receita
-	bool vendaSemReceita; //Booleano que indica se o medicamento passivel de receita pode ser vendido sem receita
-	float taxaDesconto; //Taxa de Desconto de um medicamento passível de receita
+	unsigned long codigo; /**< @brief Codigo do Produto */
+	std::string nome; /**< @brief Nome do Produto */
+	float preco; /**< @brief Preco do Produto */
+	std::string descricao; /**< @brief Descricao do Produto */
+	bool passivelReceita; /**< @brief Booleano que indica se o medicamento e passivel de receita */
+	bool vendaSemReceita; /**< @brief Booleano que indica se o medicamento passivel de receita pode ser vendido sem receita */
+	float taxaDesconto; /**< @brief Taxa de Desconto de um medicamento passível de receita */
 
 public:
 	/**
@@ -137,7 +137,7 @@ public:
  * Classe ProdutoInexistente
  */
 class ProdutoInexistente {
-	unsigned long codigo; //Codigo do produto inexistente
+	unsigned long codigo; /**< @brief Codigo do produto inexistente */
 public:
 	/**
 	 * Construtor da classe ProdutoInexistente
@@ -153,8 +153,8 @@ public:
 };
 
 class ProdutoStock{
-	Produto* prod; //Apontador para objeto da classe Produto
-	unsigned quant; //Quantidade do Produto em stock
+	Produto* prod; /**< @brief Apontador para objeto da classe Produto */
+	unsigned quant; /**< @brief Quantidade do Produto em stock */
 public:
 	/**
 	 * Construtor da classe ProdutoStock: inicializa o produto a NULL e quantidade a 0

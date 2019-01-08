@@ -24,10 +24,10 @@ class Cliente;
  */
 class Receita {
 private:
-	unsigned long numero; //Numero da Receita
-	std::string medico; //Nome do medico que prescreveu a Receita
-	std::map<Produto, unsigned long>  produtos; //Map com os Produtos contidos na receita e respetiva quantidade
-	Cliente* cliente; //Apontador para o Cliente ao qual a receita foi prescrita
+	unsigned long numero; /**< @brief Numero da Receita */
+	std::string medico; /**< @brief Nome do medico que prescreveu a Receita */
+	std::map<Produto, unsigned long>  produtos; /**< @brief Map com os Produtos contidos na receita e respetiva quantidade */
+	Cliente* cliente; /**< @brief Apontador para o Cliente ao qual a receita foi prescrita */
 
 public:
 	/**

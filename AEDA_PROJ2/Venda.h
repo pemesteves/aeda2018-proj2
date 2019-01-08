@@ -25,15 +25,15 @@
  */
 class Venda {
 private:
-	unsigned long codigo; //Codigo da venda
-	static unsigned long codigo_sequencial; //Variavel usada para que os codigos das vendas sejam sequenciais (primeira venda tem codigo 0)
-	std::map<Produto, std::vector<float>> produtosVendidos; //Map cujas keys sao objetos do tipo Produto e o valor e um vetor com quantidade, iva e comparticipacao
-	Data data; //Data na qual foi realizada a venda
-	Hora hora; //Hora a qual foi realizada a venda
-	double totalVenda; //Valor total da venda
-	bool temReceita; //Indica se a venda tem uma receita associada (true quando tem)
-	Receita* receitaVenda; //Caso a venda tenha uma receita associada, receitaVenda guarda um apontador para essa receita
-	Cliente* clienteVenda; //Cliente ao qual esta associada a venda
+	unsigned long codigo; /**< @brief Codigo da venda */
+	static unsigned long codigo_sequencial; /**< @brief Variavel usada para que os codigos das vendas sejam sequenciais (primeira venda tem codigo 0) */
+	std::map<Produto, std::vector<float>> produtosVendidos; /**< @brief Map cujas keys sao objetos do tipo Produto e o valor e um vetor com quantidade, iva e comparticipacao */
+	Data data; /**< @brief Data na qual foi realizada a venda */
+	Hora hora; /**< @brief Hora a qual foi realizada a venda */
+	double totalVenda; /**< @brief Valor total da venda */
+	bool temReceita; /**< @brief Indica se a venda tem uma receita associada (true quando tem) */
+	Receita* receitaVenda; /**< @brief Caso a venda tenha uma receita associada, receitaVenda guarda um apontador para essa receita */
+	Cliente* clienteVenda; /**< @brief Cliente ao qual esta associada a venda */
 
 public:
 	/**

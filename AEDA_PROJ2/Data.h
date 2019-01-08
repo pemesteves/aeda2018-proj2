@@ -10,14 +10,15 @@
 
 #include <ctime>
 #include <iostream>
+
  /**
   * Classe Data
   */
 class Data {
 private:
-	unsigned short dia; //Dia do mes
-	unsigned short mes; //Mes do ano
-	int ano; //Ano
+	unsigned short dia; /**< @brief Dia do mes */
+	unsigned short mes; /**< @brief Mes do ano */
+	int ano; /** @brief Ano */
 
 public:
 	/**
@@ -81,9 +82,9 @@ public:
  */
 class Hora {
 private:
-	unsigned short hora; //Hora do dia
-	unsigned short minutos; //Minutos
-	unsigned short segundos; //Segundos
+	unsigned short hora; /**< @brief Hora do dia */
+	unsigned short minutos; /**< @brief Minutos */
+	unsigned short segundos; /**< @brief Segundos */
 
 public:
 	/**
