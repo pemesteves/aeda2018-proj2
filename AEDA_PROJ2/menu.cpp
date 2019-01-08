@@ -260,9 +260,14 @@ int main() {
 			cin.ignore(10000, '\n');
 			cout << "Distrito: ";
 			getline(cin, distrito);
+			Cliente *c;
+			if(isDistrito(distrito)){
+				c = new Cliente(nome, morada, contribuinte, distrito);
+				cadeia.addCliente(c);
+			}
+			else
+				cout << "Distrito invalido" << endl;
 
-			Cliente *c = new Cliente(nome, morada, contribuinte, distrito);
-			cadeia.addCliente(c);
 			break;
 		}
 		case 6: {

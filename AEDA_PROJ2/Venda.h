@@ -3,7 +3,7 @@
  * Header File que contem a classe Venda
  *
  * @author Marcia e Pedro
- * @date Dezembro, 2018
+ * @date Janeiro, 2019
  */
 
 #ifndef VENDA_H
@@ -40,6 +40,7 @@ public:
 	 * Construtor da classe Venda
 	 */
 	Venda();
+
 	/**
 	 * Construtor da classe Venda
 	 * @param receitaVenda Apontador para a receita associada a venda
@@ -67,7 +68,8 @@ public:
 
 	/**
 	 * Metodo que permite atribuir uma receita a venda
-	 * Só e possível atribuir uma receita a venda se esta nao tiver ainda nenhuma receita associada
+	 *
+	 * So e possivel atribuir uma receita a venda se esta nao tiver ainda nenhuma receita associada
 	 * @param receitaVenda Apontador para a receita a associar
 	 * @return True se foi possivel atribuir a receita e false se nao tiver sido possivel
 	 */
@@ -75,6 +77,7 @@ public:
 
 	/**
 	 * Metodo que permite atribuir um cliente a venda
+	 *
 	 * So e possivel atribuir um cliente a venda se esta nao tiver ainda nenhum cliente associado
 	 * @param clienteVenda Apontador para o cliente a associar
 	 * @return True se foi possivel atribuir o cliente e false se nao tiver sido possivel

@@ -2,7 +2,7 @@
  * Header File que contem as classes Pessoa, Funcionario, Cliente, ClienteInexistente e FuncionarioInexistente
  *
  * @author Marcia e Pedro
- * @date Dezembro, 2018
+ * @date Janeiro, 2019
  */
 
 #ifndef PESSOA_H
@@ -302,5 +302,11 @@ public:
 	unsigned long  getCont() const { return cont; }
 };
 
+/**
+ * Funcao que verifica se um dado distrito e valido
+ * @param distrito Nome do distrito que sera verificado
+ * @return Retorna true se o distrito existir. Caso contrario, retorna false. Tambem retorna por referencia o nome do distrito formatado devidamente
+ */
+bool isDistrito(std::string &distrito);
 
 #endif

@@ -2,7 +2,7 @@
  * Header File que contem enumeracoes e metodos sort importantes para o projeto
  *
  * @author Marcia e Pedro
- * @date Dezembro, 2018
+ * @date Janeiro, 2019
  */
 
 #ifndef UTIL_H
@@ -11,24 +11,28 @@
 #include <vector>
 #include <string>
 
-/**
- * Declaracao de uma enumeracao: tipoSort
- * e utilizada para todas as operacoes de sort
- * Valores: NOME = ordenacao por nome; CONTIBUINTE = ordenacao por contribuinte; NUM_PROD = ordenacao por numero de produtos;
- * 			NUM_VENDA = ordenacao por numero de vendas/compras; SALARIO = ordenacao por salario; DATA = ordenacao por data;
- * 			HORA = ordenacao por hora; DEFAULT = ordenacao por um criterio pre-definido
- */
+ /**
+  * Declaracao de uma enumeracao: tipoSort, e utilizada para todas as operacoes de sort
+  */
 enum tipoSort {
-	NOME, CONTRIBUINTE, NUM_PROD, NUM_VENDA, SALARIO, DATA, HORA, DEFAULT
+	NOME, /**< @brief Ordenacao por nome*/
+	CONTRIBUINTE, /**< @brief Ordenacao por contribuinte */
+	NUM_PROD, /**< @brief Ordenacao por numero de produtos */
+	NUM_VENDA, /**< @brief Ordenacao por numero de vendas/compras */
+	SALARIO, /**< @brief Ordenacao por salario */
+	DATA, /**< @brief Ordenacao por Data */
+	HORA, /**< @brief Ordenacao por Hora */
+	DEFAULT /**< @brief Ordenacao por um criterio pre-definido */
 };
 
 /**
- * Declaracao de uma enumeracao: dadosProd
- * e utilizada para facilitar o acesso a dados de um produto numa venda
- * Valores: QUANTIDADE = unidades do produto vendidas; IVA = percentagem de IVA do produto; COMPARTICIPACAO = percentagem de comparticipacao do produto; PRECO_PAGO = preco pago pelo produto, tendo em conta o IVA e a comparticipacao
+ * Declaracao de uma enumeracao: dadosProd, e utilizada para facilitar o acesso a dados de um produto numa venda
  */
 enum dadosProd {
-	QUANTIDADE, IVA, COMPARTICIPACAO, PRECO_PAGO
+	QUANTIDADE,  /**< @brief Unidades do produto vendidas */ 
+	IVA, /**< @brief Percentagem de IVA do produto */
+	COMPARTICIPACAO, /**< @brief Percentagem de comparticipacao do produto */
+	PRECO_PAGO /**< @brief Preco pago pelo produto, tendo em conta o IVA e a comparticipacao */
 };
 
 /**
@@ -44,7 +48,9 @@ inline std::string toupperstring(std::string str) {
 	return s;
 }
 
-
+/**
+ *	Classe sorting para ordenacao de vetores
+ */
 template<typename T>
 class sorting {
 public:
@@ -70,18 +76,19 @@ public:
 };
 
 /**
- * Funcao para comparar dois apontadores para Clientes, usada na bst da classe CadeiaFarmacias
- * @param c1, c2 Apontadores para Clientes a serem comparados
- * @return Retorna true se o Cliente c1 for menor que c2. Caso contrário, retorna false
+ * Struct clientesComp: compara apontadores de Cliente
  */
 struct clientesComp {
+	/**
+	 * Funcao para comparar dois apontadores para Clientes, usada na bst da classe CadeiaFarmacias
+	 * @param c1, c2 Apontadores para Clientes a serem comparados
+	 * @return Retorna true se o Cliente c1 for menor que c2. Caso contrário, retorna false
+	 */
 	template<class T>
 	bool operator()(const T* c1, const T* c2) const {
 		return (*c1) < (*c2);
 	}
 };
-
-
 
 class Receita;
 class Pessoa;

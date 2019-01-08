@@ -2,7 +2,7 @@
  * Header File que contem as classes Produto e ProdutoInexistente
  *
  * @author Marcia e Pedro
- * @date Dezembro, 2018
+ * @date Janeiro, 2019
  */
 #ifndef PRODUTO_H
 #define PRODUTO_H

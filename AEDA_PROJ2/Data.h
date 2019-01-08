@@ -2,7 +2,7 @@
  * Header File que contem as classes Data e Hora
  *
  * @author Marcia e Pedro
- * @date Dezembro, 2018
+ * @date Janeiro, 2019
  */
 
 #ifndef DATA_H
@@ -18,7 +18,7 @@ class Data {
 private:
 	unsigned short dia; /**< @brief Dia do mes */
 	unsigned short mes; /**< @brief Mes do ano */
-	int ano; /** @brief Ano */
+	int ano; /**< @brief Ano */
 
 public:
 	/**

@@ -2,7 +2,7 @@
  * Header File que contem a classe Encomenda e a excecao EncomendaInexistente
  *
  * @author Marcia e Pedro
- * @date Dezembro, 2018
+ * @date Janeiro, 2019
  */
 
 #ifndef ENCOMENDA_H

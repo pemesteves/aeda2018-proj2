@@ -5,11 +5,6 @@
 
 using namespace std;
 
-/**
- * Funcao que verifica se um dado distrito e valido
- * @param distrito Nome do distrito que sera verificado
- * @return Retorna true se o distrito existir. Caso contrario, retorna false. Tambem retorna por referencia o nome do distrito formatado devidamente
- */
 bool isDistrito(string &distrito) {
 	for (unsigned i = 0; i < distrito.length(); i++) {
 		if (i == 0)

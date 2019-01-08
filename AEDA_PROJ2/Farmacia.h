@@ -2,7 +2,7 @@
  * Header File que contem a classe Farmacia e a classe FarmaciaInexistente
  *
  * @author Marcia e Pedro
- * @date Dezembro, 2018
+ * @date Janeiro, 2019
  */
 
 #ifndef FARMACIA_H
@@ -243,12 +243,12 @@ public:
 	 */
 	void imprimeFatura(Venda* v) const;
 
-	/*
+	/**
 	 * Metodo que imprime no ecra os dados da farmacia (nome, morada, gerente, diretor tecnico)
 	 */
 	void imprimeDados() const;
 
-	/*
+	/**
 	 * Metodo que permite obter os produtos com quantidade em stock inferior a um valor
 	 * @param N Quantidade maxima em stock dos produtos retornados
 	 * @return Vetor com objetos do tipo ProdutoStock (produto e quantidade) com quantidade inferior a N
@@ -324,6 +324,5 @@ public:
 	 */
 	std::string getNome() const { return nome; }
 };
-
 
 #endif 

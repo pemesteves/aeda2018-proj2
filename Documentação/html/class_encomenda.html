@@ -63,6 +63,8 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="#friends">Friends</a> &#124;
 <a href="class_encomenda-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -76,7 +78,7 @@ $(function() {
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a0287b590766f9ced8adb5d4e25a58db1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_encomenda.html#a0287b590766f9ced8adb5d4e25a58db1">Encomenda</a> ()</td></tr>
 <tr class="separator:a0287b590766f9ced8adb5d4e25a58db1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8513e7f2b4e7431e7fbbabd17d6d0a4f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_encomenda.html#a8513e7f2b4e7431e7fbbabd17d6d0a4f">Encomenda</a> (std::string fornecedor, unsigned long prod, unsigned quant, unsigned quant_stock)</td></tr>
+<tr class="memitem:a8513e7f2b4e7431e7fbbabd17d6d0a4f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_encomenda.html#a8513e7f2b4e7431e7fbbabd17d6d0a4f">Encomenda</a> (std::string <a class="el" href="class_encomenda.html#a0c4e6693b84a3fe4e96c8eb6527221ea">fornecedor</a>, unsigned long <a class="el" href="class_encomenda.html#a22cc9fe41c55c195bda361e336e94bcc">prod</a>, unsigned <a class="el" href="class_encomenda.html#a6acb0664488cc6c9b959c78e645409f3">quant</a>, unsigned <a class="el" href="class_encomenda.html#ad0f3474c56c514262da059fd93087ae6">quant_stock</a>)</td></tr>
 <tr class="separator:a8513e7f2b4e7431e7fbbabd17d6d0a4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a63fe247235f9f84f307fa7cc865a7c0f"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_encomenda.html#a63fe247235f9f84f307fa7cc865a7c0f">getFornecedor</a> () const</td></tr>
 <tr class="separator:a63fe247235f9f84f307fa7cc865a7c0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -99,6 +101,36 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a314b0bf7dd49bfb6137264de17f13fde"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_encomenda.html#a314b0bf7dd49bfb6137264de17f13fde">operator&lt;</a> (const <a class="el" href="class_encomenda.html">Encomenda</a> &amp;e) const</td></tr>
 <tr class="separator:a314b0bf7dd49bfb6137264de17f13fde"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a0c4e6693b84a3fe4e96c8eb6527221ea"><td class="memItemLeft" align="right" valign="top"><a id="a0c4e6693b84a3fe4e96c8eb6527221ea"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_encomenda.html#a0c4e6693b84a3fe4e96c8eb6527221ea">fornecedor</a></td></tr>
+<tr class="memdesc:a0c4e6693b84a3fe4e96c8eb6527221ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nome do fornecedor da encomenda. <br /></td></tr>
+<tr class="separator:a0c4e6693b84a3fe4e96c8eb6527221ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f833ca58342b8d7964af43b205e343b"><td class="memItemLeft" align="right" valign="top"><a id="a2f833ca58342b8d7964af43b205e343b"></a>
+unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_encomenda.html#a2f833ca58342b8d7964af43b205e343b">codigo</a></td></tr>
+<tr class="memdesc:a2f833ca58342b8d7964af43b205e343b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Codigo da encomenda: atribuido sequencialmente. <br /></td></tr>
+<tr class="separator:a2f833ca58342b8d7964af43b205e343b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22cc9fe41c55c195bda361e336e94bcc"><td class="memItemLeft" align="right" valign="top"><a id="a22cc9fe41c55c195bda361e336e94bcc"></a>
+unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_encomenda.html#a22cc9fe41c55c195bda361e336e94bcc">prod</a></td></tr>
+<tr class="memdesc:a22cc9fe41c55c195bda361e336e94bcc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Codigo do produto a ser encomendado. <br /></td></tr>
+<tr class="separator:a22cc9fe41c55c195bda361e336e94bcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6acb0664488cc6c9b959c78e645409f3"><td class="memItemLeft" align="right" valign="top"><a id="a6acb0664488cc6c9b959c78e645409f3"></a>
+unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_encomenda.html#a6acb0664488cc6c9b959c78e645409f3">quant</a></td></tr>
+<tr class="memdesc:a6acb0664488cc6c9b959c78e645409f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Quantidade do produto a encomendar. <br /></td></tr>
+<tr class="separator:a6acb0664488cc6c9b959c78e645409f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0f3474c56c514262da059fd93087ae6"><td class="memItemLeft" align="right" valign="top"><a id="ad0f3474c56c514262da059fd93087ae6"></a>
+unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_encomenda.html#ad0f3474c56c514262da059fd93087ae6">quant_stock</a></td></tr>
+<tr class="memdesc:ad0f3474c56c514262da059fd93087ae6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Quantidade do produto em stock. <br /></td></tr>
+<tr class="separator:ad0f3474c56c514262da059fd93087ae6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
+Static Private Attributes</h2></td></tr>
+<tr class="memitem:a6ebab1f491a4b2c20b9f8c01f2874b6f"><td class="memItemLeft" align="right" valign="top"><a id="a6ebab1f491a4b2c20b9f8c01f2874b6f"></a>
+static unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_encomenda.html#a6ebab1f491a4b2c20b9f8c01f2874b6f">codigo_sequencial</a> = 0</td></tr>
+<tr class="memdesc:a6ebab1f491a4b2c20b9f8c01f2874b6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Variavel que permite atribuir o codigo da encomenda sequencialmente. <br /></td></tr>
+<tr class="separator:a6ebab1f491a4b2c20b9f8c01f2874b6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
 Friends</h2></td></tr>
 <tr class="memitem:a20e5811c57a1fd548f711b8f04de7d91"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_encomenda.html#a20e5811c57a1fd548f711b8f04de7d91">operator&lt;&lt;</a> (std::ostream &amp;output, const <a class="el" href="class_encomenda.html">Encomenda</a> &amp;e1)</td></tr>
@@ -107,7 +139,7 @@ Friends</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Header File que contem a classe <a class="el" href="class_encomenda.html">Encomenda</a> e a excecao <a class="el" href="class_encomenda_inexistente.html">EncomendaInexistente</a></p>
 <dl class="section author"><dt>Author</dt><dd>Marcia e Pedro </dd></dl>
-<dl class="section date"><dt>Date</dt><dd>Dezembro, 2018 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>Janeiro, 2019 </dd></dl>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a0287b590766f9ced8adb5d4e25a58db1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0287b590766f9ced8adb5d4e25a58db1">&#9670;&nbsp;</a></span>Encomenda() <span class="overload">[1/2]</span></h2>

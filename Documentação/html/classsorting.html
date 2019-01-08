@@ -70,11 +70,12 @@ $(function() {
 <div class="title">sorting&lt; T &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="util_8h_source.html">util.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a4808dcb7b4f99d8105f559c50c021af8"><td class="memItemLeft" align="right" valign="top"><a id="a4808dcb7b4f99d8105f559c50c021af8"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>sort_p</b> (std::vector&lt; T *&gt; &amp;v)</td></tr>
+<tr class="memitem:a4808dcb7b4f99d8105f559c50c021af8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsorting.html#a4808dcb7b4f99d8105f559c50c021af8">sort_p</a> (std::vector&lt; T *&gt; &amp;v)</td></tr>
 <tr class="separator:a4808dcb7b4f99d8105f559c50c021af8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9804eb4e779f07241181159ad635bfeb"><td class="memTemplParams" colspan="2"><a id="a9804eb4e779f07241181159ad635bfeb"></a>
 template&lt;&gt; </td></tr>
@@ -87,19 +88,105 @@ template&lt;&gt; </td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a56fffc17a0eef3e312e1a94b41ce626c"><td class="memItemLeft" align="right" valign="top"><a id="a56fffc17a0eef3e312e1a94b41ce626c"></a>
-static bool&#160;</td><td class="memItemRight" valign="bottom"><b>compare_p</b> (const T *a, const T *b)</td></tr>
+<tr class="memitem:a56fffc17a0eef3e312e1a94b41ce626c"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsorting.html#a56fffc17a0eef3e312e1a94b41ce626c">compare_p</a> (const T *a, const T *b)</td></tr>
 <tr class="separator:a56fffc17a0eef3e312e1a94b41ce626c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
 <tr class="memitem:ab5afafc9b67c8b5f98e72bdf0557a579"><td class="memItemLeft" align="right" valign="top"><a id="ab5afafc9b67c8b5f98e72bdf0557a579"></a>
-static enum tipoSort&#160;</td><td class="memItemRight" valign="bottom"><b>tipo</b></td></tr>
+static enum tipoSort&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsorting.html#ab5afafc9b67c8b5f98e72bdf0557a579">tipo</a></td></tr>
+<tr class="memdesc:ab5afafc9b67c8b5f98e72bdf0557a579"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tipo de sort a realizar. <br /></td></tr>
 <tr class="separator:ab5afafc9b67c8b5f98e72bdf0557a579"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0aed672917eba0c1d7bbe06f017fba2e"><td class="memItemLeft" align="right" valign="top"><a id="a0aed672917eba0c1d7bbe06f017fba2e"></a>
-static bool&#160;</td><td class="memItemRight" valign="bottom"><b>crescente</b></td></tr>
+static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsorting.html#a0aed672917eba0c1d7bbe06f017fba2e">crescente</a></td></tr>
+<tr class="memdesc:a0aed672917eba0c1d7bbe06f017fba2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Booleano que indica se o sort será realizado de modo crescente ou decrescente. <br /></td></tr>
 <tr class="separator:a0aed672917eba0c1d7bbe06f017fba2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><h3>template&lt;typename T&gt;<br />
+class sorting&lt; T &gt;</h3>
+
+<p>Classe sorting para ordenacao de vetores </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a56fffc17a0eef3e312e1a94b41ce626c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a56fffc17a0eef3e312e1a94b41ce626c">&#9670;&nbsp;</a></span>compare_p()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static bool <a class="el" href="classsorting.html">sorting</a>&lt; T &gt;::compare_p </td>
+          <td>(</td>
+          <td class="paramtype">const T *&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const T *&#160;</td>
+          <td class="paramname"><em>b</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Funcao que compara dois tipos de dados </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">a,b</td><td>Valores a serem comparados </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Retorna true se foi menor que b. Retorna false caso contrario </dd></dl>
+
+</div>
+</div>
+<a id="a4808dcb7b4f99d8105f559c50c021af8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4808dcb7b4f99d8105f559c50c021af8">&#9670;&nbsp;</a></span>sort_p()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classsorting.html">sorting</a>&lt; T &gt;::sort_p </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; T *&gt; &amp;&#160;</td>
+          <td class="paramname"><em>v</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Funcao que ordena um vetor de apontadores para valores T </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v</td><td>Vetor a ser ordenado </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>C:/Users/ASUS1/Desktop/aeda2018-proj2/AEDA_PROJ2/<a class="el" href="util_8h_source.html">util.h</a></li>
 </ul>
