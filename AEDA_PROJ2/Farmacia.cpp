@@ -411,7 +411,7 @@ void Farmacia::entregaEncomendas(unsigned num_encomendas = 1){
 		s1 = stock;
 		while(!s1.empty()){
 			if(s1.top().getProd() != NULL){
-				if(s1.top().getProd()->getCodigo() == e.getCodigo()){
+				if(s1.top().getProd()->getCodigo() == e.getProd()){
 					ProdutoStock p = s1.top();
 					p.setQuant(p.getQuant() + e.getQuant());
 					s.push(p);
