@@ -20,15 +20,10 @@ string distritoCorrecao(string &distrito) {
 
 	vector<string> dist_correcao = distritos;
 
-	/*for(size_t i=0; i<distritos.size(); i++){
-		if (distritos.at(i).length() + 2 >= distrito.length() && distritos.at(i).length() <= distrito.length()){
-			dist_correcao.push_back(distritos.at(i));
-		}
-	}*/
 
 	vector<int> pts(dist_correcao.size(), 0);
-	vector<int> letras_dist(27, 0); //26 letras, ultima posicao corresponde ao espaço
-	vector<int> letras_correcao(27, 0);
+	vector<int> letras_dist(26, 0);
+	vector<int> letras_correcao(26, 0);
 
 	distrito = toupperstring(distrito);
 
@@ -49,13 +44,13 @@ string distritoCorrecao(string &distrito) {
 			}
 		}
 
-		for(size_t k=0; k<27; k++){
+		for(size_t k=0; k<26; k++){
 			diff += abs(letras_dist.at(k) - letras_correcao.at(k));
 		}
 		pts.at(i) = diff;
 		diff = 0;
 		letras_correcao.clear();
-		letras_correcao.resize(27,0);
+		letras_correcao.resize(26,0);
 	}
 
 	int n = 100;
@@ -68,4 +63,45 @@ string distritoCorrecao(string &distrito) {
 	}
 
 	return d;
+}
+
+bool valido_contribuinte(unsigned long contribuinte){
+	unsigned num_digitos = 0;
+	unsigned long temp_cont = contribuinte;
+	while(temp_cont != 0){
+		num_digitos++;
+		temp_cont /= 10;
+	}
+
+	if(num_digitos != 9)
+		return false;
+
+	std::vector<unsigned> digitos(9, 0);
+
+	temp_cont = contribuinte;
+
+	for(int i = 8; i >= 0; i--){
+		digitos[i] = temp_cont % 10;
+		temp_cont /= 10;
+	}
+
+	unsigned digito_controlo = 0;
+
+	digito_controlo += digitos[7]*2;
+	digito_controlo += digitos[6]*3;
+	digito_controlo += digitos[5]*4;
+	digito_controlo += digitos[4]*5;
+	digito_controlo += digitos[3]*6;
+	digito_controlo += digitos[2]*7;
+	digito_controlo += digitos[1]*8;
+	digito_controlo += digitos[0]*9;
+
+	digito_controlo = digito_controlo % 11;
+	if ((digito_controlo == 1 || digito_controlo == 0) && (digitos[8] == 0))
+		return true;
+	else if (digito_controlo != 0 && digito_controlo != 1){
+		if((11 - digito_controlo) == digitos[8])
+			return true;
+	}
+	return false;
 }

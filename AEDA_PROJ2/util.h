@@ -90,6 +90,7 @@ struct clientesComp {
 	}
 };
 
+
 class Receita;
 class Pessoa;
 class Cliente;

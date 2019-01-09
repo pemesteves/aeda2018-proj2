@@ -6,5 +6,7 @@
 
 std::string distritoCorrecao(std::string &distrito);
 
+bool valido_contribuinte(unsigned long contribuinte);
+
 #endif
 

@@ -6,164 +6,41 @@
 #include "Receita.h"
 #include "util.h"
 #include "Venda.h"
+#include "validacao.h"
 
+#include <Windows.h>
 #include <iostream>
 #include <fstream>
+
+//Definição dos números que correspondem a cada cor -> serão utilizados nas funções setcolor
+#define CYAN 3
+#define WHITE 15
 
 using namespace std;
 
 CadeiaFarmacias cadeia;
 
-void logo_menu_principal(){
-	cout << " ___________________ " << endl;
-	cout << "|                   |" << endl;
-	cout << "|Cadeia de Farmacias|" << endl;
-	cout << "|___________________|" << endl;
-}
+void setcolor(unsigned int color);
 
-void menuCriarCadeia() {
-	logo_menu_principal();
-	cout << endl;
-	cout << "1. Criar nova cadeia. " << endl;
-	cout << "2. Importar cadeia. " << endl;
-	cout << "3. Sair. " << endl;
-}
+void logo_menu_principal();
 
-void logo_cadeia_farmacias(string nome_da_cadeia){
-	cout << " __________________________";
-	for(unsigned i = 0; i < nome_da_cadeia.length(); i++)
-		cout << "_";
-	cout << endl;
-	cout <<"|                          ";
-	for(unsigned i = 0; i < nome_da_cadeia.length(); i++)
-		cout << " ";
-	cout << "|" << endl;
-	cout <<"|GERIR CADEIA DE FARMACIAS " << nome_da_cadeia << "|" << endl;
-	cout <<"|__________________________";
-	for(unsigned i = 0; i < nome_da_cadeia.length(); i++)
-		cout << "_";
-	cout << "|" << endl;
-}
+void menuCriarCadeia();
 
-void menuGerirCadeia(string nome_da_cadeia) {
-	cout << endl;
-	logo_cadeia_farmacias(nome_da_cadeia);
-	cout << endl;
+void logo_cadeia_farmacias(string nome_da_cadeia);
 
-	cout << "1. Adicionar Farmacia." << endl;
-	cout << "2. Ordenar farmacias." << endl;
-	cout << "3. Remover Farmacia." << endl;
-	cout << "4. Ver farmacias." << endl;
-	cout << "5. Adicionar Cliente." << endl;
-	cout << "6. Remover Cliente." << endl;
-	cout << "7. Ver clientes." << endl;
-	cout << "8. Adicionar Funcionario." << endl;
-	cout << "9. Contratar Funcionario antigo." << endl;
-	cout << "10. Despedir Funcionario." << endl;
-	cout << "11. Ver todos os funcionarios." << endl;
-	cout << "12. Ver funcinarios atuais." << endl;
-	cout << "13. Ver funcionarios antigos." << endl;
-	cout << "14. Ver dados da cadeia." << endl;
-	cout << "15. Gerir Farmacia." << endl;
-	cout << "16. Gerir Funcionario." << endl;
-	cout << "17. Gerir Cliente." << endl;
-	cout << "18. Sair." << endl;
-}
+void menuGerirCadeia(string nome_da_cadeia);
 
-void logo_farmacia(string nome_da_farmacia){
-	cout << " _______________";
-	for(unsigned i = 0; i < nome_da_farmacia.length(); i++)
-		cout << "_";
-	cout << endl;
-	cout <<"|               ";
-	for(unsigned i = 0; i < nome_da_farmacia.length(); i++)
-		cout << " ";
-	cout << "|" << endl;
-	cout <<"|GERIR FARMACIA " << nome_da_farmacia << "|" << endl;
-	cout <<"|_______________";
-	for(unsigned i = 0; i < nome_da_farmacia.length(); i++)
-		cout << "_";
-	cout << "|" << endl;
-}
+void logo_farmacia(string nome_da_farmacia);
 
-void menuFarmacia(string nome_da_farmacia) {
-	cout << endl;
-	logo_farmacia(nome_da_farmacia);
-	cout << endl;
+void menuFarmacia(string nome_da_farmacia);
 
-	cout << "1. Ver dados da Farmacia." << endl;
-	cout << "2. Mudar gerente." << endl;
-	cout << "3. Mudar diretor tecnico." << endl;
-	cout << "4. Consultar stock." << endl;
-	cout << "5. Adicionar ou alterar quantidade de Produto." << endl;
-	cout << "6. Remover Produto." << endl;
-	cout << "7. Ver historial de vendas." << endl;
-	cout << "8. Ver vendas entre duas datas." << endl;
-	cout << "9. Realizar Venda." << endl;
-	cout << "10. Ordenar Vendas." << endl;
-	cout << "11. Encomendar produtos com pouca quantidade disponivel." << endl;
-	cout << "12. Encomendar um produto a escolher." << endl;
-	cout << "13. Receber Encomendas." << endl;
-	cout << "14. Receber Encomenda de um produto a escolher." << endl;
-	cout << "15. Ver encomendas pendentes." << endl;
-	cout << "16. Voltar atras." << endl;
-}
+void logo_funcionario(string nome_do_funcionario);
 
-void logo_funcionario(string nome_do_funcionario){
-	cout << " __________________";
-	for(unsigned i = 0; i < nome_do_funcionario.length(); i++)
-		cout << "_";
-	cout << endl;
-	cout <<"|                  ";
-	for(unsigned i = 0; i < nome_do_funcionario.length(); i++)
-		cout << " ";
-	cout << "|" << endl;
-	cout <<"|GERIR FUNCIONARIO " << nome_do_funcionario << "|" << endl;
-	cout <<"|__________________";
-	for(unsigned i = 0; i < nome_do_funcionario.length(); i++)
-		cout << "_";
-	cout << "|" << endl;
-}
+void menuFuncionario(string nome_do_funcionario);
 
-void menuFuncionario(string nome_do_funcionario) {
-	cout << endl;
-	logo_funcionario(nome_do_funcionario);
-	cout << endl;
+void logo_cliente(string nome_do_cliente);
 
-	cout << "1. Ver dados do Funcionario." << endl;
-	cout << "2. Alterar farmacia em que trabalha." << endl;
-	cout << "3. Alterar cargo." << endl;
-	cout << "4. Alterar salario." << endl;
-	cout << "5. Alterar morada." << endl;
-	cout << "6. Voltar atras." << endl;
-}
-
-void logo_cliente(string nome_do_cliente){
-	cout << " ______________";
-	for(unsigned i = 0; i < nome_do_cliente.length(); i++)
-		cout << "_";
-	cout << endl;
-	cout <<"|              ";
-	for(unsigned i = 0; i < nome_do_cliente.length(); i++)
-		cout << " ";
-	cout << "|" << endl;
-	cout <<"|GERIR CLIENTE " << nome_do_cliente << "|" << endl;
-	cout <<"|______________";
-	for(unsigned i = 0; i < nome_do_cliente.length(); i++)
-		cout << "_";
-	cout << "|" << endl;
-}
-
-void menuCliente(string nome_do_cliente) {
-	cout << endl;
-	logo_cliente(nome_do_cliente);
-	cout << endl;
-	cout << "1. Ver dados do Cliente." << endl;
-	cout << "2. Ver historial de compras." << endl;
-	cout << "3. Alterar morada." << endl;
-	cout << "4. Alterar distrito." << endl;
-	cout << "5. Voltar atras." << endl;
-}
+void menuCliente(string nome_do_cliente);
 
 int main() {
 	unsigned int option;
@@ -200,8 +77,6 @@ int main() {
 		{
 			cout << "Ficheiro " << nome << ".txt nao encontrado!" << endl;
 			cout << "Quer tentar outra vez ou sair? (S = sair)" << endl;
-			cin.clear();
-			cin.ignore(10000, '\n');
 			getline(cin, nome);
 			if (toupperstring(nome) == "S")
 				goto sairDoPrograma;
@@ -329,12 +204,12 @@ int main() {
 			unsigned long contribuinte;
 			do {
 				cin >> contribuinte;
-				if (cin.fail()) {
+				if (cin.fail() || !valido_contribuinte(contribuinte)) {
 					cin.clear();
 					cin.ignore(10000, '\n');
 					cout << "Contribuinte Invalido. Tente outra vez: ";
 				}
-			} while (cin.fail());
+			} while (cin.fail() || !valido_contribuinte(contribuinte));
 			string distrito;
 			cin.clear();
 			cin.ignore(10000, '\n');
@@ -385,12 +260,12 @@ int main() {
 			unsigned long contribuinte;
 			do {
 				cin >> contribuinte;
-				if (cin.fail()) {
+				if (cin.fail() || !valido_contribuinte(contribuinte)) {
 					cin.clear();
 					cin.ignore(10000, '\n');
 					cout << "Contribuinte Invalido. Tente outra vez: ";
 				}
-			} while (cin.fail());
+			} while (cin.fail() || !valido_contribuinte(contribuinte));
 			Funcionario *f = new Funcionario(nome, morada, contribuinte);
 			if(!cadeia.addFuncionario(f,true)){
 				cout << "Funcionario com contribuinte " << contribuinte << " ja existe." << endl;
@@ -409,7 +284,7 @@ int main() {
 					cin.ignore(10000, '\n');
 					cout << "Contribuinte Invalido. Tente outra vez: ";
 				}
-			} while (cin.fail());
+			} while (cin.fail() );
 
 			int n = cadeia.contratarFuncAntigo(contribuinte);
 
@@ -1027,8 +902,6 @@ int main() {
 					} while (cin.fail());
 
 					cout << "Quantas unidades do produto pretende encomendar? ";
-					cin.clear();
-					cin.ignore(10000, '\n');
 					unsigned q;
 					do {
 						cin >> q;
@@ -1119,7 +992,7 @@ int main() {
 			unsigned long cont;
 			do {
 				cin >> cont;
-				if (cin.fail()) {
+				if (cin.fail() || !valido_contribuinte(cont)) {
 					cin.clear();
 					cin.ignore(10000, '\n');
 					cout << "Contribuinte Invalido. Tente outra vez: ";
@@ -1274,9 +1147,10 @@ int main() {
 				case 4:{
 					string novo_distrito;
 					cout << "Novo distrito: ";
+					cin.clear();
+					cin.ignore(10000, '\n');
+
 					do{
-						cin.clear();
-						cin.ignore(10000, '\n');
 						getline(cin, novo_distrito);
 						if(isDistrito(novo_distrito))
 							break;
@@ -1323,5 +1197,171 @@ int main() {
 	return 0;
 }
 
+void setcolor(unsigned int color) //Função que muda a cor da letra, conforme o inteiro que lhe é passado
+{
+	HANDLE hcon = GetStdHandle(STD_OUTPUT_HANDLE);
+	SetConsoleTextAttribute(hcon, color);
+}
+
+void logo_menu_principal(){
+	setcolor(CYAN);
+	cout << " ___________________ " << endl;
+	cout << "|                   |" << endl;
+	cout << "|Cadeia de Farmacias|" << endl;
+	cout << "|___________________|" << endl;
+	setcolor(WHITE);
+}
+
+void menuCriarCadeia() {
+	logo_menu_principal();
+	cout << endl;
+	cout << "1. Criar nova cadeia. " << endl;
+	cout << "2. Importar cadeia. " << endl;
+	cout << "3. Sair. " << endl;
+}
+
+void logo_cadeia_farmacias(string nome_da_cadeia){
+	setcolor(CYAN);
+	cout << " __________________________";
+	for(unsigned i = 0; i < nome_da_cadeia.length(); i++)
+		cout << "_";
+	cout << endl;
+	cout <<"|                          ";
+	for(unsigned i = 0; i < nome_da_cadeia.length(); i++)
+		cout << " ";
+	cout << "|" << endl;
+	cout <<"|GERIR CADEIA DE FARMACIAS " << nome_da_cadeia << "|" << endl;
+	cout <<"|__________________________";
+	for(unsigned i = 0; i < nome_da_cadeia.length(); i++)
+		cout << "_";
+	cout << "|" << endl;
+	setcolor(WHITE);
+}
+
+void menuGerirCadeia(string nome_da_cadeia) {
+	cout << endl;
+	logo_cadeia_farmacias(nome_da_cadeia);
+	cout << endl;
+
+	cout << "1. Adicionar Farmacia." << endl;
+	cout << "2. Ordenar farmacias." << endl;
+	cout << "3. Remover Farmacia." << endl;
+	cout << "4. Ver farmacias." << endl;
+	cout << "5. Adicionar Cliente." << endl;
+	cout << "6. Remover Cliente." << endl;
+	cout << "7. Ver clientes." << endl;
+	cout << "8. Adicionar Funcionario." << endl;
+	cout << "9. Contratar Funcionario antigo." << endl;
+	cout << "10. Despedir Funcionario." << endl;
+	cout << "11. Ver todos os funcionarios." << endl;
+	cout << "12. Ver funcinarios atuais." << endl;
+	cout << "13. Ver funcionarios antigos." << endl;
+	cout << "14. Ver dados da cadeia." << endl;
+	cout << "15. Gerir Farmacia." << endl;
+	cout << "16. Gerir Funcionario." << endl;
+	cout << "17. Gerir Cliente." << endl;
+	cout << "18. Sair." << endl;
+}
+
+void logo_farmacia(string nome_da_farmacia){
+	setcolor(CYAN);
+	cout << " _______________";
+	for(unsigned i = 0; i < nome_da_farmacia.length(); i++)
+		cout << "_";
+	cout << endl;
+	cout <<"|               ";
+	for(unsigned i = 0; i < nome_da_farmacia.length(); i++)
+		cout << " ";
+	cout << "|" << endl;
+	cout <<"|GERIR FARMACIA " << nome_da_farmacia << "|" << endl;
+	cout <<"|_______________";
+	for(unsigned i = 0; i < nome_da_farmacia.length(); i++)
+		cout << "_";
+	cout << "|" << endl;
+	setcolor(WHITE);
+}
+
+void menuFarmacia(string nome_da_farmacia) {
+	cout << endl;
+	logo_farmacia(nome_da_farmacia);
+	cout << endl;
+
+	cout << "1. Ver dados da Farmacia." << endl;
+	cout << "2. Mudar gerente." << endl;
+	cout << "3. Mudar diretor tecnico." << endl;
+	cout << "4. Consultar stock." << endl;
+	cout << "5. Adicionar ou alterar quantidade de Produto." << endl;
+	cout << "6. Remover Produto." << endl;
+	cout << "7. Ver historial de vendas." << endl;
+	cout << "8. Ver vendas entre duas datas." << endl;
+	cout << "9. Realizar Venda." << endl;
+	cout << "10. Ordenar Vendas." << endl;
+	cout << "11. Encomendar produtos com pouca quantidade disponivel." << endl;
+	cout << "12. Encomendar um produto a escolher." << endl;
+	cout << "13. Receber Encomendas." << endl;
+	cout << "14. Receber Encomenda de um produto a escolher." << endl;
+	cout << "15. Ver encomendas pendentes." << endl;
+	cout << "16. Voltar atras." << endl;
+}
+
+void logo_funcionario(string nome_do_funcionario){
+	setcolor(CYAN);
+	cout << " __________________";
+	for(unsigned i = 0; i < nome_do_funcionario.length(); i++)
+		cout << "_";
+	cout << endl;
+	cout <<"|                  ";
+	for(unsigned i = 0; i < nome_do_funcionario.length(); i++)
+		cout << " ";
+	cout << "|" << endl;
+	cout <<"|GERIR FUNCIONARIO " << nome_do_funcionario << "|" << endl;
+	cout <<"|__________________";
+	for(unsigned i = 0; i < nome_do_funcionario.length(); i++)
+		cout << "_";
+	cout << "|" << endl;
+	setcolor(WHITE);
+}
+
+void menuFuncionario(string nome_do_funcionario) {
+	cout << endl;
+	logo_funcionario(nome_do_funcionario);
+	cout << endl;
+
+	cout << "1. Ver dados do Funcionario." << endl;
+	cout << "2. Alterar farmacia em que trabalha." << endl;
+	cout << "3. Alterar cargo." << endl;
+	cout << "4. Alterar salario." << endl;
+	cout << "5. Alterar morada." << endl;
+	cout << "6. Voltar atras." << endl;
+}
+
+void logo_cliente(string nome_do_cliente){
+	setcolor(CYAN);
+	cout << " ______________";
+	for(unsigned i = 0; i < nome_do_cliente.length(); i++)
+		cout << "_";
+	cout << endl;
+	cout <<"|              ";
+	for(unsigned i = 0; i < nome_do_cliente.length(); i++)
+		cout << " ";
+	cout << "|" << endl;
+	cout <<"|GERIR CLIENTE " << nome_do_cliente << "|" << endl;
+	cout <<"|______________";
+	for(unsigned i = 0; i < nome_do_cliente.length(); i++)
+		cout << "_";
+	cout << "|" << endl;
+	setcolor(WHITE);
+}
+
+void menuCliente(string nome_do_cliente) {
+	cout << endl;
+	logo_cliente(nome_do_cliente);
+	cout << endl;
+	cout << "1. Ver dados do Cliente." << endl;
+	cout << "2. Ver historial de compras." << endl;
+	cout << "3. Alterar morada." << endl;
+	cout << "4. Alterar distrito." << endl;
+	cout << "5. Voltar atras." << endl;
+}
 
 

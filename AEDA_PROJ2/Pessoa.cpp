@@ -15,13 +15,13 @@ bool isDistrito(string &distrito) {
 			distrito[i] = tolower(distrito[i]);
 	}
 
-	if (distrito == "Aveiro" || distrito == "Beja" || distrito == "Braganca"
-		|| distrito == "Castelo Branco" || distrito == "Coimbra"
-		|| distrito == "Evora" || distrito == "Faro" || distrito == "Guarda"
-		|| distrito == "Leiria" || distrito == "Portalegre"
-		|| distrito == "Porto" || distrito == "Santarem"
-		|| distrito == "Setubal" || distrito == "Viana do Castelo"
-		|| distrito == "Vila Real" || distrito == "Viseu")
+	if (distrito == "Aveiro" || distrito == "Beja" || distrito == "Braga" || distrito == "Braganca"
+			|| distrito == "Castelo Branco" || distrito == "Coimbra" || distrito == "Evora"
+					|| distrito == "Faro" || distrito == "Guarda" || distrito == "Leiria"
+							|| distrito == "Lisboa " || distrito == "Portalegre" || distrito == "Porto"
+									|| distrito == "Santarem" || distrito == "Setubal"
+											|| distrito == "Viana do Castelo" || distrito == "Vila Real"
+													|| distrito == "Viseu")
 		return true;
 	return false;
 }
