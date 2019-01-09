@@ -465,7 +465,7 @@ int main() {
 					for (prods = p.begin(); prods != p.end(); prods++) {
 						cout << prods->getProd()->getCodigo() << "  ";
 						cout << prods->getProd()->getNome() << "   ";
-						cout << prods->getProd()->getPreco() << "€   ";
+						cout << prods->getProd()->getPreco() << " euros   ";
 						cout << prods->getQuant() << " unidades";
 						cout << endl;
 					}
@@ -1284,7 +1284,7 @@ void menuGerirCadeia(string nome_da_cadeia) {
 	cout << "9. Contratar Funcionario antigo." << endl;
 	cout << "10. Despedir Funcionario." << endl;
 	cout << "11. Ver todos os funcionarios." << endl;
-	cout << "12. Ver funcinarios atuais." << endl;
+	cout << "12. Ver funcionarios atuais." << endl;
 	cout << "13. Ver funcionarios antigos." << endl;
 	cout << "14. Ver dados da cadeia." << endl;
 	cout << "15. Gerir Farmacia." << endl;
