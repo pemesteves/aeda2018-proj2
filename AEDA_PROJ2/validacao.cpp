@@ -12,7 +12,7 @@ using namespace std;
 string distritoCorrecao(string &distrito) {
 	string d;
 
-	vector<string> distritos = {"Aveiro","Beja","Braganca","Castelo Branco","Coimbra","Evora","Faro","Guarda","Leiria","Portalegre","Porto","Santarem","Setubal","Viana do Castelo","Vila Real","Viseu"};
+	vector<string> distritos = {"Aveiro","Beja", "Braga", "Braganca","Castelo Branco","Coimbra","Evora","Faro","Guarda","Leiria", "Lisboa","Portalegre","Porto","Santarem","Setubal","Viana do Castelo","Vila Real","Viseu"};
 
 	for(size_t i = 0; i<distritos.size(); i++){
 		distritos.at(i) = toupperstring(distritos.at(i));
@@ -60,6 +60,16 @@ string distritoCorrecao(string &distrito) {
 			d = dist_correcao.at(i);
 			n = pts.at(i);
 		}
+	}
+
+
+	for (unsigned i = 0; i < d.length(); i++) {
+		if (i == 0)
+			d[i] = toupper(d[i]);
+		else if (d[i - 1] == ' ')
+			d[i] = toupper(d[i]);
+		else
+			d[i] = tolower(d[i]);
 	}
 
 	return d;

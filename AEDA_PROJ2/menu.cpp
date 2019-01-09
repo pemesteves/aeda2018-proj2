@@ -216,12 +216,29 @@ int main() {
 			cout << "Distrito: ";
 			getline(cin, distrito);
 			Cliente *c;
-			if(isDistrito(distrito)){
-				c = new Cliente(nome, morada, contribuinte, distrito);
-				cadeia.addCliente(c);
-			}
-			else
+			do{
+				if(isDistrito(distrito)){
+					c = new Cliente(nome, morada, contribuinte, distrito);
+					cadeia.addCliente(c);
+					break;
+				}
 				cout << "Distrito invalido" << endl;
+				string novo_distrito = distritoCorrecao(distrito);
+				cout << "Sera que quis dizer " << novo_distrito << "? (S/N) ";
+
+				char opcao_distrito;
+				cin >> opcao_distrito;
+				if(toupper(opcao_distrito) == 'S'){
+					c = new Cliente(nome, morada, contribuinte, novo_distrito);
+					cadeia.addCliente(c);
+					break;
+				}
+				else{
+					cout << "Insira novamente o distrito: ";
+					cin.ignore();
+					getline(cin, distrito);
+				}
+			}while(true);
 
 			break;
 		}
@@ -1155,7 +1172,20 @@ int main() {
 						if(isDistrito(novo_distrito))
 							break;
 						else{
-							cout << "Distrito invalido. Insira outra vez: " << endl;
+							cout << "Distrito invalido." << endl;
+							string distrito = distritoCorrecao(novo_distrito);
+							cout << "Sera que quis dizer " << distrito << "? (S/N) ";
+							char opcao_distrito;
+							cin >> opcao_distrito;
+
+							if(toupper(opcao_distrito) == 'S'){
+								novo_distrito = distrito;
+								break;
+							}
+							else{
+								cout << "Insira novamente o distrito: ";
+								cin.ignore();
+							}
 						}
 					}while(!isDistrito(novo_distrito));
 
@@ -1230,7 +1260,7 @@ void logo_cadeia_farmacias(string nome_da_cadeia){
 	for(unsigned i = 0; i < nome_da_cadeia.length(); i++)
 		cout << " ";
 	cout << "|" << endl;
-	cout <<"|GERIR CADEIA DE FARMACIAS " << nome_da_cadeia << "|" << endl;
+	cout <<"|GERIR CADEIA DE FARMACIAS " << toupperstring(nome_da_cadeia) << "|" << endl;
 	cout <<"|__________________________";
 	for(unsigned i = 0; i < nome_da_cadeia.length(); i++)
 		cout << "_";
@@ -1273,7 +1303,7 @@ void logo_farmacia(string nome_da_farmacia){
 	for(unsigned i = 0; i < nome_da_farmacia.length(); i++)
 		cout << " ";
 	cout << "|" << endl;
-	cout <<"|GERIR FARMACIA " << nome_da_farmacia << "|" << endl;
+	cout <<"|GERIR FARMACIA " << toupperstring(nome_da_farmacia) << "|" << endl;
 	cout <<"|_______________";
 	for(unsigned i = 0; i < nome_da_farmacia.length(); i++)
 		cout << "_";
@@ -1314,7 +1344,7 @@ void logo_funcionario(string nome_do_funcionario){
 	for(unsigned i = 0; i < nome_do_funcionario.length(); i++)
 		cout << " ";
 	cout << "|" << endl;
-	cout <<"|GERIR FUNCIONARIO " << nome_do_funcionario << "|" << endl;
+	cout <<"|GERIR FUNCIONARIO " << toupperstring(nome_do_funcionario) << "|" << endl;
 	cout <<"|__________________";
 	for(unsigned i = 0; i < nome_do_funcionario.length(); i++)
 		cout << "_";
@@ -1345,7 +1375,7 @@ void logo_cliente(string nome_do_cliente){
 	for(unsigned i = 0; i < nome_do_cliente.length(); i++)
 		cout << " ";
 	cout << "|" << endl;
-	cout <<"|GERIR CLIENTE " << nome_do_cliente << "|" << endl;
+	cout <<"|GERIR CLIENTE " << toupperstring(nome_do_cliente) << "|" << endl;
 	cout <<"|______________";
 	for(unsigned i = 0; i < nome_do_cliente.length(); i++)
 		cout << "_";

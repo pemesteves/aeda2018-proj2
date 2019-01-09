@@ -8,6 +8,7 @@ var searchData=
   ['clienteinexistente',['ClienteInexistente',['../class_cliente_inexistente.html#a5bea99296840a40c57f64d1845ba276a',1,'ClienteInexistente']]],
   ['compare_5fp',['compare_p',['../classsorting.html#a56fffc17a0eef3e312e1a94b41ce626c',1,'sorting']]],
   ['contratarfuncantigo',['contratarFuncAntigo',['../class_cadeia_farmacias.html#a1de27f14ede44a77f42d299c9e85eb8c',1,'CadeiaFarmacias']]],
+  ['crescente',['crescente',['../classsorting.html#a9804eb4e779f07241181159ad635bfeb',1,'sorting::crescente'],['../classsorting.html#a934223306178a826a58e3f503bb4b454',1,'sorting::crescente']]],
   ['criaencomenda',['criaEncomenda',['../class_farmacia.html#a8d5f3e38ee3b835fa1a3366e38f72587',1,'Farmacia']]],
   ['criaencomendade1produto',['criaEncomendaDe1Produto',['../class_farmacia.html#a8d3317e272b145910454613151eec34a',1,'Farmacia']]]
 ];

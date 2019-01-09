@@ -1,6 +1,10 @@
 var searchData=
 [
-  ['venda',['Venda',['../class_venda.html',1,'Venda'],['../class_venda.html#a80246070290a58d69d7b332134a16c53',1,'Venda::Venda()'],['../class_venda.html#a8aee290e732acbb136e08befbba71ae7',1,'Venda::Venda(Receita *receitaVenda, Cliente *clienteVenda)'],['../class_venda.html#aaa57619cea08ee990ca263ebf53bffa9',1,'Venda::Venda(unsigned short dia, unsigned short mes, int ano, unsigned short horas, unsigned short min, unsigned short segundos, unsigned long codigo)']]],
-  ['vendas',['vendas',['../class_farmacia.html#a42b4537849b34e280c77219dc37f7ed1',1,'Farmacia']]],
-  ['vendasemreceita',['vendaSemReceita',['../class_produto.html#a23b9feaa180ed2f156e836b00ec4bc7f',1,'Produto']]]
+  ['tabhfunc',['tabHFunc',['../_cadeia_farmacias_8h.html#a1a38ba1065eac7efbfeeb5c80fa469f5',1,'CadeiaFarmacias.h']]],
+  ['taxadesconto',['taxaDesconto',['../class_produto.html#ada69fb1e7e51069dbc8232ab7e836480',1,'Produto']]],
+  ['temreceita',['temReceita',['../class_venda.html#a584630f41da2a715e633a0c63110806b',1,'Venda']]],
+  ['tipo',['tipo',['../classsorting.html#ab5afafc9b67c8b5f98e72bdf0557a579',1,'sorting']]],
+  ['tiposort',['tipoSort',['../util_8h.html#ab534567639d72a265e41e9408cc156cf',1,'util.h']]],
+  ['totalvenda',['totalVenda',['../class_venda.html#ac11f78704d07fc59f95b7cc097e39a2b',1,'Venda']]],
+  ['toupperstring',['toupperstring',['../util_8h.html#a616042919ff29ac58de6705e6467148c',1,'util.h']]]
 ];

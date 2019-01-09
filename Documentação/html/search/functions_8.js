@@ -1,5 +1,8 @@
 var searchData=
 [
-  ['menorque',['menorQue',['../class_farmacia.html#a8d776c7e0c570cb91cf8299bc79ee931',1,'Farmacia::menorQue()'],['../class_funcionario.html#a8fd9d4bb390b543b8da570e63d62f6f4',1,'Funcionario::menorQue()'],['../class_venda.html#ab40631259dc46aa31f2bc986f3e790ff',1,'Venda::menorQue()']]],
-  ['mostrarfuncionariosantigos',['mostrarFuncionariosAntigos',['../class_cadeia_farmacias.html#a8d78eb89417e49c41c798ee1e15d7095',1,'CadeiaFarmacias']]]
+  ['logo_5fcadeia_5ffarmacias',['logo_cadeia_farmacias',['../menu_8cpp.html#ad936447a06580742ec5ef3324d5c5fe4',1,'menu.cpp']]],
+  ['logo_5fcliente',['logo_cliente',['../menu_8cpp.html#ad9f58a5f34d58aec030984b830e03385',1,'menu.cpp']]],
+  ['logo_5ffarmacia',['logo_farmacia',['../menu_8cpp.html#a4129b08a009dab5f9e1652be7f0ab2e6',1,'menu.cpp']]],
+  ['logo_5ffuncionario',['logo_funcionario',['../menu_8cpp.html#a822d22335db9db8a2fb8b35e151677e9',1,'menu.cpp']]],
+  ['logo_5fmenu_5fprincipal',['logo_menu_principal',['../menu_8cpp.html#ae031fde0d2074ecc55ad10d04ef35226',1,'menu.cpp']]]
 ];

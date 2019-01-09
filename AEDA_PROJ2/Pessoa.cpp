@@ -139,7 +139,7 @@ void Funcionario::showInfo() const {
 	cout << "Nome: " << nome << endl;
 	cout << "Morada: " << morada << endl;
 	cout << "Contribuinte: " << noContribuinte << endl;
-	cout << "Salario: " << salario << endl;
+	cout << "Salario: " << salario << "€" << endl;
 	if (farmaciaTrabalho != NULL)
 		cout << cargo << " na farmacia " << farmaciaTrabalho->getNome() << endl;
 }
