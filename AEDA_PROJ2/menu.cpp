@@ -14,7 +14,7 @@ using namespace std;
 
 CadeiaFarmacias cadeia;
 
-void logo_cadeia_farmacias(){
+void logo_menu_principal(){
 	cout << " ___________________ " << endl;
 	cout << "|                   |" << endl;
 	cout << "|Cadeia de Farmacias|" << endl;
@@ -22,16 +22,34 @@ void logo_cadeia_farmacias(){
 }
 
 void menuCriarCadeia() {
-	logo_cadeia_farmacias();
+	logo_menu_principal();
 	cout << endl;
 	cout << "1. Criar nova cadeia. " << endl;
 	cout << "2. Importar cadeia. " << endl;
 	cout << "3. Sair. " << endl;
 }
 
-void menuGerirCadeia() {
-	cout << endl << endl;
-	cout << "GERIR CADEIA DE FARMACIAS" << endl;
+void logo_cadeia_farmacias(string nome_da_cadeia){
+	cout << " __________________________";
+	for(unsigned i = 0; i < nome_da_cadeia.length(); i++)
+		cout << "_";
+	cout << endl;
+	cout <<"|                          ";
+	for(unsigned i = 0; i < nome_da_cadeia.length(); i++)
+		cout << " ";
+	cout << "|" << endl;
+	cout <<"|GERIR CADEIA DE FARMACIAS " << nome_da_cadeia << "|" << endl;
+	cout <<"|__________________________";
+	for(unsigned i = 0; i < nome_da_cadeia.length(); i++)
+		cout << "_";
+	cout << "|" << endl;
+}
+
+void menuGerirCadeia(string nome_da_cadeia) {
+	cout << endl;
+	logo_cadeia_farmacias(nome_da_cadeia);
+	cout << endl;
+
 	cout << "1. Adicionar Farmacia." << endl;
 	cout << "2. Ordenar farmacias." << endl;
 	cout << "3. Remover Farmacia." << endl;
@@ -52,9 +70,27 @@ void menuGerirCadeia() {
 	cout << "18. Sair." << endl;
 }
 
-void menuFarmacia() {
-	cout << endl << endl;
-	cout << "GERIR FARMACIA" << endl;
+void logo_farmacia(string nome_da_farmacia){
+	cout << " _______________";
+	for(unsigned i = 0; i < nome_da_farmacia.length(); i++)
+		cout << "_";
+	cout << endl;
+	cout <<"|               ";
+	for(unsigned i = 0; i < nome_da_farmacia.length(); i++)
+		cout << " ";
+	cout << "|" << endl;
+	cout <<"|GERIR FARMACIA " << nome_da_farmacia << "|" << endl;
+	cout <<"|_______________";
+	for(unsigned i = 0; i < nome_da_farmacia.length(); i++)
+		cout << "_";
+	cout << "|" << endl;
+}
+
+void menuFarmacia(string nome_da_farmacia) {
+	cout << endl;
+	logo_farmacia(nome_da_farmacia);
+	cout << endl;
+
 	cout << "1. Ver dados da Farmacia." << endl;
 	cout << "2. Mudar gerente." << endl;
 	cout << "3. Mudar diretor tecnico." << endl;
@@ -73,9 +109,27 @@ void menuFarmacia() {
 	cout << "16. Voltar atras." << endl;
 }
 
-void menuFuncionario() {
-	cout << endl << endl;
-	cout << "GERIR FUNCIONARIO" << endl;
+void logo_funcionario(string nome_do_funcionario){
+	cout << " __________________";
+	for(unsigned i = 0; i < nome_do_funcionario.length(); i++)
+		cout << "_";
+	cout << endl;
+	cout <<"|                  ";
+	for(unsigned i = 0; i < nome_do_funcionario.length(); i++)
+		cout << " ";
+	cout << "|" << endl;
+	cout <<"|GERIR FUNCIONARIO " << nome_do_funcionario << "|" << endl;
+	cout <<"|__________________";
+	for(unsigned i = 0; i < nome_do_funcionario.length(); i++)
+		cout << "_";
+	cout << "|" << endl;
+}
+
+void menuFuncionario(string nome_do_funcionario) {
+	cout << endl;
+	logo_funcionario(nome_do_funcionario);
+	cout << endl;
+
 	cout << "1. Ver dados do Funcionario." << endl;
 	cout << "2. Alterar farmacia em que trabalha." << endl;
 	cout << "3. Alterar cargo." << endl;
@@ -84,13 +138,31 @@ void menuFuncionario() {
 	cout << "6. Voltar atras." << endl;
 }
 
-void menuCliente() {
-	cout << endl << endl;
-	cout << "GERIR CLIENTE" << endl;
+void logo_cliente(string nome_do_cliente){
+	cout << " ______________";
+	for(unsigned i = 0; i < nome_do_cliente.length(); i++)
+		cout << "_";
+	cout << endl;
+	cout <<"|              ";
+	for(unsigned i = 0; i < nome_do_cliente.length(); i++)
+		cout << " ";
+	cout << "|" << endl;
+	cout <<"|GERIR CLIENTE " << nome_do_cliente << "|" << endl;
+	cout <<"|______________";
+	for(unsigned i = 0; i < nome_do_cliente.length(); i++)
+		cout << "_";
+	cout << "|" << endl;
+}
+
+void menuCliente(string nome_do_cliente) {
+	cout << endl;
+	logo_cliente(nome_do_cliente);
+	cout << endl;
 	cout << "1. Ver dados do Cliente." << endl;
 	cout << "2. Ver historial de compras." << endl;
 	cout << "3. Alterar morada." << endl;
-	cout << "4. Voltar atras." << endl;
+	cout << "4. Alterar distrito." << endl;
+	cout << "5. Voltar atras." << endl;
 }
 
 int main() {
@@ -149,7 +221,7 @@ int main() {
 	do {
 		menu_cadeia:
 
-		menuGerirCadeia();
+		menuGerirCadeia(cadeia.getNome());
 		do {
 			cin >> option;
 			if (cin.fail()) {
@@ -423,7 +495,7 @@ int main() {
 			do {
 				menu_farmacia:
 
-				menuFarmacia();
+				menuFarmacia(nome);
 				do {
 					cin >> option;
 					if (cin.fail()) {
@@ -1070,7 +1142,7 @@ int main() {
 
 			do {
 
-				menuFuncionario();
+				menuFuncionario(func->func->getNome());
 				do {
 					cin >> option;
 					if (cin.fail()) {
@@ -1166,7 +1238,7 @@ int main() {
 			}
 			do {
 
-				menuCliente();
+				menuCliente(nome);
 				do {
 					cin >> option;
 					if (cin.fail()) {
@@ -1199,7 +1271,24 @@ int main() {
 					(*cl)->setMorada(nova_morada);
 					break;
 				}
-				case 4: {
+				case 4:{
+					string novo_distrito;
+					cout << "Novo distrito: ";
+					do{
+						cin.clear();
+						cin.ignore(10000, '\n');
+						getline(cin, novo_distrito);
+						if(isDistrito(novo_distrito))
+							break;
+						else{
+							cout << "Distrito invalido. Insira outra vez: " << endl;
+						}
+					}while(!isDistrito(novo_distrito));
+
+					(*cl)->setDistrito(novo_distrito);
+					break;
+				}
+				case 5: {
 					goto menu_cadeia;
 					break;
 				}
