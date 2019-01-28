@@ -19,4 +19,4 @@ Here you can see the project theme:
 
 Also, all that was made in the project is in Portuguese (documentation, comments, report and commit messages) 
 
-**Project Grade:** Not evaluated yet
+**Project Grade:** 18.8
