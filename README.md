@@ -1,6 +1,6 @@
 # AEDA Second Project
 
-Second Project of AEDA (Algorithms and Data Structures - 1st year of Integrated Master Degree in Computer Engineering).
+Second Project of AEDA (Algorithms and Data Structures - 2nd year of Integrated Master Degree in Computer Engineering).
 Based on [aeda2018-proj1](https://github.com/pemesteves/aeda2018-proj1).
 
 ## Course Information
